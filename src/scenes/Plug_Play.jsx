@@ -1,36 +1,68 @@
-import {
-  Box,
-  Button,
-  IconButton,
-  Typography,
-  useTheme,
-  ListItemIcon,
-} from "@mui/material";
-import { tokens } from "../../theme";
+import React from "react";
+import { Box, ListItemIcon, Typography } from "@mui/material";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { useState, useEffect } from "react";
 import { ExpandMore } from "@mui/icons-material";
 import { Link } from "react-router-dom";
-// import Chart from "../../components/Chart";
-
+import Chart from "../components/Chart";
 import axios from "axios";
 
-const Dashboard = () => {
-  const theme = useTheme();
-  const colors = tokens(theme.palette.mode);
+const Plug_Play = () => {
+  //
+  //
+  //
+  //---------------------------------------selecting FieldDock------------------------------------
+  const [hangerAnchorEl, setHangerAnchorEl] = useState(null);
+  const [selectedHangerSystem, setSelectedHangerSystem] = useState(null);
+  const [hangerSystems, setHangerSystems] = useState([]);
 
-  // a state variable to keep track of the anchor element for the dropdown menu. This variable will be null initially and will be updated when the user clicks on the box
+  useEffect(() => {
+    //logic for selecting which Fieldock system you want, would be the selection of the main system
+    fetch("http://3.145.131.67:8000/hanger/hanger-system/")
+      .then((response) => response.json())
+      .then((data) => setHangerSystems(data))
+      .catch((error) => console.log(error));
+  }, []);
+
+  const handleHangerOpen = (event) => {
+    setHangerAnchorEl(event.currentTarget);
+  };
+
+  const handleHangerClose = () => {
+    setHangerAnchorEl(null);
+  };
+
+  const handleHangerSelect = (event, selected) => {
+    setSelectedHangerSystem(selected);
+    handleHangerClose();
+  };
+  //----------------------------------selecting FieldDock END-------------------------------------
+  //
+  //
+  //
+  //--------------------------------------weather data-----------------------------------------------
+  const [weatherData, setWeatherData] = useState(null);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      axios
+        .get("http://3.145.131.67:8000/weather/data/")
+        .then((response) => {
+          setWeatherData(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }, 10000);
+    return () => clearInterval(interval);
+  }, []);
+  //-------------------------------------weather data end--------------------------------------
   const [anchorEl, setAnchorEl] = useState(null);
-  const [anchorEl1, setAnchorEl1] = useState(null); //for misc sensors
-  const [anchorEl2, setAnchorEl2] = useState(null); //for soil conditions sensors
   const [selectedSensor, setSelectedSensor] = useState(null);
-  const [selectedSensor1, setSelectedSensor1] = useState(null);
-  const [selectedSensor2, setSelectedSensor2] = useState(null);
-  const [showChart, setShowChart] = useState(false);
-  // const [weatherData, setWeatherData] = useState(null);  //for weather data
 
-  //two functions, one to handle the opening of the dropdown menu and another to handle the closing of the dropdown menu.
+  const [showChart, setShowChart] = useState(false);
+
   const handleOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -42,34 +74,6 @@ const Dashboard = () => {
   const handleSelect = (event, sensor) => {
     setSelectedSensor(sensor);
     handleClose();
-  };
-
-  //for misc sensors
-  const handleOpen1 = (event) => {
-    setAnchorEl1(event.currentTarget);
-  };
-
-  const handleSelect1 = (event, sensor) => {
-    setSelectedSensor1(sensor);
-    handleClose1();
-  };
-
-  const handleClose1 = () => {
-    setAnchorEl1(null);
-  };
-
-  //for soil conditions sensors
-  const handleOpen2 = (event) => {
-    setAnchorEl2(event.currentTarget);
-  };
-
-  const handleClose2 = () => {
-    setAnchorEl2(null);
-  };
-
-  const handleSelect2 = (event, sensor) => {
-    setSelectedSensor2(sensor);
-    handleClose2();
   };
 
   //handles the text input for the "growing degree days" boxes
@@ -84,7 +88,8 @@ const Dashboard = () => {
   const handleEndDateChange = (event) => {
     setEndDate(event.target.value);
   };
-  //for live date and time
+
+  //--------------------------------------------------for live date and time------------------------------
   function getCurrentDateTimeInCST() {
     const daysOfWeek = [
       "Sunday",
@@ -104,37 +109,73 @@ const Dashboard = () => {
     });
     return `${dayOfWeek} | ${date} | ${time} CST`;
   }
-  //-------------------------weather data---------------------------------
-  const [weatherData, setWeatherData] = useState(null);
+  //-----------------------------------------------------live date and time END---------------------------
+
+  const fetchData = async () => {
+    const response = await fetch("http://3.145.131.67:8000/syssen/data/");
+    const data = await response.json();
+    return data;
+  };
+
+  const [data, setData] = useState([]);
+  const [sensors, setSensors] = useState([]);
+  const [anchorEl2, setAnchorEl2] = useState(null);
+  const [selectedSensor2, setSelectedSensor2] = useState("");
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      axios
-        .get("http://3.145.131.67:8000/weather/data/")
-        .then((response) => {
-          setWeatherData(response.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }, 10000);
-    return () => clearInterval(interval);
+    const fetchDataAndSetState = async () => {
+      try {
+        const fetchedData = await fetchData();
+        setData(fetchedData);
+        // Get the unique sensor keys from the fetched data
+        const uniqueSensors = [
+          ...new Set(fetchedData.map((item) => item.sensor)),
+        ];
+        setSensors(uniqueSensors);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchDataAndSetState(); // Fetch data initially
+    const intervalId = setInterval(fetchDataAndSetState, 20000); // Fetch data every 20 seconds
+
+    return () => {
+      clearInterval(intervalId); // Clear interval when the component is unmounted
+    };
   }, []);
 
-  //----------------------weather data end------------------------------
+  const handleOpen2 = (event) => {
+    setAnchorEl2(event.currentTarget);
+  };
+
+  const handleClose2 = () => {
+    setAnchorEl2(null);
+  };
+
+  const handleSelect2 = (event, sensor) => {
+    setSelectedSensor2(sensor);
+    setAnchorEl2(null);
+  };
+
+  const filteredData = () => {
+    if (!selectedSensor2) {
+      return data;
+    }
+    const selectedSensorNumber = parseInt(selectedSensor2.split(" ")[1]);
+    return data.filter((item) => item.sensor === selectedSensorNumber);
+  };
 
   return (
-    //parent style for all 3 main columns
-    <div
+    <div //parent div for ALL COLUMNS
       style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(3, 1fr)",
-        gridGap: "10px",
+        display: "flex",
+        justifyContent: "space-between",
         height: "100vh",
-        //the height of the parent container will be set to 100vh, which means it will take up the full height of the viewport. The width will adjust automatically based on the size of the screen. Note that this will cause the contents of each container to overflow horizontally if the screen is too narrow.
+        flexWrap: "wrap", // Allow the boxes to wrap if the screen size is too small
       }}
     >
-      {/* style for column 1 */}
+      {/* STYLE FOR COLUMN ONE */}
       <div
         style={{
           backgroundColor: "transparent",
@@ -143,66 +184,108 @@ const Dashboard = () => {
           flexDirection: "column", // this makes it so all the boxes in column 1 are stacked like a column on top of each other
           alignItems: "center",
           justifyContent: "center",
+          flex: "1", // Give equal width to each box
+          minWidth: "calc(33.333% - 10px)", // Calculate the width for each box, considering the space between them
+          margin: "0 5px", // Set horizontal margin to 5px for equal spacing
+          marginBottom: "10px", // Set vertical margin between wrapped boxes
         }}
       >
         {/* box that surrounds fielddock logo */}
         <div
           style={{
-            backgroundColor: "transparent",
-            height: "100px",
             display: "flex",
-            // marginTop: '14rem',
-            alignItems: "start",
             justifyContent: "center",
-            flexDirection: "column", //this makes it so all the boxes in BOX 1 are stacked like a column  on top of eachother
+            alignItems: "center",
+            width: "85%", // Set width to 100% of the parent
+            height: "100px",
+            backgroundColor: "transparent",
           }}
         >
-          {/* box that CONTAINS fielddock logo */}
+          <object
+            data="../../assets/FieldDock-Logo.svg"
+            type="image/svg+xml"
+            style={{ maxWidth: "100%", maxHeight: "100%" }} // Apply maxWidth and maxHeight directly to the object
+            // Remove fixed width and height values
+          />
+        </div>
+        <div style={{ width: "85%" }}>
           <div
             style={{
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              width: "500px",
-              height: "100px",
+              width: "100%",
+              height: "40px",
               backgroundColor: "transparent",
-              borderRadius: "10px",
-            }}
-          >
-            <object
-              data="../../assets/FieldDock-Logo.svg"
-              type="image/svg+xml"
-              style={{ maxWidth: "100%", maxHeight: "100%" }}
-              width="600px"
-              height="200px"
-            />
-          </div>
-        </div>
-
-        <div>
-          {/* "Select Fieldodck System....START" */}
-          <Box
-            sx={{
               border: "1px solid #00e1b4",
               padding: "10px",
-              display: "flex",
-              justifyContent: "space-between", // set the horizontal spacing between child elements
-              alignItems: "center",
-              width: "500px",
-              marginTop: "1rem",
-              height: "30px",
-              backgroundColor: "transparent",
+              justifyContent: "space-between",
+              marginTop: "3rem",
               borderRadius: "5px",
-              fontSize: "17px",
-              marginLeft: "10px",
+              fontSize: "1vw", // dynamic font size based on viewport width
             }}
-            onClick={handleOpen}
+            onClick={handleHangerOpen}
           >
-            {selectedSensor ? selectedSensor : "Select Fielddock System..."}
+            {selectedHangerSystem
+              ? selectedHangerSystem
+              : "Select Hanger System..."}
             <ListItemIcon>
               <ExpandMore />
             </ListItemIcon>
-          </Box>
+          </div>
+
+          <Menu
+            anchorEl={hangerAnchorEl}
+            open={Boolean(hangerAnchorEl)}
+            onClose={handleHangerClose}
+          >
+            {hangerSystems.map((system) => (
+              <MenuItem
+                key={system.id}
+                autoFocus={false}
+                onClick={(event) =>
+                  handleHangerSelect(
+                    event,
+                    `${system.name} - ${system.location}`
+                  )
+                }
+                sx={{
+                  color: "#000000",
+                  backgroundColor: "#BEBEBE !important",
+                  "&:hover": { backgroundColor: "#EBECF0 !important" },
+                }}
+              >
+                {system.name} - {system.location}
+              </MenuItem>
+            ))}
+          </Menu>
+        </div>{" "}
+        {/* end of SELECT FIELDDOCK */}
+        <div style={{ width: "85%" }}>
+          {" "}
+          {/* beginning of WIRELESS SENSOR */}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              width: "100%",
+              height: "40px",
+              backgroundColor: "transparent",
+              border: "1px solid #00e1b4",
+              padding: "10px",
+              justifyContent: "space-between",
+              marginTop: "3rem",
+              borderRadius: "5px",
+              fontSize: "1vw", // dynamic font size based on viewport width
+            }}
+            onClick={handleOpen}
+          >
+            {selectedSensor ? selectedSensor : "Select Wireless Sensor..."}
+            <ListItemIcon>
+              <ExpandMore />
+            </ListItemIcon>
+          </div>
           <Menu
             anchorEl={anchorEl}
             open={Boolean(anchorEl)}
@@ -242,18 +325,1328 @@ const Dashboard = () => {
               FieldDock 0003
             </MenuItem>
           </Menu>
-          {/* "Select Fielddock system....END" */}
+        </div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          {/* Plug and Play Sensor START */}
+          <Box
+            // onClick={() => setShowChart(true)}
+            // onBlur={() => setShowChart(false)}
+            style={{
+              border: "1px solid #797979",
+              padding: "10px",
+              position: "relative",
+              marginTop: "4rem",
+              width: "85%", // Changed to 75% of column
+              height: "490px",
+              borderRadius: "5px",
+            }}
+          >
+            <Box
+              style={{
+                position: "absolute",
+                top: "-15px",
+                left: "50%",
+                transform: "translateX(-50%)",
+                backgroundColor: "#181818",
+                padding: "0 5px",
+                zIndex: 1,
+                fontSize: "1vw", // dynamic font size based on viewport width
+              }}
+            >
+              Plug and Play Sensor
+              {showChart && (
+                <div
+                  style={{
+                    position: "fixed",
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(200%, -50%)",
+                    zIndex: 999,
+                    width: "100%",
+                    height: "100%",
+                  }}
+                >
+                  <Chart />
+                </div>
+              )}
+            </Box>
+            <div>
+              {/* "Select sensor....START" */}
+              <Box
+                sx={{
+                  //styling for the "Select a sensor box"
+                  border: "1px solid #00e1b4",
+                  borderRadius: "4px",
+                  padding: "10px",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  maxWidth: "100%", // Changed to 100% to shrink proportionally
+                  maxHeight: "100%", // Changed to 100% to shrink proportionally
+                  marginTop: "1rem",
+                  height: "30px",
+                  backgroundColor: "transparent",
+                  borderRadius: "5px",
+                  fontSize: "1vw", // dynamic font size based on viewport width
+                  marginLeft: "10px",
+                }}
+                onClick={handleOpen2}
+              >
+                {selectedSensor2 ? selectedSensor2 : "Select a sensor..."}
+                <ListItemIcon>
+                  <ExpandMore />
+                </ListItemIcon>
+              </Box>
+              <Menu
+                anchorEl={anchorEl2}
+                open={Boolean(anchorEl2)}
+                onClose={handleClose2}
+              >
+                {sensors.length > 0 ? (
+                  sensors.map((sensor) => (
+                    <MenuItem
+                      key={sensor}
+                      onClick={(event) =>
+                        handleSelect2(event, `Sensor ${sensor}`)
+                      }
+                      sx={{
+                        color: "#000000",
+                        backgroundColor: "#BEBEBE !important",
+                        "&:hover": { backgroundColor: "#EBECF0 !important" },
+                      }}
+                    >
+                      Sensor {sensor}
+                    </MenuItem>
+                  ))
+                ) : (
+                  <MenuItem
+                    disabled
+                    sx={{
+                      color: "#000000",
+                      backgroundColor: "#BEBEBE !important",
+                      "&:hover": { backgroundColor: "#EBECF0 !important" },
+                    }}
+                  >
+                    No sensors available
+                  </MenuItem>
+                )}
+              </Menu>
+              {/* "Select soil sensor....END" */}
+              {/* Table START */}
+              <Box
+                sx={{
+                  marginTop: "1rem",
+                  width: "100%",
+                  overflow: "auto",
+                }}
+              >
+                <div
+                  style={{
+                    height: "400px",
+                    overflow: "auto",
+                    fontSize: "0.8vw",
+                  }}
+                >
+                  <table style={{ width: "100%", tableLayout: "fixed" }}>
+                    <thead>
+                      <tr>
+                        <th
+                          style={{
+                            color: "#e8e8e8",
+                            width: "25%",
+                            padding: "10px",
+                          }}
+                        >
+                          ID:
+                        </th>
+                        <th
+                          style={{
+                            color: "#e8e8e8",
+                            width: "25%",
+                            padding: "10px",
+                          }}
+                        >
+                          Value:
+                        </th>
+                        <th
+                          style={{
+                            color: "#e8e8e8",
+                            width: "25%",
+                            padding: "10px",
+                          }}
+                        >
+                          Timestamp:
+                        </th>
+                        <th
+                          style={{
+                            color: "#e8e8e8",
+                            width: "25%",
+                            padding: "10px",
+                          }}
+                        >
+                          Sensor:
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {filteredData().map((item) => (
+                        <tr key={item.id}>
+                          <td
+                            style={{
+                              borderBottom: "1px solid #d3d3d3",
+                              padding: "10px",
+                              textAlign: "center",
+                              borderBottomWidth: "1px",
+                              width: "25%",
+                              color: "#00e1b4",
+                            }}
+                          >
+                            {item.id}
+                          </td>
+                          <td
+                            style={{
+                              borderBottom: "1px solid #d3d3d3",
+                              padding: "10px",
+                              textAlign: "center",
+                              borderBottomWidth: "1px",
+                              width: "25%",
+                              color: "#00e1b4",
+                            }}
+                          >
+                            {item.value}
+                          </td>
+                          <td
+                            style={{
+                              borderBottom: "1px solid #d3d3d3",
+                              padding: "10px",
+                              textAlign: "center",
+                              borderBottomWidth: "1px",
+                              width: "25%",
+                              color: "#00e1b4",
+                            }}
+                          >
+                            {item.timestamp}
+                          </td>
+                          <td
+                            style={{
+                              borderBottom: "1px solid #d3d3d3",
+                              padding: "10px",
+                              textAlign: "center",
+                              borderBottomWidth: "1px",
+                              width: "25%",
+                              color: "#00e1b4",
+                            }}
+                          >
+                            {`Device ${item.sensor}`}
+                          </td>
+                        </tr>
+                      ))}
+                      <tr>
+                        <td
+                          style={{
+                            borderBottom: "1px solid #d3d3d3",
+                            padding: "10px",
+                            textAlign: "center",
+                            borderBottomWidth: "1px",
+                            width: "25%",
+                          }}
+                        >
+                          -
+                        </td>
+                        <td
+                          style={{
+                            borderBottom: "1px solid #d3d3d3",
+                            padding: "10px",
+                            textAlign: "center",
+                            borderBottomWidth: "1px",
+                            width: "25%",
+                          }}
+                        >
+                          -
+                        </td>
+                        <td
+                          style={{
+                            borderBottom: "1px solid #d3d3d3",
+                            padding: "10px",
+                            textAlign: "center",
+                            borderBottomWidth: "1px",
+                            width: "25%",
+                          }}
+                        >
+                          -
+                        </td>
+                        <td
+                          style={{
+                            borderBottom: "1px solid #d3d3d3",
+                            padding: "10px",
+                            textAlign: "center",
+                            borderBottomWidth: "1px",
+                            width: "25%",
+                          }}
+                        >
+                          -
+                        </td>
+                      </tr>
+                      <tr>
+                        <td
+                          style={{
+                            borderBottom: "1px solid #d3d3d3",
+                            padding: "10px",
+                            textAlign: "center",
+                            borderBottomWidth: "1px",
+                            width: "25%",
+                          }}
+                        >
+                          -
+                        </td>
+                        <td
+                          style={{
+                            borderBottom: "1px solid #d3d3d3",
+                            padding: "10px",
+                            textAlign: "center",
+                            borderBottomWidth: "1px",
+                            width: "25%",
+                          }}
+                        >
+                          -
+                        </td>
+                        <td
+                          style={{
+                            borderBottom: "1px solid #d3d3d3",
+                            padding: "10px",
+                            textAlign: "center",
+                            borderBottomWidth: "1px",
+                            width: "25%",
+                          }}
+                        >
+                          -
+                        </td>
+                        <td
+                          style={{
+                            borderBottom: "1px solid #d3d3d3",
+                            padding: "10px",
+                            textAlign: "center",
+                            borderBottomWidth: "1px",
+                            width: "25%",
+                          }}
+                        >
+                          -
+                        </td>
+                      </tr>
+                      <tr>
+                        <td
+                          style={{
+                            borderBottom: "1px solid #d3d3d3",
+                            padding: "10px",
+                            textAlign: "center",
+                            borderBottomWidth: "1px",
+                            width: "25%",
+                          }}
+                        >
+                          -
+                        </td>
+                        <td
+                          style={{
+                            borderBottom: "1px solid #d3d3d3",
+                            padding: "10px",
+                            textAlign: "center",
+                            borderBottomWidth: "1px",
+                            width: "25%",
+                          }}
+                        >
+                          -
+                        </td>
+                        <td
+                          style={{
+                            borderBottom: "1px solid #d3d3d3",
+                            padding: "10px",
+                            textAlign: "center",
+                            borderBottomWidth: "1px",
+                            width: "25%",
+                          }}
+                        >
+                          -
+                        </td>
+                        <td
+                          style={{
+                            borderBottom: "1px solid #d3d3d3",
+                            padding: "10px",
+                            textAlign: "center",
+                            borderBottomWidth: "1px",
+                            width: "25%",
+                          }}
+                        >
+                          -
+                        </td>
+                      </tr>
+                      <tr>
+                        <td
+                          style={{
+                            borderBottom: "1px solid #d3d3d3",
+                            padding: "10px",
+                            textAlign: "center",
+                            borderBottomWidth: "1px",
+                            width: "25%",
+                          }}
+                        >
+                          -
+                        </td>
+                        <td
+                          style={{
+                            borderBottom: "1px solid #d3d3d3",
+                            padding: "10px",
+                            textAlign: "center",
+                            borderBottomWidth: "1px",
+                            width: "25%",
+                          }}
+                        >
+                          -
+                        </td>
+                        <td
+                          style={{
+                            borderBottom: "1px solid #d3d3d3",
+                            padding: "10px",
+                            textAlign: "center",
+                            borderBottomWidth: "1px",
+                            width: "25%",
+                          }}
+                        >
+                          -
+                        </td>
+                        <td
+                          style={{
+                            borderBottom: "1px solid #d3d3d3",
+                            padding: "10px",
+                            textAlign: "center",
+                            borderBottomWidth: "1px",
+                            width: "25%",
+                          }}
+                        >
+                          -
+                        </td>
+                      </tr>
+                      <tr>
+                        <td
+                          style={{
+                            borderBottom: "1px solid #d3d3d3",
+                            padding: "10px",
+                            textAlign: "center",
+                            borderBottomWidth: "1px",
+                            width: "25%",
+                          }}
+                        >
+                          -
+                        </td>
+                        <td
+                          style={{
+                            borderBottom: "1px solid #d3d3d3",
+                            padding: "10px",
+                            textAlign: "center",
+                            borderBottomWidth: "1px",
+                            width: "25%",
+                          }}
+                        >
+                          -
+                        </td>
+                        <td
+                          style={{
+                            borderBottom: "1px solid #d3d3d3",
+                            padding: "10px",
+                            textAlign: "center",
+                            borderBottomWidth: "1px",
+                            width: "25%",
+                          }}
+                        >
+                          -
+                        </td>
+                        <td
+                          style={{
+                            borderBottom: "1px solid #d3d3d3",
+                            padding: "10px",
+                            textAlign: "center",
+                            borderBottomWidth: "1px",
+                            width: "25%",
+                          }}
+                        >
+                          -
+                        </td>
+                      </tr>
+                      <tr>
+                        <td
+                          style={{
+                            borderBottom: "1px solid #d3d3d3",
+                            padding: "10px",
+                            textAlign: "center",
+                            borderBottomWidth: "1px",
+                            width: "25%",
+                          }}
+                        >
+                          -
+                        </td>
+                        <td
+                          style={{
+                            borderBottom: "1px solid #d3d3d3",
+                            padding: "10px",
+                            textAlign: "center",
+                            borderBottomWidth: "1px",
+                            width: "25%",
+                          }}
+                        >
+                          -
+                        </td>
+                        <td
+                          style={{
+                            borderBottom: "1px solid #d3d3d3",
+                            padding: "10px",
+                            textAlign: "center",
+                            borderBottomWidth: "1px",
+                            width: "25%",
+                          }}
+                        >
+                          -
+                        </td>
+                        <td
+                          style={{
+                            borderBottom: "1px solid #d3d3d3",
+                            padding: "10px",
+                            textAlign: "center",
+                            borderBottomWidth: "1px",
+                            width: "25%",
+                          }}
+                        >
+                          -
+                        </td>
+                      </tr>
+                      <tr>
+                        <td
+                          style={{
+                            borderBottom: "1px solid #d3d3d3",
+                            padding: "10px",
+                            textAlign: "center",
+                            borderBottomWidth: "1px",
+                            width: "25%",
+                          }}
+                        >
+                          -
+                        </td>
+                        <td
+                          style={{
+                            borderBottom: "1px solid #d3d3d3",
+                            padding: "10px",
+                            textAlign: "center",
+                            borderBottomWidth: "1px",
+                            width: "25%",
+                          }}
+                        >
+                          -
+                        </td>
+                        <td
+                          style={{
+                            borderBottom: "1px solid #d3d3d3",
+                            padding: "10px",
+                            textAlign: "center",
+                            borderBottomWidth: "1px",
+                            width: "25%",
+                          }}
+                        >
+                          -
+                        </td>
+                        <td
+                          style={{
+                            borderBottom: "1px solid #d3d3d3",
+                            padding: "10px",
+                            textAlign: "center",
+                            borderBottomWidth: "1px",
+                            width: "25%",
+                          }}
+                        >
+                          -
+                        </td>
+                      </tr>
+                      <tr>
+                        <td
+                          style={{
+                            borderBottom: "1px solid #d3d3d3",
+                            padding: "10px",
+                            textAlign: "center",
+                            borderBottomWidth: "1px",
+                            width: "25%",
+                          }}
+                        >
+                          -
+                        </td>
+                        <td
+                          style={{
+                            borderBottom: "1px solid #d3d3d3",
+                            padding: "10px",
+                            textAlign: "center",
+                            borderBottomWidth: "1px",
+                            width: "25%",
+                          }}
+                        >
+                          -
+                        </td>
+                        <td
+                          style={{
+                            borderBottom: "1px solid #d3d3d3",
+                            padding: "10px",
+                            textAlign: "center",
+                            borderBottomWidth: "1px",
+                            width: "25%",
+                          }}
+                        >
+                          -
+                        </td>
+                        <td
+                          style={{
+                            borderBottom: "1px solid #d3d3d3",
+                            padding: "10px",
+                            textAlign: "center",
+                            borderBottomWidth: "1px",
+                            width: "25%",
+                          }}
+                        >
+                          -
+                        </td>
+                      </tr>
+                      <tr>
+                        <td
+                          style={{
+                            borderBottom: "1px solid #d3d3d3",
+                            padding: "10px",
+                            textAlign: "center",
+                            borderBottomWidth: "1px",
+                            width: "25%",
+                          }}
+                        >
+                          -
+                        </td>
+                        <td
+                          style={{
+                            borderBottom: "1px solid #d3d3d3",
+                            padding: "10px",
+                            textAlign: "center",
+                            borderBottomWidth: "1px",
+                            width: "25%",
+                          }}
+                        >
+                          -
+                        </td>
+                        <td
+                          style={{
+                            borderBottom: "1px solid #d3d3d3",
+                            padding: "10px",
+                            textAlign: "center",
+                            borderBottomWidth: "1px",
+                            width: "25%",
+                          }}
+                        >
+                          -
+                        </td>
+                        <td
+                          style={{
+                            borderBottom: "1px solid #d3d3d3",
+                            padding: "10px",
+                            textAlign: "center",
+                            borderBottomWidth: "1px",
+                            width: "25%",
+                          }}
+                        >
+                          -
+                        </td>
+                      </tr>
+                      <tr>
+                        <td
+                          style={{
+                            borderBottom: "1px solid #d3d3d3",
+                            padding: "10px",
+                            textAlign: "center",
+                            borderBottomWidth: "1px",
+                            width: "25%",
+                          }}
+                        >
+                          -
+                        </td>
+                        <td
+                          style={{
+                            borderBottom: "1px solid #d3d3d3",
+                            padding: "10px",
+                            textAlign: "center",
+                            borderBottomWidth: "1px",
+                            width: "25%",
+                          }}
+                        >
+                          -
+                        </td>
+                        <td
+                          style={{
+                            borderBottom: "1px solid #d3d3d3",
+                            padding: "10px",
+                            textAlign: "center",
+                            borderBottomWidth: "1px",
+                            width: "25%",
+                          }}
+                        >
+                          -
+                        </td>
+                        <td
+                          style={{
+                            borderBottom: "1px solid #d3d3d3",
+                            padding: "10px",
+                            textAlign: "center",
+                            borderBottomWidth: "1px",
+                            width: "25%",
+                          }}
+                        >
+                          -
+                        </td>
+                      </tr>
+                      <tr>
+                        <td
+                          style={{
+                            borderBottom: "1px solid #d3d3d3",
+                            padding: "10px",
+                            textAlign: "center",
+                            borderBottomWidth: "1px",
+                            width: "25%",
+                          }}
+                        >
+                          -
+                        </td>
+                        <td
+                          style={{
+                            borderBottom: "1px solid #d3d3d3",
+                            padding: "10px",
+                            textAlign: "center",
+                            borderBottomWidth: "1px",
+                            width: "25%",
+                          }}
+                        >
+                          -
+                        </td>
+                        <td
+                          style={{
+                            borderBottom: "1px solid #d3d3d3",
+                            padding: "10px",
+                            textAlign: "center",
+                            borderBottomWidth: "1px",
+                            width: "25%",
+                          }}
+                        >
+                          -
+                        </td>
+                        <td
+                          style={{
+                            borderBottom: "1px solid #d3d3d3",
+                            padding: "10px",
+                            textAlign: "center",
+                            borderBottomWidth: "1px",
+                            width: "25%",
+                          }}
+                        >
+                          -
+                        </td>
+                      </tr>
+                      <tr>
+                        <td
+                          style={{
+                            borderBottom: "1px solid #d3d3d3",
+                            padding: "10px",
+                            textAlign: "center",
+                            borderBottomWidth: "1px",
+                            width: "25%",
+                          }}
+                        >
+                          -
+                        </td>
+                        <td
+                          style={{
+                            borderBottom: "1px solid #d3d3d3",
+                            padding: "10px",
+                            textAlign: "center",
+                            borderBottomWidth: "1px",
+                            width: "25%",
+                          }}
+                        >
+                          -
+                        </td>
+                        <td
+                          style={{
+                            borderBottom: "1px solid #d3d3d3",
+                            padding: "10px",
+                            textAlign: "center",
+                            borderBottomWidth: "1px",
+                            width: "25%",
+                          }}
+                        >
+                          -
+                        </td>
+                        <td
+                          style={{
+                            borderBottom: "1px solid #d3d3d3",
+                            padding: "10px",
+                            textAlign: "center",
+                            borderBottomWidth: "1px",
+                            width: "25%",
+                          }}
+                        >
+                          -
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  {/*end of table*/}
+                </div>
+              </Box>
+            </div>
+          </Box>
+        </div>
+      </div>{" "}
+      {/* end of column 1 */}
+      <div //COLUMN TWO STARTS HERE
+        style={{
+          backgroundColor: "transparent",
+          height: "100%",
+          display: "flex",
+          flexDirection: "column", // this makes it so all the boxes in column 1 are stacked like a column on top of each other
+          alignItems: "center",
+          justifyContent: "center",
+          flex: "1", // Give equal width to each box
+          minWidth: "calc(33.333% - 10px)", // Calculate the width for each box, considering the space between them
+          margin: "0 5px", // Set horizontal margin to 5px for equal spacing
+          marginBottom: "10px", // Set vertical margin between wrapped boxes
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            padding: "10px",
+            marginBottom: "10px",
+            width: "85%", // set the width to 75% of the column
+            marginTop: "0.7rem",
+          }}
+        >
+          <div
+            style={{
+              marginRight: "10px", //space between box and log out button
+              border: "1px solid #797979",
+              borderRadius: "5px",
+              height: "35px",
+              textAlign: "center",
+              fontSize: "1vw", // dynamic font size based on viewport width
+              width: "65%",
+              marginLeft: "10px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            User 0000 (------)
+          </div>
+
+          <button
+            style={{
+              border: "1px solid orange",
+              backgroundColor: "transparent",
+              color: "#ffffff",
+              padding: "5px 10px",
+              borderRadius: "5px",
+              cursor: "pointer",
+              width: "25%", // Set button width to 25% of the parent
+              fontSize: "1vw", // dynamic font size based on viewport width
+            }}
+          >
+            Log Out
+          </button>
+        </div>
+        {/* Last reading taken box below*/}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            marginBottom: "1px",
+          }}
+        >
+          <div style={{ fontSize: "0.8vw" }}>Last reading taken:</div>
+          <div style={{ color: "#00e1b4", fontSize: "1vw" }}>
+            {getCurrentDateTimeInCST()}
+          </div>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            marginBottom: "10px",
+          }}
+        >
+          <div style={{ fontSize: "0.8vw" }}>GPS:</div>
+          <div style={{ color: "#00e1b4", fontSize: "1vw" }}>
+            <div>38&#176;39'34.7"N 90&#176;19'58.9"W</div>
+          </div>
+        </div>{" "}
+        {/* end of User and Log out box */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            padding: "10px",
+            width: "95%", // Set the width of the container to 95% of the parent element
+            maxWidth: "800px", // Add a maximum width of 800px to prevent the container from becoming too wide
+            margin: "0 auto", // Center the container horizontally
+          }}
+        >
+          <Box
+            style={{
+              border: "1px solid #797979",
+              padding: "10px",
+              position: "relative",
+              marginTop: "2rem",
+              width: "100%", // Set the width of the box to 100% of the container
+              height: "100px",
+              borderRadius: "5px",
+              display: "flex", // Set display to flex
+              flexDirection: "column", // Column direction for the child boxes
+              justifyContent: "center", // Vertical spacing between child boxes
+              alignItems: "center", // Center align child boxes horizontally
+            }}
+          >
+            <Box
+              style={{
+                position: "absolute",
+                top: "-15px",
+                left: "50%",
+                transform: "translateX(-50%)",
+                backgroundColor: "#181818",
+                padding: "0 5px",
+                zIndex: 1,
+                fontSize: "1vw", // dynamic font size based on viewport width
+              }}
+            >
+              Wireless Sensor Network
+            </Box>
+
+            {/* First child box */}
+            <Box
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                width: "70%", // Set the width of the box to 70% of the parent box
+                marginTop: "1rem",
+                fontSize: "0.9vw", // dynamic font size based on viewport width
+              }}
+            >
+              <span>Connected Sensors:</span>
+              <span
+                style={{
+                  color: "#00e1b4",
+                  fontSize: "0.9vw",
+                  marginRight: "2rem",
+                }}
+              >
+                {sensors.length === 1
+                  ? `${sensors.length} sensor`
+                  : `${sensors.length} sensors`}
+              </span>
+            </Box>
+
+            {/* Second child box */}
+            <Box
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                width: "70%",
+                marginBottom: "1rem",
+              }}
+            >
+              <span style={{ fontSize: "0.9vw" }}>Network Status:</span>
+              <span
+                style={{
+                  fontSize: "0.9vw",
+                  marginRight: "2rem",
+                  color: sensors && sensors.length >= 1 ? "#00e1b4" : "red",
+                }}
+              >
+                {sensors && sensors.length >= 1 ? (
+                  "All Operational"
+                ) : (
+                  <span style={{ color: "red" }}>None Detected</span>
+                )}
+                {/* above checks if the sensorName is truthy, if the sensors array has a length of at least one, and if the sensorName and sensors array are not null or undefined. If all conditions are true, it displays "All Operational". If any of the conditions are false, it displays "None Detected" in red. */}
+              </span>
+            </Box>
+          </Box>
+        </div>
+        <Box //beginning of SENSOR SATUS BOX
+          style={{
+            border: "1px solid #797979",
+            padding: "10px",
+            position: "relative",
+            marginTop: "4rem",
+            width: "85%", // Changed to 75% of column
+            height: "80px",
+            borderRadius: "5px",
+            display: "flex", // Set display to flex
+            flexDirection: "column", // Column direction for the child boxes
+            justifyContent: "space-between", // Vertical spacing between child boxes
+            alignItems: "center", // Center align child boxes horizontally
+          }}
+        >
+          <Box
+            style={{
+              position: "absolute",
+              top: "-15px",
+              left: "50%",
+              transform: "translateX(-50%)",
+              backgroundColor: "#181818",
+              padding: "0 5px",
+              zIndex: 1,
+              fontSize: "1vw", // dynamic font size based on viewport width
+            }}
+          >
+            Sensor Status
+          </Box>
+
+          {/* First child box */}
+          <Box
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              width: "70%",
+              marginTop: "1rem",
+            }}
+          >
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <span style={{ fontSize: "0.9vw", marginLeft: "-2rem" }}>
+                Battery:
+              </span>
+              <span
+                style={{
+                  color: "#00e1b4",
+                  fontSize: "0.9vw",
+                  marginLeft: "0.5rem",
+                  marginRight: "4.5rem",
+                }}
+              >
+                00.00%
+              </span>
+            </div>
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <span style={{ fontSize: "0.9vw", marginLeft: "2rem" }}>
+                LoRaNN:
+              </span>
+              <span
+                style={{
+                  color: "#00e1b4",
+                  fontSize: "0.9vw",
+                  marginLeft: "0.5rem",
+                }}
+              >
+                0000
+              </span>
+            </div>
+          </Box>
+        </Box>{" "}
+        {/* end of SENSOR STATUS| BOX */}
+        <div //box that surrounds sensor image
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "85%",
+            height: "410px",
+            backgroundColor: "transparent",
+            marginTop: "2rem",
+            backgroundSize: "35% 100%",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+            backgroundImage: `url("../../assets/WIreless-Sensor-Diagram.png")`,
+          }}
+        ></div>
+      </div>
+      <div //COLUMN 3 STARTS HERE
+        style={{
+          backgroundColor: "transparent",
+          height: "100%",
+          display: "flex",
+          flexDirection: "column", // this makes it so all the boxes in column 1 are stacked like a column on top of each other
+          alignItems: "center",
+          justifyContent: "center",
+          flex: "1", // Give equal width to each box
+          minWidth: "calc(33.333% - 10px)", // Calculate the width for each box, considering the space between them
+          margin: "0 5px", // Set horizontal margin to 5px for equal spacing
+        }}
+      >
+        <div
+          style={{
+            width: "85%",
+            marginTop: "3.4rem",
+            cursor: "pointer",
+            marginBottom: "-1rem",
+          }}
+        >
+          {" "}
+          {/*above is the div that surrounds the entirety of the 10 boxes "PARENT DIV OF 10 BOXES"*/}{" "}
+          <div style={{ display: "flex", height: "30%" }}>
+            {/*above is the div that surrounds the entirety of the first FIVE boxes*/}{" "}
+            <div
+              style={{
+                width: "17%",
+                height: "80%",
+                marginRight: "20px",
+                border: "1px solid #CCC",
+                borderRadius: "5px",
+              }}
+            >
+              <Link to="/">
+                <img
+                  src="../../assets/real-time-no-line_1.svg"
+                  style={{ width: "100%", height: "100%" }} //sizing of the actual image inside the box
+                  onMouseOver={(e) =>
+                    (e.currentTarget.src =
+                      "../../assets/real-time---active.svg")
+                  }
+                  onMouseOut={(e) =>
+                    (e.currentTarget.src =
+                      "../../assets/real-time-no-line_1.svg")
+                  }
+                />
+              </Link>
+            </div>
+            <div
+              style={{
+                width: "17%",
+                height: "80%",
+                marginRight: "20px",
+                border: "1px solid #CCC",
+                borderRadius: "5px",
+              }}
+            >
+              <Link to="/images">
+                <img
+                  src="../../assets/imaging-no-line.svg"
+                  style={{ width: "80%", height: "100%", marginLeft: "8px" }}
+                  onMouseOver={(e) =>
+                    (e.currentTarget.src = "../../assets/imaging---active.svg")
+                  }
+                  onMouseOut={(e) =>
+                    (e.currentTarget.src = "../../assets/imaging-no-line.svg")
+                  }
+                />
+              </Link>
+            </div>
+            <div
+              style={{
+                width: "17%",
+                height: "80%",
+                marginRight: "20px",
+                border: "1px solid #CCC",
+                borderRadius: "5px",
+              }}
+            >
+              <Link to="/drone">
+                <img
+                  src="../../assets/Drone-Icon.svg"
+                  style={{ width: "100%", height: "100%" }} //sizing of the actual image inside the box
+                  onMouseOver={(e) =>
+                    (e.currentTarget.src = "../../assets/Drone-Icon-Active.svg")
+                  }
+                  onMouseOut={(e) =>
+                    (e.currentTarget.src = "../../assets/Drone-Icon.svg")
+                  }
+                />
+              </Link>
+            </div>
+            <div
+              style={{
+                width: "17%",
+                height: "80%",
+                marginRight: "20px",
+                border: "1px solid #CCC",
+                borderRadius: "5px",
+              }}
+            >
+              <Link to="/Plug_Play">
+                <img
+                  src="../../assets/wireless-no-line.svg"
+                  style={{ width: "100%", height: "100%" }} //sizing of the actual image inside the box
+                  onMouseOver={(e) =>
+                    (e.currentTarget.src =
+                      "../../assets/wireless-no-line---active.svg")
+                  }
+                  onMouseOut={(e) =>
+                    (e.currentTarget.src = "../../assets/wireless-no-line.svg")
+                  }
+                />
+              </Link>
+            </div>
+            <Link to="/settings">
+              <div
+                style={{
+                  width: "70px",
+                  height: "55px",
+                  marginRight: "12px",
+                  border: "1px solid #CCC",
+                  borderRadius: "5px",
+                }}
+              >
+                <img
+                  src="../../assets/settings-no-line.svg"
+                  style={{ width: "70%", height: "100%", marginLeft: "11px" }}
+                  onMouseOver={(e) =>
+                    (e.currentTarget.src = "../../assets/settings---active.svg")
+                  }
+                  onMouseOut={(e) =>
+                    (e.currentTarget.src = "../../assets/settings-no-line.svg")
+                  }
+                />
+              </div>
+            </Link>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              height: "30%",
+              marginTop: "20px",
+            }}
+          >
+            {" "}
+            {/*above is the div that surrounds the entirety of the LAST FIVE boxes*/}
+            <div
+              style={{
+                width: "17%",
+                height: "80%",
+                marginRight: "20px",
+                border: "1px solid #CCC",
+                borderRadius: "5px",
+              }}
+            >
+              <img
+                src="../../assets/real-time-settings-inactive.svg"
+                style={{ width: "100%", height: "90%" }} //sizing of the actual image inside the box
+                onMouseOver={(e) =>
+                  (e.currentTarget.src =
+                    "../../assets/real-time-settings---active.svg")
+                }
+                onMouseOut={(e) =>
+                  (e.currentTarget.src =
+                    "../../assets/real-time-settings-inactive.svg")
+                }
+              />
+            </div>
+            <div
+              style={{
+                width: "17%",
+                height: "80%",
+                marginRight: "20px",
+                border: "1px solid #CCC",
+                borderRadius: "5px",
+              }}
+            >
+              <img
+                src="../../assets/imaging-settings-B-inactive.svg"
+                style={{ width: "100%", height: "90%" }} //sizing of the actual image inside the box
+                onMouseOver={(e) =>
+                  (e.currentTarget.src =
+                    "../../assets/imaging-settings---active.svg")
+                }
+                onMouseOut={(e) =>
+                  (e.currentTarget.src =
+                    "../../assets/imaging-settings-B-inactive.svg")
+                }
+              />
+            </div>
+            <div
+              style={{
+                width: "17%",
+                height: "80%",
+                marginRight: "20px",
+                border: "1px solid #CCC",
+                borderRadius: "5px",
+              }}
+            >
+              <img
+                src="../../assets/Diagnostics-icon---no-line.svg"
+                style={{ width: "100%", height: "90%" }} //sizing of the actual image inside the box
+                onMouseOver={(e) =>
+                  (e.currentTarget.src =
+                    "../../assets/Diagnostics---active.svg")
+                }
+                onMouseOut={(e) =>
+                  (e.currentTarget.src =
+                    "../../assets/Diagnostics-icon---no-line.svg")
+                }
+              />
+            </div>
+            <div
+              style={{
+                width: "17%",
+                height: "80%",
+                marginRight: "20px",
+                border: "1px solid #CCC",
+                borderRadius: "5px",
+              }}
+            >
+              <img
+                src="../../assets/Users-no-line---active.svg"
+                style={{ width: "100%", height: "90%" }} //sizing of the actual image inside the box
+                onMouseOver={(e) =>
+                  (e.currentTarget.src = "../../assets/Users----active.svg")
+                }
+                onMouseOut={(e) =>
+                  (e.currentTarget.src =
+                    "../../assets/Users-no-line---active.svg")
+                }
+              />
+            </div>
+            <div
+              style={{
+                width: "17%",
+                height: "80%",
+                marginRight: "20px",
+                border: "1px solid #CCC",
+                borderRadius: "5px",
+              }}
+            >
+              <img
+                src="../../assets/Download-Icon.svg"
+                style={{ width: "100%", height: "90%" }} //sizing of the actual image inside the box
+                onMouseOver={(e) =>
+                  (e.currentTarget.src =
+                    "../../assets/Download-Icon---active.svg")
+                }
+                onMouseOut={(e) =>
+                  (e.currentTarget.src = "../../assets/Download-Icon.svg")
+                }
+              />
+            </div>
+          </div>
+          {/* above is the div that surrounds the 10 boxes */}
         </div>
         <div>
           {/* Growing Degree Days....START */}
           <Box //main outside box
             style={{
-              border: "1px solid #797979", //originally #CCC
+              border: "1px solid #797979",
               padding: "10px",
               position: "relative",
-              marginTop: "2rem",
-              width: "500px",
+              marginTop: "1rem",
+              width: "400px",
               height: "100px",
+              // marginLeft: "200px",
               borderRadius: "10px",
               display: "flex",
               justifyContent: "space-between",
@@ -269,7 +1662,7 @@ const Dashboard = () => {
                 backgroundColor: "#181818",
                 padding: "0 5px",
                 zIndex: 1,
-                fontSize: "20px",
+                fontSize: "17px",
               }}
             >
               Growing Degree Days
@@ -293,10 +1686,9 @@ const Dashboard = () => {
                   border: "none",
                   background: "none",
                   color: "#999",
-                  fontSize: "20px",
+                  fontSize: "15px",
                   textAlign: "center",
                   outline: "none",
-                  fontSize: "15px",
                 }}
                 placeholder="Start Date"
                 value={startDate}
@@ -310,7 +1702,6 @@ const Dashboard = () => {
                 height: "50px",
                 display: "inline-block",
                 borderRadius: "5px",
-                fontSize: "20px",
                 marginRight: "10px",
               }}
             >
@@ -322,9 +1713,10 @@ const Dashboard = () => {
                   border: "none",
                   background: "none",
                   color: "#999",
-                  fontSize: "15px",
+                  fontSize: "20px",
                   textAlign: "center",
                   outline: "none",
+                  fontSize: "15px",
                 }}
                 placeholder="End Date"
                 value={endDate}
@@ -373,1463 +1765,6 @@ const Dashboard = () => {
                 }}
               >
                 GDD:
-              </Box>
-              <Box
-                style={{
-                  color: "#999",
-                  fontSize: "15px",
-                }}
-              >
-                000
-              </Box>
-            </Box>
-          </Box>
-        </div>
-        <div>
-          {" "}
-          {/*misc box starts here*/}
-          <Box
-            style={{
-              border: "1px solid #797979",
-              padding: "10px",
-              position: "relative",
-              marginTop: "2rem",
-              width: "500px",
-              height: "300px",
-              // marginLeft: "200px",
-              borderRadius: "10px",
-            }}
-          >
-            <Box
-              style={{
-                position: "absolute",
-                top: "-15px",
-                left: "50%",
-                transform: "translateX(-50%)",
-                backgroundColor: "#181818",
-                padding: "0 5px",
-                zIndex: 1,
-                fontSize: "20px",
-              }}
-            >
-              Misc
-            </Box>
-            <div>
-              {/* "Select misc sensor....START" */}
-              <Box
-                sx={{
-                  border: "1px solid #00e1b4",
-                  borderRadius: "4px",
-                  padding: "10px",
-                  display: "flex",
-                  justifyContent: "space-between", // set the horizontal spacing between child elements
-                  alignItems: "center",
-                  width: "460px",
-                  marginTop: "1rem",
-                  height: "30px",
-                  backgroundColor: "transparent",
-                  borderRadius: "5px",
-                  fontSize: "17px",
-                  marginLeft: "10px",
-                }}
-                onClick={handleOpen1}
-              >
-                {selectedSensor1 ? selectedSensor1 : "Select a sensor..."}
-                <ListItemIcon>
-                  <ExpandMore />
-                </ListItemIcon>
-              </Box>
-              <Menu
-                anchorEl={anchorEl1}
-                open={Boolean(anchorEl1)}
-                onClose={handleClose1}
-              >
-                <MenuItem
-                  onClick={(event) =>
-                    handleSelect1(event, "Apogee SQ521 PAR Light")
-                  }
-                  sx={{
-                    color: "#000000",
-                    backgroundColor: "#BEBEBE !important",
-                    "&:hover": { backgroundColor: "#EBECF0 !important" },
-                  }}
-                >
-                  Apogee SQ521 PAR Light
-                </MenuItem>
-                {/* <MenuItem
-                  onClick={(event) => handleSelect1(event, "FieldDock 0002")}
-                  sx={{
-                    color: "#000000",
-                    backgroundColor: "#BEBEBE",
-                    "&:hover": { backgroundColor: "#EBECF0" }
-                  }}
-                >
-                  FieldDock 0002
-                </MenuItem>
-                <MenuItem
-                  onClick={(event) => handleSelect1(event, "FieldDock 0003")}
-                  sx={{
-                    color: "#000000",
-                    backgroundColor: "#BEBEBE",
-                    "&:hover": { backgroundColor: "#EBECF0" }
-                  }}
-                >
-                  FieldDock 0003
-                </MenuItem> */}
-              </Menu>
-              {/* "Select misc sensor....END" */}
-              <Box
-                sx={{
-                  marginTop: "1rem",
-                  width: "100%",
-                  height: "200px",
-                  overflow: "auto",
-                }}
-              >
-                <div style={{ height: "200px", overflow: "auto" }}>
-                  <table style={{ width: "100%", tableLayout: "fixed" }}>
-                    {/* <thead>
-                    <tr>
-                      <th style={{ color: "#e8e8e8", width: "25%", fontSize: "15px", padding: "10px" }}>Soil Depth:</th>
-                      <th style={{ color: "#e8e8e8", width: "25%", fontSize: "15px", padding: "10px" }}>Soil Moisture:</th>
-                      <th style={{ color: "#e8e8e8", width: "25%", fontSize: "15px", padding: "10px" }}>Soil Temperature:</th>
-                      <th style={{ color: "#e8e8e8", width: "25%", fontSize: "14px", padding: "10px" }}>Electrical Conductivity:</th>
-                    </tr>
-                  </thead> */}
-                    <tbody>
-                      <tr>
-                        <td
-                          style={{
-                            borderBottom: "1px solid #d3d3d3",
-                            padding: "10px",
-                            textAlign: "center",
-                            borderBottomWidth: "1px",
-                            width: "25%",
-                          }}
-                        >
-                          -
-                        </td>
-                        <td
-                          style={{
-                            borderBottom: "1px solid #d3d3d3",
-                            padding: "10px",
-                            textAlign: "center",
-                            borderBottomWidth: "1px",
-                            width: "25%",
-                          }}
-                        >
-                          -
-                        </td>
-                        <td
-                          style={{
-                            borderBottom: "1px solid #d3d3d3",
-                            padding: "10px",
-                            textAlign: "center",
-                            borderBottomWidth: "1px",
-                            width: "25%",
-                          }}
-                        >
-                          -
-                        </td>
-                        <td
-                          style={{
-                            borderBottom: "1px solid #d3d3d3",
-                            padding: "10px",
-                            textAlign: "center",
-                            borderBottomWidth: "1px",
-                            width: "25%",
-                          }}
-                        >
-                          -
-                        </td>
-                      </tr>
-                      <tr>
-                        <td
-                          style={{
-                            borderBottom: "1px solid #d3d3d3",
-                            padding: "10px",
-                            textAlign: "center",
-                            borderBottomWidth: "1px",
-                            width: "25%",
-                          }}
-                        >
-                          -
-                        </td>
-                        <td
-                          style={{
-                            borderBottom: "1px solid #d3d3d3",
-                            padding: "10px",
-                            textAlign: "center",
-                            borderBottomWidth: "1px",
-                            width: "25%",
-                          }}
-                        >
-                          -
-                        </td>
-                        <td
-                          style={{
-                            borderBottom: "1px solid #d3d3d3",
-                            padding: "10px",
-                            textAlign: "center",
-                            borderBottomWidth: "1px",
-                            width: "25%",
-                          }}
-                        >
-                          -
-                        </td>
-                        <td
-                          style={{
-                            borderBottom: "1px solid #d3d3d3",
-                            padding: "10px",
-                            textAlign: "center",
-                            borderBottomWidth: "1px",
-                            width: "25%",
-                          }}
-                        >
-                          -
-                        </td>
-                      </tr>
-                      <tr>
-                        <td
-                          style={{
-                            borderBottom: "1px solid #d3d3d3",
-                            padding: "10px",
-                            textAlign: "center",
-                            borderBottomWidth: "1px",
-                            width: "25%",
-                          }}
-                        >
-                          -
-                        </td>
-                        <td
-                          style={{
-                            borderBottom: "1px solid #d3d3d3",
-                            padding: "10px",
-                            textAlign: "center",
-                            borderBottomWidth: "1px",
-                            width: "25%",
-                          }}
-                        >
-                          -
-                        </td>
-                        <td
-                          style={{
-                            borderBottom: "1px solid #d3d3d3",
-                            padding: "10px",
-                            textAlign: "center",
-                            borderBottomWidth: "1px",
-                            width: "25%",
-                          }}
-                        >
-                          -
-                        </td>
-                        <td
-                          style={{
-                            borderBottom: "1px solid #d3d3d3",
-                            padding: "10px",
-                            textAlign: "center",
-                            borderBottomWidth: "1px",
-                            width: "25%",
-                          }}
-                        >
-                          -
-                        </td>
-                      </tr>
-                      <tr>
-                        <td
-                          style={{
-                            borderBottom: "1px solid #d3d3d3",
-                            padding: "10px",
-                            textAlign: "center",
-                            borderBottomWidth: "1px",
-                            width: "25%",
-                          }}
-                        >
-                          -
-                        </td>
-                        <td
-                          style={{
-                            borderBottom: "1px solid #d3d3d3",
-                            padding: "10px",
-                            textAlign: "center",
-                            borderBottomWidth: "1px",
-                            width: "25%",
-                          }}
-                        >
-                          -
-                        </td>
-                        <td
-                          style={{
-                            borderBottom: "1px solid #d3d3d3",
-                            padding: "10px",
-                            textAlign: "center",
-                            borderBottomWidth: "1px",
-                            width: "25%",
-                          }}
-                        >
-                          -
-                        </td>
-                        <td
-                          style={{
-                            borderBottom: "1px solid #d3d3d3",
-                            padding: "10px",
-                            textAlign: "center",
-                            borderBottomWidth: "1px",
-                            width: "25%",
-                          }}
-                        >
-                          -
-                        </td>
-                      </tr>
-                      <tr>
-                        <td
-                          style={{
-                            borderBottom: "1px solid #d3d3d3",
-                            padding: "10px",
-                            textAlign: "center",
-                            borderBottomWidth: "1px",
-                            width: "25%",
-                          }}
-                        >
-                          -
-                        </td>
-                        <td
-                          style={{
-                            borderBottom: "1px solid #d3d3d3",
-                            padding: "10px",
-                            textAlign: "center",
-                            borderBottomWidth: "1px",
-                            width: "25%",
-                          }}
-                        >
-                          -
-                        </td>
-                        <td
-                          style={{
-                            borderBottom: "1px solid #d3d3d3",
-                            padding: "10px",
-                            textAlign: "center",
-                            borderBottomWidth: "1px",
-                            width: "25%",
-                          }}
-                        >
-                          -
-                        </td>
-                        <td
-                          style={{
-                            borderBottom: "1px solid #d3d3d3",
-                            padding: "10px",
-                            textAlign: "center",
-                            borderBottomWidth: "1px",
-                            width: "25%",
-                          }}
-                        >
-                          -
-                        </td>
-                      </tr>
-                      <tr>
-                        <td
-                          style={{
-                            borderBottom: "1px solid #d3d3d3",
-                            padding: "10px",
-                            textAlign: "center",
-                            borderBottomWidth: "1px",
-                            width: "25%",
-                          }}
-                        >
-                          -
-                        </td>
-                        <td
-                          style={{
-                            borderBottom: "1px solid #d3d3d3",
-                            padding: "10px",
-                            textAlign: "center",
-                            borderBottomWidth: "1px",
-                            width: "25%",
-                          }}
-                        >
-                          -
-                        </td>
-                        <td
-                          style={{
-                            borderBottom: "1px solid #d3d3d3",
-                            padding: "10px",
-                            textAlign: "center",
-                            borderBottomWidth: "1px",
-                            width: "25%",
-                          }}
-                        >
-                          -
-                        </td>
-                        <td
-                          style={{
-                            borderBottom: "1px solid #d3d3d3",
-                            padding: "10px",
-                            textAlign: "center",
-                            borderBottomWidth: "1px",
-                            width: "25%",
-                          }}
-                        >
-                          -
-                        </td>
-                      </tr>
-                      <tr>
-                        <td
-                          style={{
-                            borderBottom: "1px solid #d3d3d3",
-                            padding: "10px",
-                            textAlign: "center",
-                            borderBottomWidth: "1px",
-                            width: "25%",
-                          }}
-                        >
-                          -
-                        </td>
-                        <td
-                          style={{
-                            borderBottom: "1px solid #d3d3d3",
-                            padding: "10px",
-                            textAlign: "center",
-                            borderBottomWidth: "1px",
-                            width: "25%",
-                          }}
-                        >
-                          -
-                        </td>
-                        <td
-                          style={{
-                            borderBottom: "1px solid #d3d3d3",
-                            padding: "10px",
-                            textAlign: "center",
-                            borderBottomWidth: "1px",
-                            width: "25%",
-                          }}
-                        >
-                          -
-                        </td>
-                        <td
-                          style={{
-                            borderBottom: "1px solid #d3d3d3",
-                            padding: "10px",
-                            textAlign: "center",
-                            borderBottomWidth: "1px",
-                            width: "25%",
-                          }}
-                        >
-                          -
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  {/*end of table*/}
-                </div>
-              </Box>
-            </div>
-          </Box>
-        </div>
-        {/* Misc END */}
-        <div>
-          {/* Soil Conditions START */}
-          <Box //main outside box
-            style={{
-              border: "1px solid #797979",
-              padding: "10px",
-              position: "relative",
-              marginTop: "2rem",
-              width: "500px",
-              height: "250px",
-              // marginLeft: "200px",
-              borderRadius: "10px",
-            }}
-          >
-            <Box
-              onMouseEnter={() => setShowChart(true)}
-              onMouseLeave={() => setShowChart(false)}
-              style={{
-                position: "absolute",
-                top: "-15px",
-                left: "50%",
-                transform: "translateX(-50%)",
-                backgroundColor: "#181818",
-                padding: "0 5px",
-                zIndex: 1,
-                fontSize: "20px",
-              }}
-            >
-              Soil Conditions
-            </Box>
-            <div>
-              {/* "Select soil sensor....START" */}
-              <Box
-                sx={{
-                  border: "1px solid #00e1b4",
-                  borderRadius: "4px",
-                  padding: "10px",
-                  display: "flex",
-                  justifyContent: "space-between", // set the horizontal spacing between child elements
-                  alignItems: "center",
-                  width: "460px",
-                  marginTop: "1rem",
-                  height: "30px",
-                  backgroundColor: "transparent",
-                  borderRadius: "5px",
-                  fontSize: "17px",
-                  marginLeft: "10px",
-                }}
-                onClick={handleOpen2}
-              >
-                {selectedSensor2 ? selectedSensor2 : "Select a sensor..."}
-                <ListItemIcon>
-                  <ExpandMore />
-                </ListItemIcon>
-              </Box>
-              <Menu
-                anchorEl={anchorEl2}
-                open={Boolean(anchorEl2)}
-                onClose={handleClose2}
-              >
-                <MenuItem
-                  onClick={(event) =>
-                    handleSelect2(event, "Campbell Scientific Soil VUE-10")
-                  }
-                  sx={{
-                    color: "#000000",
-                    backgroundColor: "#BEBEBE !important",
-                    "&:hover": { backgroundColor: "#EBECF0 !important" },
-                  }}
-                >
-                  Campbell Scientific Soil VUE-10
-                </MenuItem>
-                <MenuItem
-                  onClick={(event) => handleSelect2(event, "Meter TEROS 12")}
-                  sx={{
-                    color: "#000000",
-                    backgroundColor: "#BEBEBE",
-                    "&:hover": { backgroundColor: "#EBECF0" },
-                  }}
-                >
-                  Meter TEROS 12
-                </MenuItem>
-                <MenuItem
-                  onClick={(event) => handleSelect2(event, "Meter TEROS 21")}
-                  sx={{
-                    color: "#000000",
-                    backgroundColor: "#BEBEBE",
-                    "&:hover": { backgroundColor: "#EBECF0" },
-                  }}
-                >
-                  Meter TEROS 21
-                </MenuItem>
-                <MenuItem
-                  onClick={(event) => handleSelect2(event, "Acclima TDR 310h")}
-                  sx={{
-                    color: "#000000",
-                    backgroundColor: "#BEBEBE",
-                    "&:hover": { backgroundColor: "#EBECF0" },
-                  }}
-                >
-                  Acclima TDR 310h
-                </MenuItem>
-              </Menu>
-              {/* "Select soil sensor....END" */}
-              {/* Table START */}
-              <Box
-                sx={{
-                  marginTop: "1rem",
-                  width: "100%",
-                  height: "200px",
-                  overflow: "auto",
-                }}
-              >
-                <div style={{ height: "170px", overflow: "auto" }}>
-                  <table style={{ width: "100%", tableLayout: "fixed" }}>
-                    <thead>
-                      <tr>
-                        <th
-                          style={{
-                            color: "#e8e8e8",
-                            width: "25%",
-                            fontSize: "15px",
-                            padding: "10px",
-                          }}
-                        >
-                          Soil Depth:
-                        </th>
-                        <th
-                          style={{
-                            color: "#e8e8e8",
-                            width: "25%",
-                            fontSize: "15px",
-                            padding: "10px",
-                          }}
-                        >
-                          Soil Moisture:
-                        </th>
-                        <th
-                          style={{
-                            color: "#e8e8e8",
-                            width: "25%",
-                            fontSize: "15px",
-                            padding: "10px",
-                          }}
-                        >
-                          Soil Temperature:
-                        </th>
-                        <th
-                          style={{
-                            color: "#e8e8e8",
-                            width: "25%",
-                            fontSize: "14px",
-                            padding: "10px",
-                          }}
-                        >
-                          Electrical Conductivity:
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td
-                          style={{
-                            borderBottom: "1px solid #d3d3d3",
-                            padding: "10px",
-                            textAlign: "center",
-                            borderBottomWidth: "1px",
-                            width: "25%",
-                            color: "#00e1b4",
-                          }}
-                        >
-                          6"
-                        </td>
-                        <td
-                          style={{
-                            borderBottom: "1px solid #d3d3d3",
-                            padding: "10px",
-                            textAlign: "center",
-                            borderBottomWidth: "1px",
-                            width: "25%",
-                            color: "#00e1b4",
-                          }}
-                        >
-                          44.94%
-                        </td>
-                        <td
-                          style={{
-                            borderBottom: "1px solid #d3d3d3",
-                            padding: "10px",
-                            textAlign: "center",
-                            borderBottomWidth: "1px",
-                            width: "25%",
-                            color: "#00e1b4",
-                          }}
-                        >
-                          09.53
-                        </td>
-                        <td
-                          style={{
-                            borderBottom: "1px solid #d3d3d3",
-                            padding: "10px",
-                            textAlign: "center",
-                            borderBottomWidth: "1px",
-                            width: "25%",
-                            color: "#00e1b4",
-                          }}
-                        >
-                          0.73EC
-                        </td>
-                      </tr>
-                      <tr>
-                        <td
-                          style={{
-                            borderBottom: "1px solid #d3d3d3",
-                            padding: "10px",
-                            textAlign: "center",
-                            borderBottomWidth: "1px",
-                            width: "25%",
-                          }}
-                        >
-                          -
-                        </td>
-                        <td
-                          style={{
-                            borderBottom: "1px solid #d3d3d3",
-                            padding: "10px",
-                            textAlign: "center",
-                            borderBottomWidth: "1px",
-                            width: "25%",
-                          }}
-                        >
-                          -
-                        </td>
-                        <td
-                          style={{
-                            borderBottom: "1px solid #d3d3d3",
-                            padding: "10px",
-                            textAlign: "center",
-                            borderBottomWidth: "1px",
-                            width: "25%",
-                          }}
-                        >
-                          -
-                        </td>
-                        <td
-                          style={{
-                            borderBottom: "1px solid #d3d3d3",
-                            padding: "10px",
-                            textAlign: "center",
-                            borderBottomWidth: "1px",
-                            width: "25%",
-                          }}
-                        >
-                          -
-                        </td>
-                      </tr>
-                      <tr>
-                        <td
-                          style={{
-                            borderBottom: "1px solid #d3d3d3",
-                            padding: "10px",
-                            textAlign: "center",
-                            borderBottomWidth: "1px",
-                            width: "25%",
-                          }}
-                        >
-                          -
-                        </td>
-                        <td
-                          style={{
-                            borderBottom: "1px solid #d3d3d3",
-                            padding: "10px",
-                            textAlign: "center",
-                            borderBottomWidth: "1px",
-                            width: "25%",
-                          }}
-                        >
-                          -
-                        </td>
-                        <td
-                          style={{
-                            borderBottom: "1px solid #d3d3d3",
-                            padding: "10px",
-                            textAlign: "center",
-                            borderBottomWidth: "1px",
-                            width: "25%",
-                          }}
-                        >
-                          -
-                        </td>
-                        <td
-                          style={{
-                            borderBottom: "1px solid #d3d3d3",
-                            padding: "10px",
-                            textAlign: "center",
-                            borderBottomWidth: "1px",
-                            width: "25%",
-                          }}
-                        >
-                          -
-                        </td>
-                      </tr>
-                      <tr>
-                        <td
-                          style={{
-                            borderBottom: "1px solid #d3d3d3",
-                            padding: "10px",
-                            textAlign: "center",
-                            borderBottomWidth: "1px",
-                            width: "25%",
-                          }}
-                        >
-                          -
-                        </td>
-                        <td
-                          style={{
-                            borderBottom: "1px solid #d3d3d3",
-                            padding: "10px",
-                            textAlign: "center",
-                            borderBottomWidth: "1px",
-                            width: "25%",
-                          }}
-                        >
-                          -
-                        </td>
-                        <td
-                          style={{
-                            borderBottom: "1px solid #d3d3d3",
-                            padding: "10px",
-                            textAlign: "center",
-                            borderBottomWidth: "1px",
-                            width: "25%",
-                          }}
-                        >
-                          -
-                        </td>
-                        <td
-                          style={{
-                            borderBottom: "1px solid #d3d3d3",
-                            padding: "10px",
-                            textAlign: "center",
-                            borderBottomWidth: "1px",
-                            width: "25%",
-                          }}
-                        >
-                          -
-                        </td>
-                      </tr>
-                      <tr>
-                        <td
-                          style={{
-                            borderBottom: "1px solid #d3d3d3",
-                            padding: "10px",
-                            textAlign: "center",
-                            borderBottomWidth: "1px",
-                            width: "25%",
-                          }}
-                        >
-                          -
-                        </td>
-                        <td
-                          style={{
-                            borderBottom: "1px solid #d3d3d3",
-                            padding: "10px",
-                            textAlign: "center",
-                            borderBottomWidth: "1px",
-                            width: "25%",
-                          }}
-                        >
-                          -
-                        </td>
-                        <td
-                          style={{
-                            borderBottom: "1px solid #d3d3d3",
-                            padding: "10px",
-                            textAlign: "center",
-                            borderBottomWidth: "1px",
-                            width: "25%",
-                          }}
-                        >
-                          -
-                        </td>
-                        <td
-                          style={{
-                            borderBottom: "1px solid #d3d3d3",
-                            padding: "10px",
-                            textAlign: "center",
-                            borderBottomWidth: "1px",
-                            width: "25%",
-                          }}
-                        >
-                          -
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  {/*end of table*/}
-                </div>
-              </Box>
-            </div>
-          </Box>
-        </div>
-      </div>{" "}
-      {/* END of BOX 1 ENTIRELY" */}
-      {/*style for entire surrounding box 2, COLUMN 2*/}
-      <div
-        style={{
-          backgroundColor: "transparent",
-          height: "100%",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        {/*this is code for box surrounding User and Logout boxes*/}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            padding: "10px",
-            marginBottom: "10px",
-          }}
-        >
-          {/*this is code for box surrounding User*/}
-          <div
-            style={{
-              marginRight: "10px", //space between user and logout button
-              border: "1px solid #797979",
-              borderRadius: "5px",
-              width: "200px",
-              height: "28px",
-              textAlign: "center",
-              lineHeight: "23px", // vertically center the text
-            }}
-          >
-            User 0000 (------)
-          </div>
-          {/*this is code for box surrounding Button*/}
-          <button
-            style={{
-              border: "1px solid orange",
-              backgroundColor: "transparent",
-              color: "#ffffff",
-              padding: "5px 10px",
-              borderRadius: "5px",
-              cursor: "pointer",
-            }}
-          >
-            Log Out
-          </button>
-        </div>
-        {/* Last reading taken box below*/}
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            marginBottom: "1px",
-          }}
-        >
-          <div>Last reading taken:</div>
-          <div style={{ color: "#00e1b4" }}>{getCurrentDateTimeInCST()}</div>
-        </div>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            marginBottom: "10px",
-          }}
-        >
-          <div>GPS:</div>
-          <div style={{ color: "#00e1b4" }}>
-            <div>38&#176;39'34.7"N 90&#176;19'58.9"W</div>
-          </div>
-        </div>
-        {/* System Status Box starts here */}
-        <div>
-          <Box //box and border style for "system status box"
-            style={{
-              border: "1px solid #797979",
-              padding: "10px",
-              position: "relative",
-              width: "400px",
-              height: "100px",
-              borderRadius: "10px",
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              flexDirection: "column",
-              marginBottom: "2rem",
-              marginTop: "2rem",
-            }}
-          >
-            <Box //box that contains the words "System Status" so that it shows up infront of the border
-              style={{
-                position: "absolute",
-                top: "-15px",
-                left: "50%",
-                transform: "translateX(-50%)",
-                backgroundColor: "#181818",
-                padding: "0 5px",
-                zIndex: 1,
-                fontSize: "20px",
-              }}
-            >
-              System Status
-            </Box>
-            <div
-              style={{
-                //This creates a box around "drone battery" and "done status"
-                display: "flex",
-                justifyContent: "space-between",
-                width: "100%",
-                marginTop: "1rem",
-              }}
-            >
-              <div>
-                Drone Battery:{" "}
-                <span style={{ color: "#00e1b4", marginLeft: "15px" }}>
-                  34.21%
-                </span>
-              </div>
-              <div>
-                Drone Status:{" "}
-                <span style={{ color: "#00e1b4", marginLeft: "10px" }}>
-                  Charging
-                </span>
-              </div>
-            </div>
-            <div
-              style={{
-                //This creates a box around "garage Battery" and "Cellular"
-                display: "flex",
-                justifyContent: "space-between",
-                width: "100%",
-                marginBottom: "1rem",
-              }}
-            >
-              <div>
-                Garage Battery:{" "}
-                <span style={{ color: "#00e1b4", marginLeft: "10px" }}>
-                  79.38%
-                </span>
-              </div>
-              <div>
-                Cellular:{" "}
-                <span style={{ color: "#00e1b4", marginLeft: "10px" }}>5G</span>
-              </div>
-            </div>
-          </Box>
-        </div>
-        <div>
-          {/*drone image here*/}
-          <Box
-            style={{
-              backgroundColor: "transparent",
-              height: "100px",
-              display: "flex",
-              alignItems: "start",
-              justifyContent: "center",
-              flexDirection: "column",
-              marginTop: "3.8rem",
-            }}
-          >
-            {/* box that CONTAINS drone image */}
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                width: "200px",
-                height: "100px",
-                backgroundColor: "transparent",
-                borderRadius: "10px",
-              }}
-            >
-              <object
-                data="../../assets/Drone-Diagram.svg"
-                type="image/svg+xml"
-                style={{ maxWidth: "100%", maxHeight: "100%" }}
-                width="400px"
-                height="500px"
-              />
-            </div>
-          </Box>
-        </div>
-        <div>
-          {" "}
-          {/*fieldock image here*/}
-          <Box
-            style={{
-              backgroundColor: "transparent",
-              height: "425px",
-              display: "flex",
-              alignItems: "start",
-              justifyContent: "center",
-              flexDirection: "column",
-            }}
-          >
-            {/* box that CONTAINS fielddock picture */}
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                width: "100%", // changed to 100%
-                height: "100%", // changed to 100%
-                backgroundColor: "transparent",
-              }}
-            >
-              <object
-                data="../../assets/FieldDock_Diagram.svg"
-                type="image/svg+xml"
-                style={{ maxWidth: "100%", maxHeight: "100%" }}
-              />
-            </div>
-          </Box>
-        </div>
-        {/* add other content for column 2 here */}
-      </div>{" "}
-      {/* THIS IS THE END OF COLUMN 2 HERE!!! */}
-      {/*style for entire surrounding box 3*/}
-      <div
-        style={{
-          backgroundColor: "transparent",
-          height: "100%",
-          display: "flex",
-          flexDirection: "column", // this makes it so all the boxes in column 1 are stacked like a column on top of each other
-          alignItems: "center",
-          justifyContent: "center",
-          marginTop: "1.8rem",
-        }}
-      >
-        <div style={{ width: "400px", marginTop: "1.6rem", cursor: "pointer" }}>
-          {" "}
-          {/*this is the div that surrounds the entirety of the 10 boxes "PARENT DIV OF 10 BOXES"*/}
-          <div style={{ display: "flex", marginBottom: "10px" }}>
-            {" "}
-            {/*this is the div that surrounds the entirety of the first FIVE boxes*/}
-            <div
-              style={{
-                width: "70px",
-                height: "55px",
-                marginRight: "12px",
-                border: "1px solid #CCC",
-                borderRadius: "5px",
-              }}
-            >
-              <img
-                src="../../assets/real-time-no-line_1.svg"
-                style={{ width: "70%", height: "100%", marginLeft: "8px" }}
-                onMouseOver={(e) =>
-                  (e.currentTarget.src = "../../assets/real-time---active.svg")
-                }
-                onMouseOut={(e) =>
-                  (e.currentTarget.src = "../../assets/real-time-no-line_1.svg")
-                }
-              />
-            </div>
-            <div
-              style={{
-                width: "70px",
-                height: "55px",
-                marginRight: "12px",
-                border: "1px solid #CCC",
-                borderRadius: "5px",
-              }}
-            >
-              <Link to="/images">
-                <img
-                  src="../../assets/imaging-no-line.svg"
-                  style={{ width: "80%", height: "100%", marginLeft: "8px" }}
-                  onMouseOver={(e) =>
-                    (e.currentTarget.src = "../../assets/imaging---active.svg")
-                  }
-                  onMouseOut={(e) =>
-                    (e.currentTarget.src = "../../assets/imaging-no-line.svg")
-                  }
-                />
-              </Link>
-            </div>
-            <div
-              style={{
-                width: "70px",
-                height: "55px",
-                marginRight: "12px",
-                border: "1px solid #CCC",
-                borderRadius: "5px",
-              }}
-            >
-              <Link to="/drone">
-                <img
-                  src="../../assets/Drone-Icon.svg"
-                  style={{ width: "100%", height: "100%" }}
-                  onMouseOver={(e) =>
-                    (e.currentTarget.src = "../../assets/Drone-Icon-Active.svg")
-                  }
-                  onMouseOut={(e) =>
-                    (e.currentTarget.src = "../../assets/Drone-Icon.svg")
-                  }
-                />
-              </Link>
-            </div>
-            <div
-              style={{
-                width: "70px",
-                height: "55px",
-                marginRight: "12px",
-                border: "1px solid #CCC",
-                borderRadius: "5px",
-              }}
-            >
-              <Link to="/Plug_Play">
-                <img
-                  src="../../assets/wireless-no-line.svg"
-                  style={{
-                    width: "80%",
-                    height: "80%",
-                    marginLeft: "8px",
-                    marginTop: "5px",
-                  }}
-                  onMouseOver={(e) =>
-                    (e.currentTarget.src =
-                      "../../assets/wireless-no-line---active.svg")
-                  }
-                  onMouseOut={(e) =>
-                    (e.currentTarget.src = "../../assets/wireless-no-line.svg")
-                  }
-                />
-              </Link>
-            </div>
-            <Link to="/settings">
-              <div
-                style={{
-                  width: "70px",
-                  height: "55px",
-                  marginRight: "12px",
-                  border: "1px solid #CCC",
-                  borderRadius: "5px",
-                }}
-              >
-                <img
-                  src="../../assets/settings-no-line.svg"
-                  style={{ width: "70%", height: "100%", marginLeft: "11px" }}
-                  onMouseOver={(e) =>
-                    (e.currentTarget.src = "../../assets/settings---active.svg")
-                  }
-                  onMouseOut={(e) =>
-                    (e.currentTarget.src = "../../assets/settings-no-line.svg")
-                  }
-                />
-              </div>
-            </Link>
-          </div>
-          <div
-            style={{ display: "flex", marginTop: "20px", marginBottom: "10px" }}
-          >
-            {" "}
-            {/*this is the div that surrounds the entirety of the LAST FIVE boxes*/}
-            <div
-              style={{
-                width: "70px",
-                height: "55px",
-                marginRight: "12px",
-                border: "1px solid #CCC",
-                borderRadius: "5px",
-              }}
-            >
-              <img
-                src="../../assets/real-time-settings-inactive.svg"
-                style={{ width: "80%", height: "100%", marginLeft: "8px" }}
-                onMouseOver={(e) =>
-                  (e.currentTarget.src =
-                    "../../assets/real-time-settings---active.svg")
-                }
-                onMouseOut={(e) =>
-                  (e.currentTarget.src =
-                    "../../assets/real-time-settings-inactive.svg")
-                }
-              />
-            </div>
-            <div
-              style={{
-                width: "70px",
-                height: "55px",
-                marginRight: "12px",
-                border: "1px solid #CCC",
-                borderRadius: "5px",
-              }}
-            >
-              <img
-                src="../../assets/imaging-settings-B-inactive.svg"
-                style={{ width: "80%", height: "100%", marginLeft: "8px" }}
-                onMouseOver={(e) =>
-                  (e.currentTarget.src =
-                    "../../assets/imaging-settings---active.svg")
-                }
-                onMouseOut={(e) =>
-                  (e.currentTarget.src =
-                    "../../assets/imaging-settings-B-inactive.svg")
-                }
-              />
-            </div>
-            <div
-              style={{
-                width: "70px",
-                height: "55px",
-                marginRight: "12px",
-                border: "1px solid #CCC",
-                borderRadius: "5px",
-              }}
-            >
-              <img
-                src="../../assets/Diagnostics-icon---no-line.svg"
-                style={{ width: "80%", height: "100%", marginLeft: "8px" }}
-                onMouseOver={(e) =>
-                  (e.currentTarget.src =
-                    "../../assets/Diagnostics---active.svg")
-                }
-                onMouseOut={(e) =>
-                  (e.currentTarget.src =
-                    "../../assets/Diagnostics-icon---no-line.svg")
-                }
-              />
-            </div>
-            <div
-              style={{
-                width: "70px",
-                height: "55px",
-                marginRight: "12px",
-                border: "1px solid #CCC",
-                borderRadius: "5px",
-              }}
-            >
-              <img
-                src="../../assets/Users-no-line---active.svg"
-                style={{ width: "80%", height: "100%", marginLeft: "8px" }}
-                onMouseOver={(e) =>
-                  (e.currentTarget.src = "../../assets/Users----active.svg")
-                }
-                onMouseOut={(e) =>
-                  (e.currentTarget.src =
-                    "../../assets/Users-no-line---active.svg")
-                }
-              />
-            </div>
-            <div
-              style={{
-                width: "70px",
-                height: "55px",
-                marginRight: "12px",
-                border: "1px solid #CCC",
-                borderRadius: "5px",
-              }}
-            >
-              <img
-                src="../../assets/Download-Icon.svg"
-                style={{ width: "80%", height: "100%", marginLeft: "8px" }}
-                onMouseOver={(e) =>
-                  (e.currentTarget.src =
-                    "../../assets/Download-Icon---active.svg")
-                }
-                onMouseOut={(e) =>
-                  (e.currentTarget.src = "../../assets/Download-Icon.svg")
-                }
-              />
-            </div>
-          </div>
-        </div>
-        <div>
-          {/* Rainfall....START */}
-          <Box //main outside box
-            style={{
-              border: "1px solid #797979",
-              padding: "10px",
-              position: "relative",
-              marginTop: "1rem",
-              width: "400px",
-              height: "100px",
-              // marginLeft: "200px",
-              borderRadius: "10px",
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-            }}
-          >
-            <Box
-              style={{
-                position: "absolute",
-                top: "-15px",
-                left: "50%",
-                transform: "translateX(-50%)",
-                backgroundColor: "#181818",
-                padding: "0 5px",
-                zIndex: 1,
-                fontSize: "20px",
-              }}
-            >
-              Rainfall
-            </Box>
-            <Box //start date box
-              style={{
-                border: "1px solid #CCC",
-                width: "25%",
-                height: "50px",
-                display: "inline-block",
-                borderRadius: "5px",
-                fontSize: "20px",
-                marginRight: "10px",
-              }}
-            >
-              <input
-                type="text"
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  border: "none",
-                  background: "none",
-                  color: "#999",
-                  fontSize: "15px",
-                  textAlign: "center",
-                  outline: "none",
-                }}
-                placeholder="Start Date"
-                value={startDate}
-                onChange={handleStartDateChange}
-              />
-            </Box>
-            <Box //end date box
-              style={{
-                border: "1px solid #CCC",
-                width: "25%",
-                height: "50px",
-                display: "inline-block",
-                borderRadius: "5px",
-                marginRight: "10px",
-              }}
-            >
-              <input
-                type="text"
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  border: "none",
-                  background: "none",
-                  color: "#999",
-                  fontSize: "20px",
-                  textAlign: "center",
-                  outline: "none",
-                  fontSize: "15px",
-                }}
-                placeholder="End Date"
-                value={endDate}
-                onChange={handleEndDateChange}
-              />
-            </Box>
-            <Box //box for Enter button
-              style={{
-                border: "1px solid #f59331",
-                width: "25%",
-                height: "50px",
-                display: "inline-block",
-                borderRadius: "5px",
-              }}
-            >
-              <button
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  border: "none",
-                  background: "none",
-                  color: "#ffffff",
-                  borderRadius: "10px",
-                  fontSize: "20px",
-                  cursor: "pointer",
-                }}
-              >
-                Enter
-              </button>
-            </Box>
-            <Box //box for GDD and 000 measurement
-              style={{
-                width: "25%",
-                height: "40px",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "center",
-                borderRadius: "5px",
-              }}
-            >
-              <Box
-                style={{
-                  color: "#FFF",
-                  fontSize: "15px",
-                }}
-              >
-                Rainfall:
               </Box>
               <Box
                 style={{
@@ -2050,43 +1985,10 @@ const Dashboard = () => {
             </Box>
           </Box>
         </div>
-        {/* Environmental Conditions....End */}
-        <div>
-          {/* NEW BOX....START */}
-          <Box //main outside box
-            style={{
-              border: "transparent",
-              padding: "10px",
-              position: "relative",
-              marginTop: "2rem",
-              width: "400px",
-              height: "100px",
-              borderRadius: "10px",
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-            }}
-          >
-            <Box
-              style={{
-                position: "absolute",
-                top: "-15px",
-                left: "50%",
-                transform: "translateX(-46%)",
-                backgroundColor: "#181818",
-                padding: "0 5px",
-                zIndex: 1,
-                fontSize: "17px",
-              }}
-            >
-              {/*text here*/}
-            </Box>
-          </Box>
-        </div>
-        {/*NEWBOX....End */}
       </div>
-    </div> //THIS IS THE PARENT DIV OF ALL THE ELEMENTS!!!
+      {/* Environmental Conditions....End */}
+    </div> //the last div of the entire workpage
   );
 };
 
-export default Dashboard;
+export default Plug_Play;

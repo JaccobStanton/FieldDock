@@ -65,7 +65,7 @@ export const tokens = (mode) => ({
         grey: {
           100: "#141414",
           200: "#292929",
-          300: "#3d3d3d",
+          300: "#000000",
           400: "#525252",
           500: "#666666",
           600: "#858585",
@@ -77,7 +77,7 @@ export const tokens = (mode) => ({
           100: "#040509",
           200: "#080b12",
           300: "#0c101b",
-          400: "#f2f0f0", // manually changed
+          400: "#1f2A40", // manually changed
           500: "#141b2d",
           600: "#1F2A40",
           700: "#727681",
@@ -140,8 +140,8 @@ export const themeSettings = (mode) => {
               main: colors.grey[500],
               light: colors.grey[100],
             },
-            background: {
-              default: colors.primary[500],
+            background: {  //SETS THE MAIN BACKGROUND COLOR FOR THE PAGE 
+              default: ['#181818'],
             },
           }
         : {
