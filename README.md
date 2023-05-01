@@ -1,4 +1,5 @@
-# React Admin Dashboard
+# FieldDock Dashboard
 
-Completed React Admin Dashboard Repo
+Main Dashboard for FieldDock Project, built with ReactJS, Material UI ect...
+This version does not contain the sidebar
 
