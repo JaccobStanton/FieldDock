@@ -3,7 +3,7 @@ import Dashboard from "./scenes/dashboard";
 import Plug_Play from "./scenes/Plug_Play";
 import Drone from "./scenes/drone.jsx";
 import Images from "./scenes/images.jsx";
-import Settings from "./scenes/settings.jsx";
+import RealTime_Settings from "./scenes/RealTime_Settings.jsx";
 import { CssBaseline, ThemeProvider } from "@mui/material"; //cssbaseline resets the css to default and theme provider provides the ability to pass into the themes into material ui
 import { ColorModeContext, useMode } from "./theme"; //importing everything just coded from theme .js
 
@@ -24,7 +24,10 @@ function App() {
               <Route path="/Plug_Play" element={<Plug_Play />} />
               <Route path="/drone" element={<Drone />} />
               <Route path="/images" element={<Images />} />
-              <Route path="/settings" element={<Settings />} />
+              <Route
+                path="/RealTime_Settings"
+                element={<RealTime_Settings />}
+              />
             </Routes>
           </main>
         </div>

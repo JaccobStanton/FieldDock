@@ -1534,18 +1534,20 @@ const Plug_Play = () => {
                 borderRadius: "5px",
               }}
             >
-              <img
-                src="../../assets/real-time-settings-inactive.svg"
-                style={{ width: "100%", height: "90%" }} //sizing of the actual image inside the box
-                onMouseOver={(e) =>
-                  (e.currentTarget.src =
-                    "../../assets/real-time-settings---active.svg")
-                }
-                onMouseOut={(e) =>
-                  (e.currentTarget.src =
-                    "../../assets/real-time-settings-inactive.svg")
-                }
-              />
+              <Link to="/RealTime_Settings">
+                <img
+                  src="../../assets/real-time-settings-inactive.svg"
+                  style={{ width: "100%", height: "90%" }} //sizing of the actual image inside the box
+                  onMouseOver={(e) =>
+                    (e.currentTarget.src =
+                      "../../assets/real-time-settings---active.svg")
+                  }
+                  onMouseOut={(e) =>
+                    (e.currentTarget.src =
+                      "../../assets/real-time-settings-inactive.svg")
+                  }
+                />
+              </Link>
             </div>
             <div
               style={{

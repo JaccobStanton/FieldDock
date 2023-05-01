@@ -1600,18 +1600,20 @@ const Dashboard = () => {
                 borderRadius: "5px",
               }}
             >
-              <img
-                src="../../assets/real-time-settings-inactive.svg"
-                style={{ width: "80%", height: "100%", marginLeft: "8px" }}
-                onMouseOver={(e) =>
-                  (e.currentTarget.src =
-                    "../../assets/real-time-settings---active.svg")
-                }
-                onMouseOut={(e) =>
-                  (e.currentTarget.src =
-                    "../../assets/real-time-settings-inactive.svg")
-                }
-              />
+              <Link to="/RealTime_settings">
+                <img
+                  src="../../assets/real-time-settings-inactive.svg"
+                  style={{ width: "80%", height: "100%", marginLeft: "8px" }}
+                  onMouseOver={(e) =>
+                    (e.currentTarget.src =
+                      "../../assets/real-time-settings---active.svg")
+                  }
+                  onMouseOut={(e) =>
+                    (e.currentTarget.src =
+                      "../../assets/real-time-settings-inactive.svg")
+                  }
+                />
+              </Link>
             </div>
             <div
               style={{

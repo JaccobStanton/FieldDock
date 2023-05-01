@@ -1,15 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Box, ListItemIcon, Typography } from "@mui/material";
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useState, useEffect } from "react";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import { ExpandMore } from "@mui/icons-material";
-// import axios from "axios";
+import axios from "axios";
 
-function Images() {
+function RealTime_Settings() {
+  //
+  //
+  //
   //---------------------------select hanger system logic-----------------------
   const [anchorEl, setAnchorEl] = useState(null);
   const [hangerAnchorEl, setHangerAnchorEl] = useState(null);
@@ -35,9 +36,7 @@ function Images() {
     setSelectedHangerSystem(selected);
     handleHangerClose();
   };
-  //---------------------------select hanger system logic END---------------------------------
-  //
-  //
+  //---------------------------select hanger system logic END----------------------------------
   //
   //
   //---------------------------logic for live date and time START------------------------------
@@ -61,7 +60,78 @@ function Images() {
     return `${dayOfWeek} | ${date} | ${time} CST`;
   }
   //---------------------------logic for live date and time END------------------------------
+  //
+  //
+  //
+  //------------------------logic for time interval button for SENSOR Modules START------------------
+  const [selectedInterval, setSelectedInterval] = useState(
+    "Select time interval..."
+  );
 
+  const handleSelect = (e) => {
+    setSelectedInterval(e.target.value);
+  };
+  //------------------------logic for time interval button for SENSOR Modules END------------------
+  //
+  //
+  //
+  //------------------------logic for time interval button for WIRELESS Sensor START------------------
+  const [selectedInterval1, setSelectedInterval1] = useState(
+    "Select time interval..."
+  );
+
+  const handleSelect1 = (e) => {
+    setSelectedInterval1(e.target.value);
+  };
+  //------------------------logic for time interval button for WIRELESS Sensor END------------------
+  //
+  //
+  //
+  //------------------------logic for time interval button for WIND Sensor START------------------
+  const [selectedInterval2, setSelectedInterval2] = useState(
+    "Select time interval..."
+  );
+
+  const handleSelect2 = (e) => {
+    setSelectedInterval2(e.target.value);
+  };
+  //------------------------logic for time interval button for WIND Sensor END------------------
+  //
+  //
+  //
+  //------------------------logic for time interval button for SOIL Sensor START------------------
+  const [selectedInterval3, setSelectedInterval3] = useState(
+    "Select time interval..."
+  );
+
+  const handleSelect3 = (e) => {
+    setSelectedInterval3(e.target.value);
+  };
+  //------------------------logic for time interval button for SOIL Sensor END------------------
+  //
+  //
+  //
+  //------------------------logic for time interval button for PAR Sensor START------------------
+  const [selectedInterval4, setSelectedInterval4] = useState(
+    "Select time interval..."
+  );
+
+  const handleSelect4 = (e) => {
+    setSelectedInterval4(e.target.value);
+  };
+  //------------------------logic for time interval button for PAR Sensor END------------------
+  //
+  //
+  //
+  //------------------------logic for time interval button for SOIL Sensor START------------------
+  const [selectedInterval5, setSelectedInterval5] = useState(
+    "Select time interval..."
+  );
+
+  const handleSelect5 = (e) => {
+    setSelectedInterval5(e.target.value);
+  };
+  //------------------------logic for time interval button for SOIL Sensor END------------------
   return (
     <div //parent div style of ALL ROWS ON THIS PAGE
       style={{
@@ -72,7 +142,7 @@ function Images() {
         maxWidth: "90%",
       }}
     >
-      <div // -----------------------------------Parent div for ROW 1 start here--------------------------------------
+      <div // Parent div for ROW 1 start here
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(3, 1fr", // add this property to create 3 evenly spaced boxes
@@ -243,7 +313,6 @@ function Images() {
         </div>
         {/* end of box 2 in ROW 2 */}
 
-        {/* start of box 3 in ROW 2 */}
         <div
           style={{
             backgroundColor: "transparent",
@@ -366,7 +435,7 @@ function Images() {
                 <div
                   style={{
                     width: "70px",
-                    height: "55px",
+                    height: "80%",
                     marginRight: "12px",
                     border: "1px solid #CCC",
                     borderRadius: "5px",
@@ -405,20 +474,18 @@ function Images() {
                   borderRadius: "5px",
                 }}
               >
-                <Link to="/RealTime_Settings">
-                  <img
-                    src="../../assets/real-time-settings-inactive.svg"
-                    style={{ width: "100%", height: "90%" }} //sizing of the actual image inside the box
-                    onMouseOver={(e) =>
-                      (e.currentTarget.src =
-                        "../../assets/real-time-settings---active.svg")
-                    }
-                    onMouseOut={(e) =>
-                      (e.currentTarget.src =
-                        "../../assets/real-time-settings-inactive.svg")
-                    }
-                  />
-                </Link>
+                <img
+                  src="../../assets/real-time-settings-inactive.svg"
+                  style={{ width: "100%", height: "90%" }} //sizing of the actual image inside the box
+                  onMouseOver={(e) =>
+                    (e.currentTarget.src =
+                      "../../assets/real-time-settings---active.svg")
+                  }
+                  onMouseOut={(e) =>
+                    (e.currentTarget.src =
+                      "../../assets/real-time-settings-inactive.svg")
+                  }
+                />
               </div>
               <div
                 style={{
@@ -510,44 +577,62 @@ function Images() {
             {/* above is the div that surrounds the 10 boxes */}
           </div>
         </div>
-        {/* above is the END of box 3 in ROW 1 */}
       </div>
-      {/*------------------------------------------ parent div END for ENTIRE ROW 1 above --------------------*/}
+      {/* parent div END for ENTIRE ROW 1 above */}
+
+      {/* ////////////////////////////row 2 start/////////////////////////////////////////////// */}
       {/*  */}
       {/*  */}
       {/*  */}
-      {/*  */}
-      {/* /////////////////////////////////////////row 2 start/////////////////////////////////////////////// */}
-      {/*  */}
-      {/*  */}
-      {/*  */}
-      {/*  */}
-      {/*---------------------------------------- parent div START for ENTIRE ROW 2 below --------------------*/}
-      <div // main styling for whole row 2
+      <div //parent style of row 2 start
         style={{
-          display: "flex",
+          position: "relative",
+          backgroundColor: "transparent",
+          height: "200px",
+          display: "grid",
           alignItems: "center",
-          padding: "10px",
-          width: "50%",
-          margin: "0 auto",
+          justifyContent: "flex-start",
+          gridTemplateColumns: "40% 40%", // 2 columns, each taking 40% of the width
+          gridTemplateRows: "33.33% 33.33% 33.33%", // 3 rows, each taking 1/3 of the height
+          gap: "10%",
+          rowGap: "40%",
+          marginBottom: "8rem",
         }}
       >
-        <div //styling for box surrounding two buttons
+        <div //box for sensor measurement heading
+          style={{
+            position: "absolute", // Added position absolute
+            top: "10px", // Adjust the top value to position the box
+            left: "50%",
+            transform: "translateX(-50%)",
+            backgroundColor: "transparent",
+            padding: "5px",
+            borderRadius: "5px",
+            color: "white",
+            fontSize: "22px",
+          }}
+        >
+          Sensor Measurement Settings
+        </div>
+        {/* end of box for sensor measurement settigns above */}
+        <div //STYLING FOR THE FIRST DIV IN ROW 2
           style={{
             border: "1px solid #797979",
             padding: "10px",
             position: "relative",
-            marginTop: "2rem",
-            width: "100%",
-            height: "100px",
-            borderRadius: "5px",
+            width: "120%",
+            height: "150%",
+            borderRadius: "10px",
             display: "flex",
-            flexDirection: "row",
-            justifyContent: "center",
+            justifyContent: "space-between",
             alignItems: "center",
+            flexDirection: "row",
+            // marginBottom: "2rem",
+            marginTop: "10rem",
+            marginLeft: "2rem",
           }}
         >
-          <div //styling for small box surrounding "Toggle Image Type"
+          <div //div 1 styling
             style={{
               position: "absolute",
               top: "-15px",
@@ -556,159 +641,459 @@ function Images() {
               backgroundColor: "#181818",
               padding: "0 5px",
               zIndex: 1,
-              fontSize: "1vw",
+              fontSize: "20px",
             }}
           >
-            Toggle Image Type
+            Sensor Modules
           </div>
-          <button //button for fielddock imager
+          <p
             style={{
-              border: "1px solid white",
-              borderRadius: "5px",
-              color: "gray",
-              backgroundColor: "transparent",
-              padding: "10px 20px",
-              fontSize: "1rem",
-              marginRight: "40px",
-              marginLeft: "20px",
-              cursor: "pointer",
-              flexGrow: 1,
-              textAlign: "center",
-            }}
-            onMouseOver={(e) => {
-              e.target.style.color = "white";
-              e.target.style.borderColor = "orange";
-            }}
-            onMouseOut={(e) => {
-              e.target.style.color = "gray";
-              e.target.style.borderColor = "white";
+              color: " #00e1b4",
+              marginLeft: "1rem",
             }}
           >
-            FieldDock Imager
-          </button>
-          <button //button styling for Mosaicked Drone Images
-            style={{
-              border: "1px solid white",
-              borderRadius: "5px",
-              color: "gray",
-              backgroundColor: "transparent",
-              padding: "10px 20px",
-              fontSize: "1rem",
-              marginLeft: "10px",
-              cursor: "pointer",
-              flexGrow: 1,
-              textAlign: "center",
-            }}
-            onMouseOver={(e) => {
-              e.target.style.color = "white";
-              e.target.style.borderColor = "orange";
-            }}
-            onMouseOut={(e) => {
-              e.target.style.color = "gray";
-              e.target.style.borderColor = "white";
-            }}
-          >
-            Mosaicked Drone Images
-          </button>
+            Select time interval for: temperature, humidity, air pressure, lux,
+            air quality (if integrated)
+          </p>
+          <div>
+            <select
+              value={selectedInterval}
+              onChange={handleSelect}
+              style={{
+                backgroundColor: "transparent",
+                fontSize: "15px",
+                borderRadius: "5px",
+                border: "1px solid #797979",
+                color: "white",
+                padding: "10px", // Optional: add some padding for better appearance
+                marginRight: "2rem",
+              }}
+            >
+              <option value="Select time interval..." disabled>
+                Select time interval...
+              </option>
+              <option value="5 minutes">5 minutes</option>
+              <option value="10 minutes">10 minutes</option>
+              <option value="15 minutes">15 minutes</option>
+              <option value="20 minutes">20 minutes</option>
+              <option value="45 minutes">45 minutes</option>
+              <option value="1 hour">1 hour</option>
+            </select>
+          </div>
         </div>
-      </div>
-      {/*------------------------------------------ parent div END for ENTIRE ROW 2 above --------------------*/}
-      {/*  */}
-      {/*  */}
-      {/*  */}
-      {/*  */}
-      {/* /////////////////////////////////////////row 3 start/////////////////////////////////////////////// */}
-      {/*  */}
-      {/*  */}
-      {/*  */}
-      {/*  */}
-      {/*---------------------------------------- parent div START for ENTIRE ROW 3 below --------------------*/}
-      <div //styling for entire row 3
-        style={{
-          backgroundColor: "transparent",
-          height: "400px",
-          display: "flex",
-          flexDirection: "column", // Change flexDirection to column
-          justifyContent: "flex-start", // Change justifyContent to flex-start
-          alignItems: "center", // Keep alignItems as center
-          borderRadius: "5px",
-          border: "1px solid #797979",
-          paddingTop: "12px",
-        }}
-      >
-        <div //styling for box surrounding two smaller boxes and the button
+        {/* end of style for DIV 1 */}
+        {/*  */}
+        {/*  */}
+        {/*  */}
+        {/*  */}
+        <div //STYLING FOR THE SECOND DIVS IN ROW 2
           style={{
-            backgroundColor: "transparent",
-            borderRadius: "5px",
             border: "1px solid #797979",
-            display: "flex",
-            alignItems: "center",
             padding: "10px",
             position: "relative",
+            width: "120%",
+            height: "150%",
+            borderRadius: "10px",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            flexDirection: "row",
+            // marginBottom: "2rem",
+            marginTop: "10rem",
+            marginLeft: "2rem",
           }}
         >
-          <ArrowBackIosIcon
+          <div //div 2 styling
             style={{
-              cursor: "pointer",
               position: "absolute",
-              left: "-25px",
-            }}
-          />
-          <input //styling for input date box
-            type="text"
-            style={{
-              border: "1px solid #00e1b4",
-              borderRadius: "5px",
-              marginRight: "10px",
-              padding: "5px 10px",
-              color: "black",
-              placeholderTextColor: "gray",
-            }}
-            placeholder="0/00/21"
-          />
-          <div //styling for time button
-            style={{
-              border: "1px solid #00e1b4",
-              borderRadius: "5px",
-              marginRight: "10px",
-              padding: "5px 10px",
-              color: "white",
+              top: "-15px",
+              left: "50%",
+              transform: "translateX(-50%)",
+              backgroundColor: "#181818",
+              padding: "0 5px",
+              zIndex: 1,
+              fontSize: "20px",
             }}
           >
-            00:00pm
+            Wireless Sensors
           </div>
-          <button //styling for enter button
+          <p
             style={{
-              border: "1px solid #00e1b4",
-              borderRadius: "5px",
-              backgroundColor: "transparent",
-              color: "white",
-              padding: "5px 10px",
-              cursor: "pointer",
-            }}
-            onMouseOver={(e) => {
-              e.target.style.color = "#00e1b4";
-              e.target.style.borderColor = "white";
-            }}
-            onMouseOut={(e) => {
-              e.target.style.color = "white";
-              e.target.style.borderColor = "#00e1b4";
+              color: " #00e1b4",
+              marginLeft: "1rem",
             }}
           >
-            Enter
-          </button>
-          <ArrowForwardIosIcon
+            Select time interval for: temperature, humidity, air pressure, lux,
+            air quality, add-on sensor
+          </p>
+          <div>
+            <select
+              value={selectedInterval1}
+              onChange={handleSelect1}
+              style={{
+                backgroundColor: "transparent",
+                fontSize: "15px",
+                borderRadius: "5px",
+                border: "1px solid #797979",
+                color: "white",
+                padding: "10px", // Optional: add some padding for better appearance
+                marginRight: "2rem",
+              }}
+            >
+              <option value="Select time interval..." disabled>
+                Select time interval...
+              </option>
+              <option value="5 minutes">5 minutes</option>
+              <option value="10 minutes">10 minutes</option>
+              <option value="15 minutes">15 minutes</option>
+              <option value="20 minutes">20 minutes</option>
+              <option value="45 minutes">45 minutes</option>
+              <option value="1 hour">1 hour</option>
+            </select>
+          </div>
+        </div>
+        {/* end of style for DIV 2 */}
+        <div //STYLING FOR THE THIRD DIVS IN ROW 2
+          style={{
+            border: "1px solid #797979",
+            padding: "10px",
+            position: "relative",
+            width: "120%",
+            height: "150%",
+            borderRadius: "10px",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            flexDirection: "row",
+            // marginBottom: "2rem",
+            marginTop: "10rem",
+            marginLeft: "2rem",
+          }}
+        >
+          <div //div 3 styling
             style={{
-              cursor: "pointer",
               position: "absolute",
-              right: "-25px",
+              top: "-15px",
+              left: "50%",
+              transform: "translateX(-50%)",
+              backgroundColor: "#181818",
+              padding: "0 5px",
+              zIndex: 1,
+              fontSize: "20px",
             }}
-          />
+          >
+            Wind Sensors
+          </div>
+          <p
+            style={{
+              color: " #00e1b4",
+              marginLeft: "1rem",
+            }}
+          >
+            Select time interval for windspeed, wind direction, gust (for
+            digital wind sensors)
+          </p>
+          <div>
+            <select
+              value={selectedInterval2}
+              onChange={handleSelect2}
+              style={{
+                backgroundColor: "transparent",
+                fontSize: "15px",
+                borderRadius: "5px",
+                border: "1px solid #797979",
+                color: "white",
+                padding: "10px", // Optional: add some padding for better appearance
+                marginRight: "2rem",
+              }}
+            >
+              <option value="Select time interval..." disabled>
+                Select time interval...
+              </option>
+              <option value="5 minutes">5 minutes</option>
+              <option value="10 minutes">10 minutes</option>
+              <option value="15 minutes">15 minutes</option>
+              <option value="20 minutes">20 minutes</option>
+              <option value="45 minutes">45 minutes</option>
+              <option value="1 hour">1 hour</option>
+            </select>
+          </div>
+        </div>
+        {/* end of style for DIV 3 */}
+        <div //STYLING FOR THE FORUTH DIVS IN ROW 2
+          style={{
+            border: "1px solid #797979",
+            padding: "10px",
+            position: "relative",
+            width: "120%",
+            height: "150%",
+            borderRadius: "10px",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            flexDirection: "row",
+            // marginBottom: "2rem",
+            marginTop: "10rem",
+            marginLeft: "2rem",
+          }}
+        >
+          <div //div 3 styling
+            style={{
+              position: "absolute",
+              top: "-15px",
+              left: "50%",
+              transform: "translateX(-50%)",
+              backgroundColor: "#181818",
+              padding: "0 5px",
+              zIndex: 1,
+              fontSize: "20px",
+            }}
+          >
+            Soil Sensors
+          </div>
+          <p
+            style={{
+              color: " #00e1b4",
+              marginLeft: "1rem",
+            }}
+          >
+            Select time interval for: soil temperature, moisture, electrical
+            conductivity (if integrated)
+          </p>
+          <div>
+            <select
+              value={selectedInterval3}
+              onChange={handleSelect3}
+              style={{
+                backgroundColor: "transparent",
+                fontSize: "15px",
+                borderRadius: "5px",
+                border: "1px solid #797979",
+                color: "white",
+                padding: "10px", // Optional: add some padding for better appearance
+                marginRight: "2rem",
+              }}
+            >
+              <option value="Select time interval..." disabled>
+                Select time interval...
+              </option>
+              <option value="5 minutes">5 minutes</option>
+              <option value="10 minutes">10 minutes</option>
+              <option value="15 minutes">15 minutes</option>
+              <option value="20 minutes">20 minutes</option>
+              <option value="45 minutes">45 minutes</option>
+              <option value="1 hour">1 hour</option>
+            </select>
+          </div>
+        </div>
+        {/* end of style for DIV 4 */}
+        <div //STYLING FOR THE FIFTH DIVS IN ROW 2
+          style={{
+            border: "1px solid #797979",
+            padding: "10px",
+            position: "relative",
+            width: "120%",
+            height: "150%",
+            borderRadius: "10px",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            flexDirection: "row",
+            // marginBottom: "2rem",
+            marginTop: "10rem",
+            marginLeft: "2rem",
+          }}
+        >
+          <div //div 3 styling
+            style={{
+              position: "absolute",
+              top: "-15px",
+              left: "50%",
+              transform: "translateX(-50%)",
+              backgroundColor: "#181818",
+              padding: "0 5px",
+              zIndex: 1,
+              fontSize: "20px",
+            }}
+          >
+            PAR Sensors
+          </div>
+          <p
+            style={{
+              color: " #00e1b4",
+              marginLeft: "1rem",
+            }}
+          >
+            Select time interval for PAR Sensor measurements
+          </p>
+          <div>
+            <select
+              value={selectedInterval4}
+              onChange={handleSelect4}
+              style={{
+                backgroundColor: "transparent",
+                fontSize: "15px",
+                borderRadius: "5px",
+                border: "1px solid #797979",
+                color: "white",
+                padding: "10px", // Optional: add some padding for better appearance
+                marginRight: "2rem",
+              }}
+            >
+              <option value="Select time interval..." disabled>
+                Select time interval...
+              </option>
+              <option value="5 minutes">5 minutes</option>
+              <option value="10 minutes">10 minutes</option>
+              <option value="15 minutes">15 minutes</option>
+              <option value="20 minutes">20 minutes</option>
+              <option value="45 minutes">45 minutes</option>
+              <option value="1 hour">1 hour</option>
+            </select>
+          </div>
+        </div>
+        {/* end of style for DIV 5 */}
+        <div //STYLING FOR THE SIXTH DIVS IN ROW 2
+          style={{
+            border: "1px solid #797979",
+            padding: "10px",
+            position: "relative",
+            width: "120%",
+            height: "150%",
+            borderRadius: "10px",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            flexDirection: "row",
+            // marginBottom: "2rem",
+            marginTop: "10rem",
+            marginLeft: "2rem",
+          }}
+        >
+          <div //div 3 styling
+            style={{
+              position: "absolute",
+              top: "-15px",
+              left: "50%",
+              transform: "translateX(-50%)",
+              backgroundColor: "#181818",
+              padding: "0 5px",
+              zIndex: 1,
+              fontSize: "20px",
+            }}
+          >
+            Air Quality Transmitter Sensors
+          </div>
+          <p
+            style={{
+              color: " #00e1b4",
+              marginLeft: "1rem",
+            }}
+          >
+            Select time interval for Air Quality Transmitter Sensor measurements
+          </p>
+          <div>
+            <select
+              value={selectedInterval5}
+              onChange={handleSelect5}
+              style={{
+                backgroundColor: "transparent",
+                fontSize: "15px",
+                borderRadius: "5px",
+                border: "1px solid #797979",
+                color: "white",
+                padding: "10px", // Optional: add some padding for better appearance
+                marginRight: "2rem",
+              }}
+            >
+              <option value="Select time interval..." disabled>
+                Select time interval...
+              </option>
+              <option value="5 minutes">5 minutes</option>
+              <option value="10 minutes">10 minutes</option>
+              <option value="15 minutes">15 minutes</option>
+              <option value="20 minutes">20 minutes</option>
+              <option value="45 minutes">45 minutes</option>
+              <option value="1 hour">1 hour</option>
+            </select>
+          </div>
+        </div>
+        {/* end of style for DIV 6 */}
+      </div>
+      {/* parent style of row 2 end above */}
+      {/*  */}
+      {/*  */}
+      {/*  */}
+      {/*  */}
+      {/* ////////////////////////////row 2 end/////////////////////////////////////////////// */}
+      {/*  */}
+      {/*  */}
+      {/*  */}
+      {/*  */}
+      {/* ////////////////////////////row 3 START/////////////////////////////////////////////// */}
+      {/*  */}
+      {/*  */}
+      {/*  */}
+      <div //parent styling for all row 3
+        style={{
+          backgroundColor: "transparent",
+          height: "200px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          marginTop: "10rem",
+        }}
+      >
+        <div //styling for box surround checkboxs and button
+          style={{
+            width: "95%",
+            height: "60%",
+            border: "1px solid #797979",
+            borderRadius: "5px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            padding: "0 20px",
+            marginLeft: "2rem",
+          }}
+        >
+          <div //styling for text next to checkmark boxes
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              color: "#00e1b4",
+            }}
+          >
+            <label>
+              <input type="checkbox" />
+              Apply the above imaging settings to all FieldDock systems in this
+              group
+            </label>
+            <label>
+              <input type="checkbox" />
+              Apply the above imaging settings to all FieldDock systems in this
+              account
+            </label>
+          </div>
+          <button //styling for Save all Imaging Preferences button
+            style={{
+              border: "3px solid orange",
+              borderRadius: "5px",
+              padding: "10px",
+              backgroundColor: "transparent",
+              cursor: "pointer",
+              color: "white",
+            }}
+          >
+            Save all imaging preferences
+          </button>
         </div>
       </div>
-      {/* -------------------row 3 end---------------------------------------------------------- */}
+
+      {/* ////////////////////////////row 3 END/////////////////////////////////////////////// */}
     </div>
-    //------------------------------------end of page----------------------------------------------------------------
+    //--------------------------------------- end of code -------------------------------------
   );
 }
-export default Images;
+
+export default RealTime_Settings;
