@@ -541,17 +541,19 @@ function RealTime_Settings() {
                   borderRadius: "5px",
                 }}
               >
-                <img
-                  src="../../assets/Users-no-line---active.svg"
-                  style={{ width: "100%", height: "90%" }} //sizing of the actual image inside the box
-                  onMouseOver={(e) =>
-                    (e.currentTarget.src = "../../assets/Users----active.svg")
-                  }
-                  onMouseOut={(e) =>
-                    (e.currentTarget.src =
-                      "../../assets/Users-no-line---active.svg")
-                  }
-                />
+                <Link to="/users">
+                  <img
+                    src="../../assets/Users-no-line---active.svg"
+                    style={{ width: "100%", height: "90%" }} //sizing of the actual image inside the box
+                    onMouseOver={(e) =>
+                      (e.currentTarget.src = "../../assets/Users----active.svg")
+                    }
+                    onMouseOut={(e) =>
+                      (e.currentTarget.src =
+                        "../../assets/Users-no-line---active.svg")
+                    }
+                  />
+                </Link>
               </div>
               <div
                 style={{
@@ -1079,12 +1081,22 @@ function RealTime_Settings() {
           </div>
           <button //styling for Save all Imaging Preferences button
             style={{
-              border: "3px solid orange",
+              border: "1px solid orange",
               borderRadius: "5px",
               padding: "10px",
               backgroundColor: "transparent",
               cursor: "pointer",
               color: "white",
+              fontWeight: "bold",
+              transition: "border-color 0.2s, color 0.2s",
+            }}
+            onMouseOver={(e) => {
+              e.target.style.borderColor = "#fff";
+              e.target.style.color = "orange";
+            }}
+            onMouseOut={(e) => {
+              e.target.style.borderColor = "orange";
+              e.target.style.color = "#fff";
             }}
           >
             Save all imaging preferences

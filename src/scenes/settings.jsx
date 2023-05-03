@@ -209,6 +209,15 @@ function Settings() {
                 cursor: "pointer",
                 width: "25%", // Set button width to 25% of the parent
                 fontSize: "1vw", // dynamic font size based on viewport width
+                transition: "border-color 0.2s, color 0.2s",
+              }}
+              onMouseOver={(e) => {
+                e.target.style.borderColor = "#fff";
+                e.target.style.color = "orange";
+              }}
+              onMouseOut={(e) => {
+                e.target.style.borderColor = "orange";
+                e.target.style.color = "#fff";
               }}
             >
               Log Out
@@ -475,17 +484,19 @@ function Settings() {
                   borderRadius: "5px",
                 }}
               >
-                <img
-                  src="../../assets/Users-no-line---active.svg"
-                  style={{ width: "100%", height: "90%" }} //sizing of the actual image inside the box
-                  onMouseOver={(e) =>
-                    (e.currentTarget.src = "../../assets/Users----active.svg")
-                  }
-                  onMouseOut={(e) =>
-                    (e.currentTarget.src =
-                      "../../assets/Users-no-line---active.svg")
-                  }
-                />
+                <Link to="/users">
+                  <img
+                    src="../../assets/Users-no-line---active.svg"
+                    style={{ width: "100%", height: "90%" }} //sizing of the actual image inside the box
+                    onMouseOver={(e) =>
+                      (e.currentTarget.src = "../../assets/Users----active.svg")
+                    }
+                    onMouseOut={(e) =>
+                      (e.currentTarget.src =
+                        "../../assets/Users-no-line---active.svg")
+                    }
+                  />
+                </Link>
               </div>
               <div
                 style={{
@@ -606,6 +617,15 @@ function Settings() {
                 alignSelf: "center",
                 color: "white",
                 cursor: "pointer",
+                transition: "border-color 0.2s, color 0.2s",
+              }}
+              onMouseOver={(e) => {
+                e.target.style.borderColor = "#fff";
+                e.target.style.color = "orange";
+              }}
+              onMouseOut={(e) => {
+                e.target.style.borderColor = "orange";
+                e.target.style.color = "#fff";
               }}
             >
               Set
@@ -674,6 +694,15 @@ function Settings() {
                 alignSelf: "center",
                 color: "white",
                 cursor: "pointer",
+                transition: "border-color 0.2s, color 0.2s",
+              }}
+              onMouseOver={(e) => {
+                e.target.style.borderColor = "#fff";
+                e.target.style.color = "orange";
+              }}
+              onMouseOut={(e) => {
+                e.target.style.borderColor = "orange";
+                e.target.style.color = "#fff";
               }}
             >
               Rename
@@ -736,6 +765,15 @@ function Settings() {
                     marginRight: "10px",
                     padding: "5px 10px",
                     cursor: "pointer",
+                    transition: "border-color 0.2s, color 0.2s",
+                  }}
+                  onMouseOver={(e) => {
+                    e.target.style.borderColor = "#fff";
+                    e.target.style.color = "#25c0e9";
+                  }}
+                  onMouseOut={(e) => {
+                    e.target.style.borderColor = "#25c0e9";
+                    e.target.style.color = "#fff";
                   }}
                 >
                   Search for Networks
@@ -785,6 +823,15 @@ function Settings() {
                   padding: "5px 10px",
                   color: "white",
                   cursor: "pointer",
+                  transition: "border-color 0.2s, color 0.2s",
+                }}
+                onMouseOver={(e) => {
+                  e.target.style.borderColor = "#fff";
+                  e.target.style.color = "orange";
+                }}
+                onMouseOut={(e) => {
+                  e.target.style.borderColor = "orange";
+                  e.target.style.color = "#fff";
                 }}
               >
                 Connect
@@ -793,19 +840,62 @@ function Settings() {
           </div>
         </div>
       </div>
-
+      {/*-------------------------------------------------------------END of row 2-------------------------------------------*/}
+      {/*  */}
+      {/*  */}
+      {/*  */}
+      {/*  */}
+      {/*-------------------------------------------------------------START of row 3---------------------------------------- */}
       <div
         style={{
-          backgroundColor: "#ccc",
+          backgroundColor: "transparent",
           height: "200px",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
         }}
       >
-        Box 3
+        <div
+          style={{
+            backgroundColor: "transparent",
+            borderRadius: "5px",
+            border: "1px solid #00e1b4",
+            display: "inline-block",
+            padding: "10px",
+            textAlign: "center",
+            width: "500px",
+            height: "120px",
+            lineHeight: "100px", // set line-height to match the height of the box
+          }}
+        >
+          <button
+            style={{
+              backgroundColor: "transparent",
+              borderRadius: "5px",
+              border: "1px solid orange",
+              color: "#fff",
+              fontSize: "18px",
+              fontWeight: "bold",
+              padding: "10px",
+              transition: "border-color 0.2s, color 0.2s",
+              width: "250px",
+            }}
+            onMouseOver={(e) => {
+              e.target.style.borderColor = "#fff";
+              e.target.style.color = "orange";
+            }}
+            onMouseOut={(e) => {
+              e.target.style.borderColor = "orange";
+              e.target.style.color = "#fff";
+            }}
+          >
+            Super Admin
+          </button>
+        </div>
       </div>
+      {/*-------------------------------------------------------------end of row 3---------------------------------------- */}
     </div>
+    // end of parent div for whole page
   );
 }
 

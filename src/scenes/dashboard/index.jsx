@@ -1668,17 +1668,19 @@ const Dashboard = () => {
                 borderRadius: "5px",
               }}
             >
-              <img
-                src="../../assets/Users-no-line---active.svg"
-                style={{ width: "80%", height: "100%", marginLeft: "8px" }}
-                onMouseOver={(e) =>
-                  (e.currentTarget.src = "../../assets/Users----active.svg")
-                }
-                onMouseOut={(e) =>
-                  (e.currentTarget.src =
-                    "../../assets/Users-no-line---active.svg")
-                }
-              />
+              <Link to="/users">
+                <img
+                  src="../../assets/Users-no-line---active.svg"
+                  style={{ width: "100%", height: "90%" }} //sizing of the actual image inside the box
+                  onMouseOver={(e) =>
+                    (e.currentTarget.src = "../../assets/Users----active.svg")
+                  }
+                  onMouseOut={(e) =>
+                    (e.currentTarget.src =
+                      "../../assets/Users-no-line---active.svg")
+                  }
+                />
+              </Link>
             </div>
             <div
               style={{
