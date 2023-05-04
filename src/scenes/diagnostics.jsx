@@ -563,7 +563,7 @@ function Diagnostics() {
         <div // Main box with title and table
           style={{
             backgroundColor: "transparent",
-            border: "1px solid #797979",
+            border: "1px solid #00e1b4",
             borderRadius: "5px",
             width: "90%",
             height: "80%",
@@ -594,12 +594,12 @@ function Diagnostics() {
           >
             <tbody>
               <tr>
-                <td style={{ borderBottom: "1px solid #00e1b4" }}>
+                <td style={{ borderBottom: "1px solid #797979" }}>
                   • 02/20/2021 / 13:45 / 0002:customer_1 / 0006: error_808.1
                 </td>
               </tr>
               <tr>
-                <td style={{ borderBottom: "1px solid #00e1b4" }}>
+                <td style={{ borderBottom: "1px solid #797979" }}>
                   • 02/20/2021 / 14:45 / 0002:customer_1 / 0006: error_808.1
                 </td>
               </tr>
