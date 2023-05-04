@@ -5,7 +5,9 @@ import Drone from "./scenes/drone.jsx";
 import Images from "./scenes/images.jsx";
 import Settings from "./scenes/settings.jsx";
 import RealTime_Settings from "./scenes/RealTime_Settings.jsx";
+import Diagnostics from "./scenes/diagnostics.jsx";
 import Users from "./scenes/users.jsx";
+import Download_data from "./scenes/download_data.jsx";
 import { CssBaseline, ThemeProvider } from "@mui/material"; //cssbaseline resets the css to default and theme provider provides the ability to pass into the themes into material ui
 import { ColorModeContext, useMode } from "./theme"; //importing everything just coded from theme .js
 
@@ -31,7 +33,9 @@ function App() {
                 path="/RealTime_Settings"
                 element={<RealTime_Settings />}
               />
+              <Route path="/diagnostics" element={<Diagnostics />} />
               <Route path="/users" element={<Users />} />
+              <Route path="/download_data" element={<Download_data />} />
             </Routes>
           </main>
         </div>

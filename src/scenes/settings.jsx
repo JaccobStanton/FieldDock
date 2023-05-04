@@ -462,18 +462,20 @@ function Settings() {
                   borderRadius: "5px",
                 }}
               >
-                <img
-                  src="../../assets/Diagnostics-icon---no-line.svg"
-                  style={{ width: "100%", height: "90%" }} //sizing of the actual image inside the box
-                  onMouseOver={(e) =>
-                    (e.currentTarget.src =
-                      "../../assets/Diagnostics---active.svg")
-                  }
-                  onMouseOut={(e) =>
-                    (e.currentTarget.src =
-                      "../../assets/Diagnostics-icon---no-line.svg")
-                  }
-                />
+                <Link to="/diagnostics">
+                  <img
+                    src="../../assets/Diagnostics-icon---no-line.svg"
+                    style={{ width: "80%", height: "100%", marginLeft: "8px" }}
+                    onMouseOver={(e) =>
+                      (e.currentTarget.src =
+                        "../../assets/Diagnostics---active.svg")
+                    }
+                    onMouseOut={(e) =>
+                      (e.currentTarget.src =
+                        "../../assets/Diagnostics-icon---no-line.svg")
+                    }
+                  />
+                </Link>
               </div>
               <div
                 style={{
@@ -507,17 +509,19 @@ function Settings() {
                   borderRadius: "5px",
                 }}
               >
-                <img
-                  src="../../assets/Download-Icon.svg"
-                  style={{ width: "100%", height: "90%" }} //sizing of the actual image inside the box
-                  onMouseOver={(e) =>
-                    (e.currentTarget.src =
-                      "../../assets/Download-Icon---active.svg")
-                  }
-                  onMouseOut={(e) =>
-                    (e.currentTarget.src = "../../assets/Download-Icon.svg")
-                  }
-                />
+                <Link to="/download_data">
+                  <img
+                    src="../../assets/Download-Icon.svg"
+                    style={{ width: "80%", height: "100%", marginLeft: "8px" }}
+                    onMouseOver={(e) =>
+                      (e.currentTarget.src =
+                        "../../assets/Download-Icon---active.svg")
+                    }
+                    onMouseOut={(e) =>
+                      (e.currentTarget.src = "../../assets/Download-Icon.svg")
+                    }
+                  />
+                </Link>
               </div>
             </div>
             {/* above is the div that surrounds the 10 boxes */}
@@ -879,6 +883,7 @@ function Settings() {
               padding: "10px",
               transition: "border-color 0.2s, color 0.2s",
               width: "250px",
+              cursor: "pointer",
             }}
             onMouseOver={(e) => {
               e.target.style.borderColor = "#fff";

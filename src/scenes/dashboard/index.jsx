@@ -1646,18 +1646,20 @@ const Dashboard = () => {
                 borderRadius: "5px",
               }}
             >
-              <img
-                src="../../assets/Diagnostics-icon---no-line.svg"
-                style={{ width: "80%", height: "100%", marginLeft: "8px" }}
-                onMouseOver={(e) =>
-                  (e.currentTarget.src =
-                    "../../assets/Diagnostics---active.svg")
-                }
-                onMouseOut={(e) =>
-                  (e.currentTarget.src =
-                    "../../assets/Diagnostics-icon---no-line.svg")
-                }
-              />
+              <Link to="/diagnostics">
+                <img
+                  src="../../assets/Diagnostics-icon---no-line.svg"
+                  style={{ width: "80%", height: "100%", marginLeft: "8px" }}
+                  onMouseOver={(e) =>
+                    (e.currentTarget.src =
+                      "../../assets/Diagnostics---active.svg")
+                  }
+                  onMouseOut={(e) =>
+                    (e.currentTarget.src =
+                      "../../assets/Diagnostics-icon---no-line.svg")
+                  }
+                />
+              </Link>
             </div>
             <div
               style={{
@@ -1691,17 +1693,19 @@ const Dashboard = () => {
                 borderRadius: "5px",
               }}
             >
-              <img
-                src="../../assets/Download-Icon.svg"
-                style={{ width: "80%", height: "100%", marginLeft: "8px" }}
-                onMouseOver={(e) =>
-                  (e.currentTarget.src =
-                    "../../assets/Download-Icon---active.svg")
-                }
-                onMouseOut={(e) =>
-                  (e.currentTarget.src = "../../assets/Download-Icon.svg")
-                }
-              />
+              <Link to="/download_data">
+                <img
+                  src="../../assets/Download-Icon.svg"
+                  style={{ width: "80%", height: "100%", marginLeft: "8px" }}
+                  onMouseOver={(e) =>
+                    (e.currentTarget.src =
+                      "../../assets/Download-Icon---active.svg")
+                  }
+                  onMouseOut={(e) =>
+                    (e.currentTarget.src = "../../assets/Download-Icon.svg")
+                  }
+                />
+              </Link>
             </div>
           </div>
         </div>

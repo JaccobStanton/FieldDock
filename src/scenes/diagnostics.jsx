@@ -7,7 +7,7 @@ import Menu from "@mui/material/Menu";
 import { ExpandMore } from "@mui/icons-material";
 import axios from "axios";
 
-function Users() {
+function Diagnostics() {
   //
   //
   //---------------------------select hanger system logic-----------------------
@@ -73,7 +73,7 @@ function Users() {
         maxWidth: "90%",
       }}
     >
-      <div // Parent div for ROW 1 start here
+      <div // -----------------------------------------------ROW 1 starts HERE----------------------------
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(3, 1fr", // add this property to create 3 evenly spaced boxes
@@ -461,20 +461,18 @@ function Users() {
                   borderRadius: "5px",
                 }}
               >
-                <Link to="/diagnostics">
-                  <img
-                    src="../../assets/Diagnostics-icon---no-line.svg"
-                    style={{ width: "80%", height: "100%", marginLeft: "8px" }}
-                    onMouseOver={(e) =>
-                      (e.currentTarget.src =
-                        "../../assets/Diagnostics---active.svg")
-                    }
-                    onMouseOut={(e) =>
-                      (e.currentTarget.src =
-                        "../../assets/Diagnostics-icon---no-line.svg")
-                    }
-                  />
-                </Link>
+                <img
+                  src="../../assets/Diagnostics-icon---no-line.svg"
+                  style={{ width: "100%", height: "90%" }} //sizing of the actual image inside the box
+                  onMouseOver={(e) =>
+                    (e.currentTarget.src =
+                      "../../assets/Diagnostics---active.svg")
+                  }
+                  onMouseOut={(e) =>
+                    (e.currentTarget.src =
+                      "../../assets/Diagnostics-icon---no-line.svg")
+                  }
+                />
               </div>
               <div
                 style={{
@@ -537,93 +535,107 @@ function Users() {
       <div
         style={{
           backgroundColor: "transparent",
-          height: "200px",
+          height: "500px",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          position: "relative",
         }}
       >
-        <div
+        <div // Small box with "Diagnostics" text
           style={{
-            position: "relative",
-            display: "inline-block",
+            backgroundColor: "transparent",
+            width: "120px",
+            height: "40px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            position: "absolute",
+            top: "-15px",
+            left: "50%",
+            transform: "translateX(-50%)",
+            fontSize: "18px",
           }}
         >
-          <button
+          <span>Diagnostics</span>
+        </div>
+
+        <div // Main box with title and table
+          style={{
+            backgroundColor: "transparent",
+            border: "1px solid #797979",
+            borderRadius: "5px",
+            width: "80%",
+            height: "80%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "flex-start",
+            alignItems: "center",
+            padding: "5px",
+          }}
+        >
+          <h2 // Diagnostics Log title
             style={{
-              backgroundColor: "transparent",
-              borderRadius: "5px",
-              border: "1px solid orange",
-              color: "#fff",
-              fontSize: "18px",
-              fontWeight: "bold",
-              padding: "15px",
-              transition: "border-color 0.2s, color 0.2s",
-              width: "230px",
-              marginRight: "20px",
-            }}
-            onMouseOver={(e) => {
-              e.target.style.borderColor = "#fff";
-              e.target.style.color = "orange";
-            }}
-            onMouseOut={(e) => {
-              e.target.style.borderColor = "orange";
-              e.target.style.color = "#fff";
+              textAlign: "center",
+              marginBottom: "20px",
             }}
           >
-            Create a new user
-          </button>
-          <button
+            FieldDock Diagnostics Log
+          </h2>
+
+          <table // Table with bullet points and underlines
             style={{
-              backgroundColor: "transparent",
-              borderRadius: "5px",
-              border: "1px solid orange",
-              color: "#fff",
-              fontSize: "18px",
-              fontWeight: "bold",
-              padding: "15px",
-              transition: "border-color 0.2s, color 0.2s",
-              width: "230px",
-            }}
-            onMouseOver={(e) => {
-              e.target.style.borderColor = "#fff";
-              e.target.style.color = "orange";
-            }}
-            onMouseOut={(e) => {
-              e.target.style.borderColor = "orange";
-              e.target.style.color = "#fff";
+              width: "95%",
+              borderCollapse: "collapse",
+              textAlign: "left",
+              fontSize: "16px",
+              lineHeight: "1.5",
             }}
           >
-            Edit existing user
-          </button>
-          <div
-            style={{
-              position: "absolute",
-              top: "-100%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-              color: "#fff",
-              fontSize: "20px",
-            }}
-          >
-            Users
-          </div>
+            <tbody>
+              <tr>
+                <td style={{ borderBottom: "1px solid #00e1b4" }}>
+                  • 02/20/2021 / 13:45 / 0002:customer_1 / 0006: error_808.1
+                </td>
+              </tr>
+              <tr>
+                <td style={{ borderBottom: "1px solid #00e1b4" }}>
+                  • 02/20/2021 / 14:45 / 0002:customer_1 / 0006: error_808.1
+                </td>
+              </tr>
+              {/* <tr>
+                <td style={{ borderBottom: "1px solid #00e1b4" }}>• Item 3</td>
+              </tr>
+              <tr>
+                <td style={{ borderBottom: "1px solid #00e1b4" }}>• Item 3</td>
+              </tr>
+              <tr>
+                <td style={{ borderBottom: "1px solid #00e1b4" }}>• Item 3</td>
+              </tr>
+              <tr>
+                <td style={{ borderBottom: "1px solid #00e1b4" }}>• Item 3</td>
+              </tr>
+              <tr>
+                <td style={{ borderBottom: "1px solid #00e1b4" }}>• Item 3</td>
+              </tr> */}
+            </tbody>
+          </table>
         </div>
       </div>
 
       <div
         style={{
-          backgroundColor: "transparent",
+          backgroundColor: "#ccc",
           height: "200px",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
         }}
       >
-        {/* box 3 text here */}
+        Box 3
       </div>
     </div>
   );
 }
 
-export default Users;
+export default Diagnostics;

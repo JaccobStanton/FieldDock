@@ -7,8 +7,7 @@ import Menu from "@mui/material/Menu";
 import { ExpandMore } from "@mui/icons-material";
 import axios from "axios";
 
-function RealTime_Settings() {
-  //
+function Download_data() {
   //
   //
   //---------------------------select hanger system logic-----------------------
@@ -63,75 +62,7 @@ function RealTime_Settings() {
   //
   //
   //
-  //------------------------logic for time interval button for SENSOR Modules START------------------
-  const [selectedInterval, setSelectedInterval] = useState(
-    "Select time interval..."
-  );
-
-  const handleSelect = (e) => {
-    setSelectedInterval(e.target.value);
-  };
-  //------------------------logic for time interval button for SENSOR Modules END------------------
   //
-  //
-  //
-  //------------------------logic for time interval button for WIRELESS Sensor START------------------
-  const [selectedInterval1, setSelectedInterval1] = useState(
-    "Select time interval..."
-  );
-
-  const handleSelect1 = (e) => {
-    setSelectedInterval1(e.target.value);
-  };
-  //------------------------logic for time interval button for WIRELESS Sensor END------------------
-  //
-  //
-  //
-  //------------------------logic for time interval button for WIND Sensor START------------------
-  const [selectedInterval2, setSelectedInterval2] = useState(
-    "Select time interval..."
-  );
-
-  const handleSelect2 = (e) => {
-    setSelectedInterval2(e.target.value);
-  };
-  //------------------------logic for time interval button for WIND Sensor END------------------
-  //
-  //
-  //
-  //------------------------logic for time interval button for SOIL Sensor START------------------
-  const [selectedInterval3, setSelectedInterval3] = useState(
-    "Select time interval..."
-  );
-
-  const handleSelect3 = (e) => {
-    setSelectedInterval3(e.target.value);
-  };
-  //------------------------logic for time interval button for SOIL Sensor END------------------
-  //
-  //
-  //
-  //------------------------logic for time interval button for PAR Sensor START------------------
-  const [selectedInterval4, setSelectedInterval4] = useState(
-    "Select time interval..."
-  );
-
-  const handleSelect4 = (e) => {
-    setSelectedInterval4(e.target.value);
-  };
-  //------------------------logic for time interval button for PAR Sensor END------------------
-  //
-  //
-  //
-  //------------------------logic for time interval button for SOIL Sensor START------------------
-  const [selectedInterval5, setSelectedInterval5] = useState(
-    "Select time interval..."
-  );
-
-  const handleSelect5 = (e) => {
-    setSelectedInterval5(e.target.value);
-  };
-  //------------------------logic for time interval button for SOIL Sensor END------------------
   return (
     <div //parent div style of ALL ROWS ON THIS PAGE
       style={{
@@ -277,6 +208,15 @@ function RealTime_Settings() {
                 cursor: "pointer",
                 width: "25%", // Set button width to 25% of the parent
                 fontSize: "1vw", // dynamic font size based on viewport width
+                transition: "border-color 0.2s, color 0.2s",
+              }}
+              onMouseOver={(e) => {
+                e.target.style.borderColor = "#fff";
+                e.target.style.color = "orange";
+              }}
+              onMouseOut={(e) => {
+                e.target.style.borderColor = "orange";
+                e.target.style.color = "#fff";
               }}
             >
               Log Out
@@ -475,18 +415,20 @@ function RealTime_Settings() {
                   borderRadius: "5px",
                 }}
               >
-                <img
-                  src="../../assets/real-time-settings-inactive.svg"
-                  style={{ width: "100%", height: "90%" }} //sizing of the actual image inside the box
-                  onMouseOver={(e) =>
-                    (e.currentTarget.src =
-                      "../../assets/real-time-settings---active.svg")
-                  }
-                  onMouseOut={(e) =>
-                    (e.currentTarget.src =
-                      "../../assets/real-time-settings-inactive.svg")
-                  }
-                />
+                <Link to="/RealTime_Settings">
+                  <img
+                    src="../../assets/real-time-settings-inactive.svg"
+                    style={{ width: "100%", height: "90%" }} //sizing of the actual image inside the box
+                    onMouseOver={(e) =>
+                      (e.currentTarget.src =
+                        "../../assets/real-time-settings---active.svg")
+                    }
+                    onMouseOut={(e) =>
+                      (e.currentTarget.src =
+                        "../../assets/real-time-settings-inactive.svg")
+                    }
+                  />
+                </Link>
               </div>
               <div
                 style={{
@@ -587,7 +529,10 @@ function RealTime_Settings() {
       </div>
       {/* parent div END for ENTIRE ROW 1 above */}
       {/* /////////////////////////////row 1 END///////////////////////////////////////////////// */}
-
+      {/*  */}
+      {/*  */}
+      {/*  */}
+      {/*  */}
       {/* ////////////////////////////row 2 start/////////////////////////////////////////////// */}
       {/*  */}
       {/*  */}
@@ -599,19 +544,20 @@ function RealTime_Settings() {
           height: "200px",
           display: "grid",
           alignItems: "center",
-          justifyContent: "flex-start",
-          gridTemplateColumns: "40% 40%", // 2 columns, each taking 40% of the width
+          justifyContent: "center",
+          gridTemplateColumns: "30% 30%", // 2 columns, each taking 40% of the width
           gridTemplateRows: "33.33% 33.33% 33.33%", // 3 rows, each taking 1/3 of the height
           gap: "10%",
           rowGap: "40%",
           marginBottom: "8rem",
+          marginRight: "8rem",
         }}
       >
         <div //box for sensor measurement heading
           style={{
             position: "absolute", // Added position absolute
             top: "10px", // Adjust the top value to position the box
-            left: "50%",
+            left: "55%",
             transform: "translateX(-50%)",
             backgroundColor: "transparent",
             padding: "5px",
@@ -620,7 +566,7 @@ function RealTime_Settings() {
             fontSize: "22px",
           }}
         >
-          Sensor Measurement Settings
+          Download Data
         </div>
         {/* end of box for sensor measurement settigns above */}
         <div //STYLING FOR THE FIRST DIV IN ROW 2
@@ -635,7 +581,6 @@ function RealTime_Settings() {
             justifyContent: "space-between",
             alignItems: "center",
             flexDirection: "row",
-            // marginBottom: "2rem",
             marginTop: "10rem",
             marginLeft: "2rem",
           }}
@@ -652,43 +597,66 @@ function RealTime_Settings() {
               fontSize: "20px",
             }}
           >
-            Sensor Modules
+            Download Environment Data
           </div>
-          <p
-            style={{
-              color: " #00e1b4",
-              marginLeft: "1rem",
-            }}
-          >
-            Select time interval for: temperature, humidity, air pressure, lux,
-            air quality (if integrated)
-          </p>
-          <div>
-            <select
-              value={selectedInterval}
-              onChange={handleSelect}
+          <div style={{ display: "flex", flex: 1 }}>
+            <input
+              type="text"
+              placeholder="Start Date"
               style={{
+                border: "1px solid #cccccc",
+                padding: "15px 10px",
+                marginRight: "1rem",
+                flex: 1,
                 backgroundColor: "transparent",
-                fontSize: "15px",
                 borderRadius: "5px",
-                border: "1px solid #797979",
+                textAlign: "center",
+                fontSize: "16px",
+                color: "#e8e8e8",
+              }}
+            />
+            <input
+              type="text"
+              placeholder="End Date"
+              style={{
+                border: "1px solid #cccccc",
+                padding: "15px 10px",
+                flex: 1,
+                backgroundColor: "transparent",
+                borderRadius: "5px",
+                textAlign: "center",
+                fontSize: "16px",
+                color: "#e8e8e8",
+              }}
+            />
+            <button
+              style={{
+                border: "1px solid orange",
+                padding: "15px 10px",
+                backgroundColor: "transparent",
                 color: "white",
-                padding: "10px", // Optional: add some padding for better appearance
-                marginRight: "2rem",
+                textAlign: "center",
+                fontSize: "16px",
+                borderRadius: "5px",
+                marginLeft: "1rem",
+                flex: 1,
+                transition: "border-color 0.2s, color 0.2s",
+                cursor: "pointer",
+              }}
+              onMouseOver={(e) => {
+                e.target.style.borderColor = "#fff";
+                e.target.style.color = "orange";
+              }}
+              onMouseOut={(e) => {
+                e.target.style.borderColor = "orange";
+                e.target.style.color = "#fff";
               }}
             >
-              <option value="Select time interval..." disabled>
-                Select time interval...
-              </option>
-              <option value="5 minutes">5 minutes</option>
-              <option value="10 minutes">10 minutes</option>
-              <option value="15 minutes">15 minutes</option>
-              <option value="20 minutes">20 minutes</option>
-              <option value="45 minutes">45 minutes</option>
-              <option value="1 hour">1 hour</option>
-            </select>
+              Download
+            </button>
           </div>
         </div>
+
         {/* end of style for DIV 1 */}
         {/*  */}
         {/*  */}
@@ -723,41 +691,63 @@ function RealTime_Settings() {
               fontSize: "20px",
             }}
           >
-            Wireless Sensors
+            Download Trait Scorecard
           </div>
-          <p
-            style={{
-              color: " #00e1b4",
-              marginLeft: "1rem",
-            }}
-          >
-            Select time interval for: temperature, humidity, air pressure, lux,
-            air quality, add-on sensor
-          </p>
-          <div>
-            <select
-              value={selectedInterval1}
-              onChange={handleSelect1}
+          <div style={{ display: "flex", flex: 1 }}>
+            <input
+              type="text"
+              placeholder="Start Date"
               style={{
+                border: "1px solid #cccccc",
+                padding: "15px 10px",
+                marginRight: "1rem",
+                flex: 1,
                 backgroundColor: "transparent",
-                fontSize: "15px",
                 borderRadius: "5px",
-                border: "1px solid #797979",
+                textAlign: "center",
+                fontSize: "16px",
+                color: "#e8e8e8",
+              }}
+            />
+            <input
+              type="text"
+              placeholder="End Date"
+              style={{
+                border: "1px solid #cccccc",
+                padding: "15px 10px",
+                flex: 1,
+                backgroundColor: "transparent",
+                borderRadius: "5px",
+                textAlign: "center",
+                fontSize: "16px",
+                color: "#e8e8e8",
+              }}
+            />
+            <button
+              style={{
+                border: "1px solid orange",
+                padding: "15px 10px",
+                backgroundColor: "transparent",
                 color: "white",
-                padding: "10px", // Optional: add some padding for better appearance
-                marginRight: "2rem",
+                textAlign: "center",
+                fontSize: "16px",
+                borderRadius: "5px",
+                marginLeft: "1rem",
+                flex: 1,
+                transition: "border-color 0.2s, color 0.2s",
+                cursor: "pointer",
+              }}
+              onMouseOver={(e) => {
+                e.target.style.borderColor = "#fff";
+                e.target.style.color = "orange";
+              }}
+              onMouseOut={(e) => {
+                e.target.style.borderColor = "orange";
+                e.target.style.color = "#fff";
               }}
             >
-              <option value="Select time interval..." disabled>
-                Select time interval...
-              </option>
-              <option value="5 minutes">5 minutes</option>
-              <option value="10 minutes">10 minutes</option>
-              <option value="15 minutes">15 minutes</option>
-              <option value="20 minutes">20 minutes</option>
-              <option value="45 minutes">45 minutes</option>
-              <option value="1 hour">1 hour</option>
-            </select>
+              Download
+            </button>
           </div>
         </div>
         {/* end of style for DIV 2 */}
@@ -790,41 +780,63 @@ function RealTime_Settings() {
               fontSize: "20px",
             }}
           >
-            Wind Sensors
+            Download FieldDock Images
           </div>
-          <p
-            style={{
-              color: " #00e1b4",
-              marginLeft: "1rem",
-            }}
-          >
-            Select time interval for windspeed, wind direction, gust (for
-            digital wind sensors)
-          </p>
-          <div>
-            <select
-              value={selectedInterval2}
-              onChange={handleSelect2}
+          <div style={{ display: "flex", flex: 1 }}>
+            <input
+              type="text"
+              placeholder="Start Date"
               style={{
+                border: "1px solid #cccccc",
+                padding: "15px 10px",
+                marginRight: "1rem",
+                flex: 1,
                 backgroundColor: "transparent",
-                fontSize: "15px",
                 borderRadius: "5px",
-                border: "1px solid #797979",
+                textAlign: "center",
+                fontSize: "16px",
+                color: "#e8e8e8",
+              }}
+            />
+            <input
+              type="text"
+              placeholder="End Date"
+              style={{
+                border: "1px solid #cccccc",
+                padding: "15px 10px",
+                flex: 1,
+                backgroundColor: "transparent",
+                borderRadius: "5px",
+                textAlign: "center",
+                fontSize: "16px",
+                color: "#e8e8e8",
+              }}
+            />
+            <button
+              style={{
+                border: "1px solid orange",
+                padding: "15px 10px",
+                backgroundColor: "transparent",
                 color: "white",
-                padding: "10px", // Optional: add some padding for better appearance
-                marginRight: "2rem",
+                textAlign: "center",
+                fontSize: "16px",
+                borderRadius: "5px",
+                marginLeft: "1rem",
+                flex: 1,
+                transition: "border-color 0.2s, color 0.2s",
+                cursor: "pointer",
+              }}
+              onMouseOver={(e) => {
+                e.target.style.borderColor = "#fff";
+                e.target.style.color = "orange";
+              }}
+              onMouseOut={(e) => {
+                e.target.style.borderColor = "orange";
+                e.target.style.color = "#fff";
               }}
             >
-              <option value="Select time interval..." disabled>
-                Select time interval...
-              </option>
-              <option value="5 minutes">5 minutes</option>
-              <option value="10 minutes">10 minutes</option>
-              <option value="15 minutes">15 minutes</option>
-              <option value="20 minutes">20 minutes</option>
-              <option value="45 minutes">45 minutes</option>
-              <option value="1 hour">1 hour</option>
-            </select>
+              Download
+            </button>
           </div>
         </div>
         {/* end of style for DIV 3 */}
@@ -849,6 +861,8 @@ function RealTime_Settings() {
             style={{
               position: "absolute",
               top: "-15px",
+              width: "320px",
+              textAlign: "center",
               left: "50%",
               transform: "translateX(-50%)",
               backgroundColor: "#181818",
@@ -857,41 +871,63 @@ function RealTime_Settings() {
               fontSize: "20px",
             }}
           >
-            Soil Sensors
+            Download Mosaicked Drone Images
           </div>
-          <p
-            style={{
-              color: " #00e1b4",
-              marginLeft: "1rem",
-            }}
-          >
-            Select time interval for: soil temperature, moisture, electrical
-            conductivity (if integrated)
-          </p>
-          <div>
-            <select
-              value={selectedInterval3}
-              onChange={handleSelect3}
+          <div style={{ display: "flex", flex: 1 }}>
+            <input
+              type="text"
+              placeholder="Start Date"
               style={{
+                border: "1px solid #cccccc",
+                padding: "15px 10px",
+                marginRight: "1rem",
+                flex: 1,
                 backgroundColor: "transparent",
-                fontSize: "15px",
                 borderRadius: "5px",
-                border: "1px solid #797979",
+                textAlign: "center",
+                fontSize: "16px",
+                color: "#e8e8e8",
+              }}
+            />
+            <input
+              type="text"
+              placeholder="End Date"
+              style={{
+                border: "1px solid #cccccc",
+                padding: "15px 10px",
+                flex: 1,
+                backgroundColor: "transparent",
+                borderRadius: "5px",
+                textAlign: "center",
+                fontSize: "16px",
+                color: "#e8e8e8",
+              }}
+            />
+            <button
+              style={{
+                border: "1px solid orange",
+                padding: "15px 10px",
+                backgroundColor: "transparent",
                 color: "white",
-                padding: "10px", // Optional: add some padding for better appearance
-                marginRight: "2rem",
+                textAlign: "center",
+                fontSize: "16px",
+                borderRadius: "5px",
+                marginLeft: "1rem",
+                flex: 1,
+                transition: "border-color 0.2s, color 0.2s",
+                cursor: "pointer",
+              }}
+              onMouseOver={(e) => {
+                e.target.style.borderColor = "#fff";
+                e.target.style.color = "orange";
+              }}
+              onMouseOut={(e) => {
+                e.target.style.borderColor = "orange";
+                e.target.style.color = "#fff";
               }}
             >
-              <option value="Select time interval..." disabled>
-                Select time interval...
-              </option>
-              <option value="5 minutes">5 minutes</option>
-              <option value="10 minutes">10 minutes</option>
-              <option value="15 minutes">15 minutes</option>
-              <option value="20 minutes">20 minutes</option>
-              <option value="45 minutes">45 minutes</option>
-              <option value="1 hour">1 hour</option>
-            </select>
+              Download
+            </button>
           </div>
         </div>
         {/* end of style for DIV 4 */}
@@ -924,40 +960,63 @@ function RealTime_Settings() {
               fontSize: "20px",
             }}
           >
-            PAR Sensors
+            Download Drone Data
           </div>
-          <p
-            style={{
-              color: " #00e1b4",
-              marginLeft: "1rem",
-            }}
-          >
-            Select time interval for PAR Sensor measurements
-          </p>
-          <div>
-            <select
-              value={selectedInterval4}
-              onChange={handleSelect4}
+          <div style={{ display: "flex", flex: 1 }}>
+            <input
+              type="text"
+              placeholder="Start Date"
               style={{
+                border: "1px solid #cccccc",
+                padding: "15px 10px",
+                marginRight: "1rem",
+                flex: 1,
                 backgroundColor: "transparent",
-                fontSize: "15px",
                 borderRadius: "5px",
-                border: "1px solid #797979",
+                textAlign: "center",
+                fontSize: "16px",
+                color: "#e8e8e8",
+              }}
+            />
+            <input
+              type="text"
+              placeholder="End Date"
+              style={{
+                border: "1px solid #cccccc",
+                padding: "15px 10px",
+                flex: 1,
+                backgroundColor: "transparent",
+                borderRadius: "5px",
+                textAlign: "center",
+                fontSize: "16px",
+                color: "#e8e8e8",
+              }}
+            />
+            <button
+              style={{
+                border: "1px solid orange",
+                padding: "15px 10px",
+                backgroundColor: "transparent",
                 color: "white",
-                padding: "10px", // Optional: add some padding for better appearance
-                marginRight: "2rem",
+                textAlign: "center",
+                fontSize: "16px",
+                borderRadius: "5px",
+                marginLeft: "1rem",
+                flex: 1,
+                transition: "border-color 0.2s, color 0.2s",
+                cursor: "pointer",
+              }}
+              onMouseOver={(e) => {
+                e.target.style.borderColor = "#fff";
+                e.target.style.color = "orange";
+              }}
+              onMouseOut={(e) => {
+                e.target.style.borderColor = "orange";
+                e.target.style.color = "#fff";
               }}
             >
-              <option value="Select time interval..." disabled>
-                Select time interval...
-              </option>
-              <option value="5 minutes">5 minutes</option>
-              <option value="10 minutes">10 minutes</option>
-              <option value="15 minutes">15 minutes</option>
-              <option value="20 minutes">20 minutes</option>
-              <option value="45 minutes">45 minutes</option>
-              <option value="1 hour">1 hour</option>
-            </select>
+              Download
+            </button>
           </div>
         </div>
         {/* end of style for DIV 5 */}
@@ -990,40 +1049,63 @@ function RealTime_Settings() {
               fontSize: "20px",
             }}
           >
-            Air Quality Transmitter Sensors
+            Download Wireless Sensor Data
           </div>
-          <p
-            style={{
-              color: " #00e1b4",
-              marginLeft: "1rem",
-            }}
-          >
-            Select time interval for Air Quality Transmitter Sensor measurements
-          </p>
-          <div>
-            <select
-              value={selectedInterval5}
-              onChange={handleSelect5}
+          <div style={{ display: "flex", flex: 1 }}>
+            <input
+              type="text"
+              placeholder="Start Date"
               style={{
+                border: "1px solid #cccccc",
+                padding: "15px 10px",
+                marginRight: "1rem",
+                flex: 1,
                 backgroundColor: "transparent",
-                fontSize: "15px",
                 borderRadius: "5px",
-                border: "1px solid #797979",
+                textAlign: "center",
+                fontSize: "16px",
+                color: "#e8e8e8",
+              }}
+            />
+            <input
+              type="text"
+              placeholder="End Date"
+              style={{
+                border: "1px solid #cccccc",
+                padding: "15px 10px",
+                flex: 1,
+                backgroundColor: "transparent",
+                borderRadius: "5px",
+                textAlign: "center",
+                fontSize: "16px",
+                color: "#e8e8e8",
+              }}
+            />
+            <button
+              style={{
+                border: "1px solid orange",
+                padding: "15px 10px",
+                backgroundColor: "transparent",
                 color: "white",
-                padding: "10px", // Optional: add some padding for better appearance
-                marginRight: "2rem",
+                textAlign: "center",
+                fontSize: "16px",
+                borderRadius: "5px",
+                marginLeft: "1rem",
+                flex: 1,
+                transition: "border-color 0.2s, color 0.2s",
+                cursor: "pointer",
+              }}
+              onMouseOver={(e) => {
+                e.target.style.borderColor = "#fff";
+                e.target.style.color = "orange";
+              }}
+              onMouseOut={(e) => {
+                e.target.style.borderColor = "orange";
+                e.target.style.color = "#fff";
               }}
             >
-              <option value="Select time interval..." disabled>
-                Select time interval...
-              </option>
-              <option value="5 minutes">5 minutes</option>
-              <option value="10 minutes">10 minutes</option>
-              <option value="15 minutes">15 minutes</option>
-              <option value="20 minutes">20 minutes</option>
-              <option value="45 minutes">45 minutes</option>
-              <option value="1 hour">1 hour</option>
-            </select>
+              Download
+            </button>
           </div>
         </div>
         {/* end of style for DIV 6 */}
@@ -1038,11 +1120,8 @@ function RealTime_Settings() {
       {/*  */}
       {/*  */}
       {/*  */}
-      {/* ////////////////////////////row 3 START/////////////////////////////////////////////// */}
-      {/*  */}
-      {/*  */}
-      {/*  */}
-      <div //parent styling for all row 3
+      {/* ////////////////////////////row 3 start/////////////////////////////////////////////// */}
+      <div //parent box of entire row
         style={{
           backgroundColor: "transparent",
           height: "200px",
@@ -1052,66 +1131,98 @@ function RealTime_Settings() {
           marginTop: "10rem",
         }}
       >
-        <div //styling for box surround checkboxs and button
+        <div //STYLING FOR THE whole box IN ROW 3
           style={{
-            width: "95%",
-            height: "60%",
-            border: "1px solid #797979",
-            borderRadius: "5px",
+            border: "1px solid #00e1b4",
+            padding: "10px",
+            position: "relative",
+            width: "40%",
+            height: "50%",
+            borderRadius: "10px",
             display: "flex",
-            alignItems: "center",
             justifyContent: "space-between",
-            padding: "0 20px",
-            marginLeft: "2rem",
+            alignItems: "center",
+            flexDirection: "row",
+            marginBottom: "2rem",
+            backgroundColor: "transparent",
           }}
         >
-          <div //styling for text next to checkmark boxes
+          <div //div styling for box surround "Download All Data" text
             style={{
-              display: "flex",
-              flexDirection: "column",
-              color: "#00e1b4",
+              position: "absolute",
+              top: "-15px",
+              left: "50%",
+              transform: "translateX(-50%)",
+              backgroundColor: "#181818",
+              padding: "0 5px",
+              zIndex: 1,
+              fontSize: "20px",
             }}
           >
-            <label>
-              <input type="checkbox" />
-              Apply the above imaging settings to all FieldDock systems in this
-              group
-            </label>
-            <label>
-              <input type="checkbox" />
-              Apply the above imaging settings to all FieldDock systems in this
-              account
-            </label>
+            Download All Data
           </div>
-          <button //styling for Save all Imaging Preferences button
-            style={{
-              border: "1px solid orange",
-              borderRadius: "5px",
-              padding: "10px",
-              backgroundColor: "transparent",
-              cursor: "pointer",
-              color: "white",
-              fontWeight: "bold",
-              transition: "border-color 0.2s, color 0.2s",
-            }}
-            onMouseOver={(e) => {
-              e.target.style.borderColor = "#fff";
-              e.target.style.color = "orange";
-            }}
-            onMouseOut={(e) => {
-              e.target.style.borderColor = "orange";
-              e.target.style.color = "#fff";
-            }}
-          >
-            Save all imaging preferences
-          </button>
+          <div style={{ display: "flex", flex: 1 }}>
+            <input
+              type="text"
+              placeholder="Start Date"
+              style={{
+                border: "1px solid #cccccc",
+                padding: "15px 10px",
+                marginRight: "1rem",
+                flex: 1,
+                backgroundColor: "transparent",
+                borderRadius: "5px",
+                textAlign: "center",
+                fontSize: "16px",
+                color: "#e8e8e8",
+              }}
+            />
+            <input
+              type="text"
+              placeholder="End Date"
+              style={{
+                border: "1px solid #cccccc",
+                padding: "15px 10px",
+                flex: 1,
+                backgroundColor: "transparent",
+                borderRadius: "5px",
+                textAlign: "center",
+                fontSize: "16px",
+                color: "#e8e8e8",
+              }}
+            />
+            <button
+              style={{
+                border: "1px solid orange",
+                padding: "15px 10px",
+                backgroundColor: "transparent",
+                color: "white",
+                textAlign: "center",
+                fontSize: "16px",
+                borderRadius: "5px",
+                marginLeft: "1rem",
+                flex: 1,
+                transition: "border-color 0.2s, color 0.2s",
+                cursor: "pointer",
+              }}
+              onMouseOver={(e) => {
+                e.target.style.borderColor = "#fff";
+                e.target.style.color = "orange";
+              }}
+              onMouseOut={(e) => {
+                e.target.style.borderColor = "orange";
+                e.target.style.color = "#fff";
+              }}
+            >
+              Download
+            </button>
+          </div>
         </div>
       </div>
-
-      {/* ////////////////////////////row 3 END/////////////////////////////////////////////// */}
+      {/* ////////////////////////////row 3 end/////////////////////////////////////////////// */}
     </div>
-    //--------------------------------------- end of code -------------------------------------
+    //end of page----------------------------
   );
 }
 
-export default RealTime_Settings;
+export default Download_data;
