@@ -565,7 +565,7 @@ function Diagnostics() {
             backgroundColor: "transparent",
             border: "1px solid #797979",
             borderRadius: "5px",
-            width: "80%",
+            width: "90%",
             height: "80%",
             display: "flex",
             flexDirection: "column",
@@ -622,19 +622,419 @@ function Diagnostics() {
           </table>
         </div>
       </div>
-
-      <div
+      {/* ----------------------------------------end of row 2-------------------------------------  */}
+      {/*  */}
+      {/*  */}
+      {/*  */}
+      {/*  */}
+      {/* ---------------------------------------start of row 3------------------------------------ */}
+      {/*  */}
+      {/*  */}
+      {/*  */}
+      {/*  */}
+      <div // div that wraps all 4 boxes so that they show up in line
         style={{
-          backgroundColor: "#ccc",
-          height: "200px",
           display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
+          flexWrap: "wrap",
         }}
       >
-        Box 3
+        <div //STYLING FOR THE FIRST box
+          style={{
+            padding: "10px",
+            position: "relative",
+            width: "calc(77% / 4)",
+            height: "200px",
+            borderRadius: "10px",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "flex-start",
+            marginRight: "10px",
+            marginLeft: "4.5rem",
+          }}
+        >
+          <div //div 1 styling
+            style={{
+              backgroundColor: "#181818",
+              padding: "0 5px",
+              borderRadius: "5px",
+              zIndex: 1,
+              marginBottom: "10px",
+              fontSize: "20px",
+              color: "white",
+              alignSelf: "flex-start",
+            }}
+          >
+            Select Customer Account
+          </div>
+          <div //div 2 styling
+            style={{
+              border: "1px solid #ccc",
+              borderRadius: "5px",
+              width: "100%",
+              marginBottom: "10px",
+              alignSelf: "flex-start",
+            }}
+          >
+            <input
+              type="text"
+              placeholder="Search for customer account"
+              style={{
+                border: "none",
+                padding: "15px",
+                width: "100%",
+                borderRadius: "5px",
+                backgroundColor: "transparent",
+                color: "white",
+                fontSize: "16px",
+              }}
+            />
+          </div>
+          <div
+            style={{
+              backgroundColor: "transparent",
+              padding: "10px",
+              borderRadius: "5px",
+              border: "1px solid #ccc",
+              marginTop: "10px",
+              alignSelf: "flex-start",
+              width: "100%",
+            }}
+          >
+            <select
+              name="accounts"
+              id="accounts"
+              style={{
+                width: "100%",
+                outline: "none",
+                fontSize: "16px",
+                backgroundColor: "transparent",
+                color: "white",
+                border: "none",
+              }}
+            >
+              <option value="" disabled selected>
+                Select an account...
+              </option>
+              <option value="customer1">customer 1</option>
+              <option value="customer2">customer 2</option>
+              <option value="customer3">customer 3</option>
+              <option value="customer4">customer 4</option>
+            </select>
+          </div>
+          <div //div 4 styling
+            style={{
+              display: "flex",
+              alignItems: "center",
+              alignSelf: "flex-start",
+              marginTop: "20px",
+            }}
+          >
+            <input
+              type="checkbox"
+              id="show-diagnostics"
+              name="show-diagnostics"
+              value="show-diagnostics"
+            />
+            <label htmlFor="show-diagnostics" style={{ marginLeft: "10px" }}>
+              Show all diagnostics for this Account
+            </label>
+          </div>
+        </div>
+        {/* -------end of box 1 styling  */}
+        <div //STYLING FOR THE Second DIVS IN ROW 3 start
+          style={{
+            padding: "10px",
+            position: "relative",
+            width: "calc(77% / 4)",
+            height: "200px",
+            borderRadius: "10px",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "flex-start",
+            marginRight: "10px",
+            marginLeft: "4.5rem",
+          }}
+        >
+          <div //div 1 styling
+            style={{
+              backgroundColor: "#181818",
+              padding: "0 5px",
+              borderRadius: "5px",
+              zIndex: 1,
+              marginBottom: "10px",
+              fontSize: "20px",
+              color: "white",
+              alignSelf: "flex-start",
+            }}
+          >
+            Select Phenode Group
+          </div>
+          <div //div 2 styling
+            style={{
+              border: "1px solid #ccc",
+              borderRadius: "5px",
+              width: "100%",
+              marginBottom: "10px",
+              alignSelf: "flex-start",
+            }}
+          >
+            <input
+              type="text"
+              placeholder="Search for FieldDock Group"
+              style={{
+                border: "none",
+                padding: "15px",
+                width: "100%",
+                borderRadius: "5px",
+                backgroundColor: "transparent",
+                color: "white",
+                fontSize: "16px",
+              }}
+            />
+          </div>
+          <div
+            style={{
+              backgroundColor: "transparent",
+              padding: "10px",
+              borderRadius: "5px",
+              border: "1px solid #ccc",
+              marginTop: "10px",
+              alignSelf: "flex-start",
+              width: "100%",
+            }}
+          >
+            <select
+              name="accounts"
+              id="accounts"
+              style={{
+                width: "100%",
+                outline: "none",
+                fontSize: "16px",
+                backgroundColor: "transparent",
+                color: "white",
+                border: "none",
+              }}
+            >
+              <option value="" disabled selected>
+                Select a group...
+              </option>
+              <option value="customer1">Group 1</option>
+              <option value="customer2">Group 2</option>
+              <option value="customer3">Group 3</option>
+              <option value="customer4">Group 4</option>
+            </select>
+          </div>
+          <div //div 4 styling
+            style={{
+              display: "flex",
+              alignItems: "center",
+              alignSelf: "flex-start",
+              marginTop: "20px",
+            }}
+          >
+            <input
+              type="checkbox"
+              id="show-diagnostics"
+              name="show-diagnostics"
+              value="show-diagnostics"
+            />
+            <label htmlFor="show-diagnostics" style={{ marginLeft: "10px" }}>
+              Show all diagnostics for this Group
+            </label>
+          </div>
+        </div>
+        {/* ------end of box 2 styling  */}
+        <div //STYLING FOR THE THIRD DIVS IN ROW 3
+          style={{
+            padding: "10px",
+            position: "relative",
+            width: "calc(77% / 4)",
+            height: "200px",
+            borderRadius: "10px",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "flex-start",
+            marginRight: "10px",
+            marginLeft: "4.5rem",
+          }}
+        >
+          <div //div 1 styling
+            style={{
+              backgroundColor: "#181818",
+              padding: "0 5px",
+              borderRadius: "5px",
+              zIndex: 1,
+              marginBottom: "10px",
+              fontSize: "20px",
+              color: "white",
+              alignSelf: "flex-start",
+            }}
+          >
+            Select a Phenode
+          </div>
+          <div //div 2 styling
+            style={{
+              border: "1px solid #ccc",
+              borderRadius: "5px",
+              width: "100%",
+              marginBottom: "10px",
+              alignSelf: "flex-start",
+            }}
+          >
+            <input
+              type="text"
+              placeholder="Search for FieldDock System"
+              style={{
+                border: "none",
+                padding: "15px",
+                width: "100%",
+                borderRadius: "5px",
+                backgroundColor: "transparent",
+                color: "white",
+                fontSize: "16px",
+              }}
+            />
+          </div>
+          <div
+            style={{
+              backgroundColor: "transparent",
+              padding: "10px",
+              borderRadius: "5px",
+              border: "1px solid #ccc",
+              marginTop: "10px",
+              alignSelf: "flex-start",
+              width: "100%",
+            }}
+          >
+            <select
+              name="accounts"
+              id="accounts"
+              style={{
+                width: "100%",
+                outline: "none",
+                fontSize: "16px",
+                backgroundColor: "transparent",
+                color: "white",
+                border: "none",
+              }}
+            >
+              <option value="" disabled selected>
+                Select a FieldDock System...
+              </option>
+              <option value="customer1">customer 1</option>
+              <option value="customer2">customer 2</option>
+              <option value="customer3">customer 3</option>
+              <option value="customer4">customer 4</option>
+            </select>
+          </div>
+          <div //div 4 styling
+            style={{
+              display: "flex",
+              alignItems: "center",
+              alignSelf: "flex-start",
+              marginTop: "20px",
+            }}
+          >
+            <input
+              type="checkbox"
+              id="show-diagnostics"
+              name="show-diagnostics"
+              value="show-diagnostics"
+            />
+            <label htmlFor="show-diagnostics" style={{ marginLeft: "10px" }}>
+              Show all diagnostics for this Phenode
+            </label>
+          </div>
+        </div>
+        {/* -----end of box 3 styling  */}
+        <div //STYLING FOR THE FOURTH DIVS IN ROW 3
+          style={{
+            padding: "10px",
+            position: "relative",
+            width: "calc(77% / 4)",
+            height: "200px",
+            borderRadius: "10px",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "flex-start",
+            marginRight: "10px",
+            marginLeft: "4.5rem",
+          }}
+        >
+          <div //div 1 styling
+            style={{
+              backgroundColor: "#181818",
+              padding: "0 5px",
+              borderRadius: "5px",
+              zIndex: 1,
+              marginBottom: "10px",
+              fontSize: "20px",
+              color: "white",
+              alignSelf: "flex-start",
+            }}
+          >
+            Select Date
+          </div>
+          <div //div 2 styling
+            style={{
+              border: "1px solid #ccc",
+              borderRadius: "5px",
+              width: "100%",
+              marginBottom: "10px",
+              alignSelf: "flex-start",
+            }}
+          >
+            <input
+              type="text"
+              placeholder="Search dates (ex. --/--/----)"
+              style={{
+                border: "none",
+                padding: "15px",
+                width: "100%",
+                borderRadius: "5px",
+                backgroundColor: "transparent",
+                color: "white",
+                fontSize: "16px",
+              }}
+            />
+          </div>
+          <button
+            style={{
+              border: "1px solid orange",
+              borderRadius: "5px",
+              padding: "15px",
+              backgroundColor: "transparent",
+              color: "#181818",
+              fontSize: "16px",
+              marginTop: "10px",
+              alignSelf: "flex-end",
+              color: "white",
+              cursor: "pointer",
+              marginTop: "2rem",
+              transition: "border-color 0.2s, color 0.2s",
+            }}
+            onMouseOver={(e) => {
+              e.target.style.borderColor = "#fff";
+              e.target.style.color = "orange";
+            }}
+            onMouseOut={(e) => {
+              e.target.style.borderColor = "orange";
+              e.target.style.color = "#fff";
+            }}
+          >
+            Display Log
+          </button>
+        </div>
+
+        {/* --------fourth box end of styling */}
       </div>
+      {/* -------------------------------------end of row 3 above----------------------------------*/}
     </div>
+    //----------------------------------------end of page-----------------------
   );
 }
 
