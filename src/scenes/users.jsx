@@ -439,18 +439,20 @@ function Users() {
                   borderRadius: "5px",
                 }}
               >
-                <img
-                  src="../../assets/imaging-settings-B-inactive.svg"
-                  style={{ width: "100%", height: "90%" }} //sizing of the actual image inside the box
-                  onMouseOver={(e) =>
-                    (e.currentTarget.src =
-                      "../../assets/imaging-settings---active.svg")
-                  }
-                  onMouseOut={(e) =>
-                    (e.currentTarget.src =
-                      "../../assets/imaging-settings-B-inactive.svg")
-                  }
-                />
+                <Link to="/imager_settings">
+                  <img
+                    src="../../assets/imaging-settings-B-inactive.svg"
+                    style={{ width: "100%", height: "90%" }} //sizing of the actual image inside the box
+                    onMouseOver={(e) =>
+                      (e.currentTarget.src =
+                        "../../assets/imaging-settings---active.svg")
+                    }
+                    onMouseOut={(e) =>
+                      (e.currentTarget.src =
+                        "../../assets/imaging-settings-B-inactive.svg")
+                    }
+                  />
+                </Link>
               </div>
               <div
                 style={{

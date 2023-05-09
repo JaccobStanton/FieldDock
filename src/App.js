@@ -4,6 +4,7 @@ import Plug_Play from "./scenes/Plug_Play";
 import Drone from "./scenes/drone.jsx";
 import Images from "./scenes/images.jsx";
 import Settings from "./scenes/settings.jsx";
+import Imager_Settings from "./scenes/imager_settings.jsx";
 import RealTime_Settings from "./scenes/RealTime_Settings.jsx";
 import Diagnostics from "./scenes/diagnostics.jsx";
 import Users from "./scenes/users.jsx";
@@ -34,6 +35,7 @@ function App() {
                 element={<RealTime_Settings />}
               />
               <Route path="/diagnostics" element={<Diagnostics />} />
+              <Route path="/imager_settings" element={<Imager_Settings />} />
               <Route path="/users" element={<Users />} />
               <Route path="/download_data" element={<Download_data />} />
             </Routes>
