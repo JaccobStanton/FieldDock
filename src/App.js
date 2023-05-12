@@ -1,14 +1,14 @@
 import { Routes, Route } from "react-router-dom";
 import Dashboard from "./scenes/dashboard";
-import Plug_Play from "./scenes/Plug_Play";
-import Drone from "./scenes/drone.jsx";
-import Images from "./scenes/images.jsx";
-import Settings from "./scenes/settings.jsx";
-import Imager_Settings from "./scenes/imager_settings.jsx";
-import RealTime_Settings from "./scenes/RealTime_Settings.jsx";
-import Diagnostics from "./scenes/diagnostics.jsx";
-import Users from "./scenes/users.jsx";
-import Download_data from "./scenes/download_data.jsx";
+import Plug_Play from "./scenes/dashboard/Plug_Play";
+import Drone from "./scenes/dashboard/drone.jsx";
+import Images from "./scenes/dashboard/images.jsx";
+import Settings from "./scenes/dashboard/settings.jsx";
+import Imager_Settings from "./scenes/dashboard/imager_settings.jsx";
+import RealTime_Settings from "./scenes/dashboard/RealTime_Settings.jsx";
+import Diagnostics from "./scenes/dashboard/diagnostics.jsx";
+import Users from "./scenes/dashboard/users.jsx";
+import Download_data from "./scenes/dashboard/download_data.jsx";
 import { CssBaseline, ThemeProvider } from "@mui/material"; //cssbaseline resets the css to default and theme provider provides the ability to pass into the themes into material ui
 import { ColorModeContext, useMode } from "./theme"; //importing everything just coded from theme .js
 
