@@ -1,50 +1,36 @@
-import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 
-function Imager_Settings() {
+function imager_settings() {
   return (
     <Container>
       <Row>
         <Col
           style={{
             backgroundColor: "#ccc",
-            height: "200px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
+            border: "1px solid red",
           }}
         >
-          Box 1
+          Box 1 alksdf;ajs;dlfj;asd
         </Col>
-      </Row>
-      <Row>
         <Col
           style={{
             backgroundColor: "#ccc",
-            height: "200px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
+            border: "1px solid green",
           }}
         >
-          Box 2
+          Box hasflkjs;dlfjkasd2
         </Col>
-      </Row>
-      <Row>
         <Col
           style={{
             backgroundColor: "#ccc",
-            height: "200px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
+            border: "1px solid blue",
           }}
         >
-          Box 3
+          Boxajsd;flajs;dljf;lasdj 3
         </Col>
       </Row>
     </Container>
   );
 }
 
-export default Imager_Settings;
+export default imager_settings;
