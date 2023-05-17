@@ -1,0 +1,130 @@
+To add another row with three columns below the existing row in your code, you can add another set of Row and Col components. Here's how you can modify the code:
+
+
+
+import { Container, Row, Col } from "react-bootstrap";
+
+function imager_settings() {
+  return (
+    <Container>
+      <Row>
+        <Col>
+          <Row>
+            <Col>
+              <div // Parent div for ROW 1 starts here
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(3, 1fr)",
+                  gridGap: "10px",
+                  height: "200px",
+                  justifyContent: "space-between",
+                  marginTop: "1rem",
+                }}
+              >
+                {/* Column 1 */}
+                <div
+                  style={{
+                    backgroundColor: "transparent",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    flexDirection: "column",
+                  }}
+                >
+                  {/* ...your content for Box 1 */}
+                </div>
+
+                {/* Column 2 */}
+                <div
+                  style={{
+                    backgroundColor: "transparent",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    flexDirection: "column",
+                  }}
+                >
+                  {/* ...your content for Box 2 */}
+                </div>
+
+                {/* Column 3 */}
+                <div
+                  style={{
+                    backgroundColor: "transparent",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    flexDirection: "column",
+                  }}
+                >
+                  {/* ...your content for Box 3 */}
+                </div>
+              </div>
+            </Col>
+          </Row>
+        </Col>
+      </Row>
+
+      {/* New Row */}
+      <Row>
+        <Col>
+          <Row>
+            <Col>
+              <div // Parent div for ROW 2 starts here
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(3, 1fr)",
+                  gridGap: "10px",
+                  height: "200px",
+                  justifyContent: "space-between",
+                  marginTop: "1rem",
+                }}
+              >
+                {/* Column 1 */}
+                <div
+                  style={{
+                    backgroundColor: "transparent",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    flexDirection: "column",
+                  }}
+                >
+                  {/* ...your content for Box 1 in Row 2 */}
+                </div>
+
+                {/* Column 2 */}
+                <div
+                  style={{
+                    backgroundColor: "transparent",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    flexDirection: "column",
+                  }}
+                >
+                  {/* ...your content for Box 2 in Row 2 */}
+                </div>
+
+                {/* Column 3 */}
+                <div
+                  style={{
+                    backgroundColor: "transparent",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    flexDirection: "column",
+                  }}
+                >
+                  {/* ...your content for Box 3 in Row 2 */}
+                </div>
+              </div>
+            </Col>
+          </Row>
+        </Col>
+      </Row>
+    </Container>
+  );
+}
+
+export default imager_settings;
