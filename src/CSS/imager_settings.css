@@ -1,0 +1,205 @@
+.select-fielddock {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  width: 95%;
+  background-color: transparent;
+  border: 1px solid #00e1b4;
+  padding: 0px 0px 0px 0.8em;
+  justify-content: space-between;
+  margin-top: 2rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+/* -----------------------user, logout, reading, and GPS START----------- */
+.user-logout-box {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 5px;
+  margin-left: 25px;
+  width: 90%;
+}
+
+.user-box {
+  margin-right: 10px;
+  border: 1px solid #797979;
+  border-radius: 4px;
+  height: 3.5em;
+  text-align: center;
+  font-size: 0.8em;
+  width: 65%;
+  margin-left: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logout-button {
+  border: 1px solid orange;
+  justify-content: center;
+  background-color: transparent;
+  height: 3.5em;
+  color: #ffffff;
+  padding: 0px 0.3em;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 30%;
+  font-size: 0.8em;
+  transition: border-color 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+
+.last-reading-taken {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1px;
+  margin-left: 40px;
+}
+
+.gps {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  margin-left: 40px;
+}
+/* -----------------------user, logout, reading, and GPS END----------- */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/* ---------------------- 10 page boxes START-------------------------- */
+.ten-boxes {
+  justify-content: space-between;
+  margin-bottom: 40px;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+.page-box {
+  flex-basis: 15%;
+  border: 1px solid #797979;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: border-color 0s;
+}
+
+.page-box-hover {
+  border: 1px solid #00e1b4;
+  flex-basis: 15%;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: border-color 0s;
+}
+
+.box-icon {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  padding: 5px;
+}
+/* -------------------10 page boxes END-------------------------------- */
+/*  */
+/*  */
+/*  */
+/*  */
+/* -------------------media queries for Last Reading Taken/GPS START--------------- */
+.responsive-text {
+  font-size: 1em;
+}
+
+@media (min-width: 450px) and (max-width: 519px) {
+  .responsive-text {
+    font-size: 0.8em;
+  }
+}
+
+@media (min-width: 520px) and (max-width: 599px) {
+  .responsive-text {
+    font-size: 0.85em;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 649px) {
+  .responsive-text {
+    font-size: 0.9em;
+  }
+}
+
+@media (min-width: 650px) and (max-width: 757px) {
+  .responsive-text {
+    font-size: 0.9em;
+  }
+}
+
+@media (min-width: 758px) and (max-width: 899px) {
+  .responsive-text {
+    font-size: 0.9em;
+  }
+}
+
+@media (min-width: 900px) and (max-width: 999px) {
+  .responsive-text {
+    font-size: 0.9em;
+  }
+}
+
+@media (min-width: 1100px) and (max-width: 1199px) {
+  .responsive-text {
+    font-size: 1em;
+  }
+}
+@media (min-width: 1200px) and (max-width: 1299px) {
+  .responsive-text {
+    font-size: 1.1em;
+  }
+}
+
+@media (min-width: 1300px) and (max-width: 1399px) {
+  .responsive-text {
+    font-size: 1.2em;
+  }
+}
+
+@media (min-width: 1400px) and (max-width: 1599px) {
+  .responsive-text {
+    font-size: 1.3em;
+  }
+}
+
+@media (min-width: 1600px) and (max-width: 1699px) {
+  .responsive-text {
+    font-size: 1.3em;
+  }
+}
+
+@media (min-width: 1700px) and (max-width: 1799px) {
+  .responsive-text {
+    font-size: 1.4em;
+  }
+}
+
+@media (min-width: 1800px) and (max-width: 1999px) {
+  .responsive-text {
+    font-size: 1.5em;
+  }
+}
+
+@media (min-width: 2000px) {
+  .responsive-text {
+    font-size: 1.6em;
+  }
+}
+/* -------------------for last reading taken/GPS END ---------------------------- */

@@ -31,7 +31,7 @@ function App() {
               <Route path="/images" element={<Images />} />
               <Route path="/settings" element={<Settings />} />
               <Route
-                path="/RealTime_Settings"
+                path="/realtime_settings"
                 element={<RealTime_Settings />}
               />
               <Route path="/diagnostics" element={<Diagnostics />} />
