@@ -40,6 +40,9 @@ function Imager_Settings() {
   };
   //---------------------------select hanger system logic END----------------------------------
   //
+  //
+  //
+  //
   //---------------------------hovering over 10 boxes START------------------------------------
   const [isHovered1, setIsHovered1] = useState(false);
   const [isHovered2, setIsHovered2] = useState(false);
@@ -77,6 +80,16 @@ function Imager_Settings() {
   //---------------------------logic for live date and time END------------------------------
   //
   //
+  const [hovered, setHovered] = useState(false);
+
+  const handleMouseEnter = () => {
+    setHovered(true);
+  };
+
+  const handleMouseOut = () => {
+    setHovered(false);
+  };
+  const buttonClassName = hovered ? "logout-button-hovered" : "logout-button";
   //
   //
   return (
@@ -91,7 +104,7 @@ function Imager_Settings() {
             style={{
               backgroundColor: "transparent",
               padding: "10px",
-              width: "100%", // set the width to 75% of the column
+              width: "100%",
             }}
           >
             <div //box surrounding object "field dock logo"
@@ -107,7 +120,7 @@ function Imager_Settings() {
               />
             </div>
 
-            <div className="select-fielddock" onClick={handleHangerOpen}>
+            <div className="select-fielddock-menu" onClick={handleHangerOpen}>
               {selectedHangerSystem
                 ? selectedHangerSystem
                 : "Select FieldDock System..."}
@@ -156,15 +169,9 @@ function Imager_Settings() {
           <div className="user-logout-box">
             <div className="user-box">User 0000 (------)</div>
             <button
-              className="logout-button"
-              onMouseOver={(e) => {
-                e.target.style.borderColor = "#fff";
-                e.target.style.color = "orange";
-              }}
-              onMouseOut={(e) => {
-                e.target.style.borderColor = "orange";
-                e.target.style.color = "#fff";
-              }}
+              className={buttonClassName}
+              onMouseEnter={handleMouseEnter}
+              onMouseOut={handleMouseOut}
             >
               Log Out
             </button>
@@ -203,7 +210,7 @@ function Imager_Settings() {
         {/*  */}
         {/* -------------------------------------------------DIRECTORY next column START--------------------------- */}
         <Col xs={12} sm={12} md={4} lg={4} xl={4} xxl={4}>
-          <div className="d-flex flex-wrap ten-boxes">
+          <div className="first-five-boxes">
             {/* Box 1 */}
             <div
               className={isHovered1 ? "page-box-hover" : "page-box"}
@@ -290,13 +297,8 @@ function Imager_Settings() {
               </Link>
             </div>
           </div>
-          <div
-            className="d-flex flex-wrap"
-            style={{
-              justifyContent: "space-between",
-              marginLeft: "10px",
-            }}
-          >
+          {/* second row starts */}
+          <div className="second-five-boxes">
             {/* Box 6 */}
             <div
               className={isHovered6 ? "page-box-hover" : "page-box"}
@@ -388,6 +390,58 @@ function Imager_Settings() {
       </Row>
       {/* end of row 1 */}
       {/* -------------------------------------------------PARENT column row 1 END ----------------------------- */}
+      {/*  */}
+      {/*  */}
+      {/*  */}
+      {/*  */}
+      {/* -------------------------------------------------PARENT column row 2 START ----------------------------- */}
+      <Row>
+        <Col xs={12} sm={12} md={12} lg={12} xl={12} xxl={12}>
+          <div className="entire-second-row">
+            <div className="button-row">
+              <button
+                className="create-user-button"
+                onMouseOver={(e) => {
+                  e.target.style.borderColor = "#fff";
+                  e.target.style.color = "orange";
+                }}
+                onMouseOut={(e) => {
+                  e.target.style.borderColor = "orange";
+                  e.target.style.color = "#fff";
+                }}
+              >
+                Create a new user
+              </button>
+              <button
+                className="edit-existing-user"
+                onMouseOver={(e) => {
+                  e.target.style.borderColor = "#fff";
+                  e.target.style.color = "orange";
+                }}
+                onMouseOut={(e) => {
+                  e.target.style.borderColor = "orange";
+                  e.target.style.color = "#fff";
+                }}
+              >
+                Edit existing user
+              </button>
+              {/* <div
+                style={{
+                  position: "absolute",
+                  top: "-100%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                  color: "#fff",
+                  fontSize: "20px",
+                }}
+              >
+                Users
+              </div> */}
+            </div>
+          </div>
+        </Col>
+        {/* -------------------------------------------------PARENT column row 2 END ----------------------------- */}
+      </Row>
     </Container>
   );
 }

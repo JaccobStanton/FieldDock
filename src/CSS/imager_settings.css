@@ -1,4 +1,4 @@
-.select-fielddock {
+.select-fielddock-menu {
   display: flex;
   align-items: center;
   height: 40px;
@@ -29,14 +29,14 @@
   border-radius: 4px;
   height: 3.5em;
   text-align: center;
-  font-size: 0.8em;
+  font-size: 1em;
   width: 65%;
   margin-left: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
+.logout-button-hovered,
 .logout-button {
   border: 1px solid orange;
   justify-content: center;
@@ -47,9 +47,13 @@
   border-radius: 4px;
   cursor: pointer;
   width: 30%;
-  font-size: 0.8em;
-  transition: border-color 0.2s, color 0.2s;
+  font-size: 1em;
+  transition: border-color 0s, color 0s;
   white-space: nowrap;
+}
+.logout-button-hovered {
+  border: 1px solid #00e1b4;
+  color: orange;
 }
 
 .last-reading-taken {
@@ -58,7 +62,7 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 1px;
-  margin-left: 40px;
+  margin-left: 5px;
 }
 
 .gps {
@@ -67,7 +71,7 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 10px;
-  margin-left: 40px;
+  margin-left: 5px;
 }
 /* -----------------------user, logout, reading, and GPS END----------- */
 /*  */
@@ -76,41 +80,111 @@
 /*  */
 /*  */
 /* ---------------------- 10 page boxes START-------------------------- */
-.ten-boxes {
-  justify-content: space-between;
-  margin-bottom: 40px;
+.first-five-boxes {
+  justify-content: space-around;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
   margin-top: 10px;
   margin-left: 10px;
 }
-.page-box {
+
+.second-five-boxes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-left: 10px;
+}
+
+.box-icon {
+  /* width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%; */
+  object-fit: contain;
+}
+
+.page-box,
+.page-box-hover {
   flex-basis: 15%;
   border: 1px solid #797979;
   border-radius: 4px;
   display: flex;
   justify-content: center;
-  align-items: center;
   transition: border-color 0s;
 }
 
 .page-box-hover {
   border: 1px solid #00e1b4;
-  flex-basis: 15%;
-  border-radius: 4px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: border-color 0s;
 }
 
-.box-icon {
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  padding: 5px;
-}
 /* -------------------10 page boxes END-------------------------------- */
+/*  */
+/*  */
+/* --------------------second row START---------------------------------- */
+.entire-second-row {
+  background-color: transparent;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.button-row {
+  position: relative;
+  display: inline-block;
+}
+
+.create-user-button {
+  background-color: transparent;
+  border-radius: 5px;
+  border: 1px solid orange;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 15px;
+  transition: border-color 0s, color 0s;
+  width: 230px;
+  margin-right: 20px;
+}
+.edit-existing-user {
+  background-color: transparent;
+  border-radius: 5px;
+  border: 1px solid orange;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 15px;
+  transition: border-color 0s, color 0s;
+  width: 230px;
+  position: relative;
+  display: inline-block;
+}
+/* --------------------second row END---------------------------------- */
+
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*                                 ***MEDIA QUERIES***                                   */
+/*  */
+/*  */
+/*  */
+/*  */
+/* -------------------media queries for User/LogOut text START--------------- */
+@media (min-width: 450px) and (max-width: 550px) {
+  .user-box {
+    font-size: 0.9em;
+  }
+}
+@media (min-width: 450px) and (max-width: 550px) {
+  .logout-button {
+    font-size: 0.9em;
+  }
+}
+/* -------------------media queries for User/LogOut text END--------------- */
 /*  */
 /*  */
 /*  */
@@ -132,30 +206,16 @@
   }
 }
 
-@media (min-width: 600px) and (max-width: 649px) {
+@media (min-width: 600px) and (max-width: 999px) {
   .responsive-text {
     font-size: 0.9em;
   }
 }
-
-@media (min-width: 650px) and (max-width: 757px) {
+@media (min-width: 1100px) and (max-width: 1199px) {
   .responsive-text {
     font-size: 0.9em;
   }
 }
-
-@media (min-width: 758px) and (max-width: 899px) {
-  .responsive-text {
-    font-size: 0.9em;
-  }
-}
-
-@media (min-width: 900px) and (max-width: 999px) {
-  .responsive-text {
-    font-size: 0.9em;
-  }
-}
-
 @media (min-width: 1100px) and (max-width: 1199px) {
   .responsive-text {
     font-size: 1em;
@@ -163,7 +223,7 @@
 }
 @media (min-width: 1200px) and (max-width: 1299px) {
   .responsive-text {
-    font-size: 1.1em;
+    font-size: 1em;
   }
 }
 
@@ -172,14 +232,12 @@
     font-size: 1.2em;
   }
 }
-
-@media (min-width: 1400px) and (max-width: 1599px) {
+@media (min-width: 1400px) and (max-width: 1499px) {
   .responsive-text {
-    font-size: 1.3em;
+    font-size: 1.2em;
   }
 }
-
-@media (min-width: 1600px) and (max-width: 1699px) {
+@media (min-width: 1500px) and (max-width: 1699px) {
   .responsive-text {
     font-size: 1.3em;
   }
@@ -187,19 +245,304 @@
 
 @media (min-width: 1700px) and (max-width: 1799px) {
   .responsive-text {
-    font-size: 1.4em;
+    font-size: 1.3em;
   }
 }
 
 @media (min-width: 1800px) and (max-width: 1999px) {
   .responsive-text {
-    font-size: 1.5em;
+    font-size: 1.4em;
   }
 }
 
 @media (min-width: 2000px) {
   .responsive-text {
-    font-size: 1.6em;
+    font-size: 1.5em;
   }
 }
-/* -------------------for last reading taken/GPS END ---------------------------- */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/* -------------------for User/Logout parent box START---------------------------- */
+@media (min-width: 500px) and (max-width: 550px) {
+  .user-logout-box {
+    margin-left: 5px;
+  }
+}
+@media (min-width: 550px) and (max-width: 598px) {
+  .user-logout-box {
+    margin-left: 8px;
+  }
+}
+@media (min-width: 600px) and (max-width: 693px) {
+  .user-logout-box {
+    margin-left: 10px;
+  }
+}
+@media (min-width: 693px) and (max-width: 766px) {
+  .user-logout-box {
+    margin-left: 15px;
+  }
+}
+/* -------------------for User/Logout parent box END---------------------------- */
+
+/* -------------------for 10 boxes START---------------------------- */
+@media (min-width: 500px) and (max-width: 598px) {
+  .page-box,
+  .page-box-hover {
+    height: 100%;
+    width: 100%;
+    padding: 1%;
+    margin-left: -25px;
+  }
+
+  .box-icon {
+    width: 35px;
+    height: 35px;
+  }
+}
+@media (min-width: 598px) and (max-width: 652px) {
+  .page-box,
+  .page-box-hover {
+    height: 100%;
+    width: 100%;
+    padding: 1%;
+    margin-left: -25px;
+  }
+
+  .box-icon {
+    width: 40px;
+    height: 40px;
+  }
+}
+@media (min-width: 652px) and (max-width: 698px) {
+  .page-box,
+  .page-box-hover {
+    height: 100%;
+    width: 100%;
+    padding: 1%;
+    margin-left: -25px;
+  }
+
+  .box-icon {
+    width: 45px;
+    height: 45px;
+  }
+}
+@media (min-width: 698px) and (max-width: 751px) {
+  .page-box,
+  .page-box-hover {
+    height: 100%;
+    width: 100%;
+    padding: 1%;
+    margin-left: -25px;
+  }
+
+  .box-icon {
+    width: 50px;
+    height: 50px;
+  }
+}
+@media (min-width: 751px) and (max-width: 767px) {
+  .page-box,
+  .page-box-hover {
+    height: 100%;
+    width: 100%;
+    padding: 1%;
+    margin-left: -30px;
+  }
+
+  .box-icon {
+    width: 55px;
+    height: 55px;
+  }
+}
+@media (min-width: 768px) and (max-width: 776px) {
+  .page-box,
+  .page-box-hover {
+    height: 100%;
+    width: 100%;
+    padding: 1.5%;
+  }
+
+  .box-icon {
+    width: 32px;
+    height: 32px;
+  }
+}
+@media (min-width: 776px) and (max-width: 799px) {
+  .page-box,
+  .page-box-hover {
+    height: 100%;
+    width: 100%;
+    padding: 1.5%;
+  }
+
+  .box-icon {
+    width: 33px;
+    height: 33px;
+  }
+}
+@media (min-width: 800px) and (max-width: 824px) {
+  .page-box,
+  .page-box-hover {
+    height: 100%;
+    width: 100%;
+    padding: 1.5%;
+  }
+
+  .box-icon {
+    width: 34px;
+    height: 34px;
+  }
+}
+@media (min-width: 824px) and (max-width: 855px) {
+  .page-box,
+  .page-box-hover {
+    height: 100%;
+    width: 100%;
+    padding: 1.5%;
+  }
+
+  .box-icon {
+    width: 35px;
+    height: 35px;
+  }
+}
+@media (min-width: 855px) and (max-width: 873px) {
+  .page-box,
+  .page-box-hover {
+    height: 100%;
+    width: 100%;
+    padding: 1.5%;
+  }
+
+  .box-icon {
+    width: 37px;
+    height: 37px;
+  }
+}
+@media (min-width: 873px) and (max-width: 900px) {
+  .page-box,
+  .page-box-hover {
+    height: 100%;
+    width: 100%;
+    padding: 1.5%;
+  }
+
+  .box-icon {
+    width: 38px;
+    height: 38px;
+  }
+}
+@media (min-width: 900px) and (max-width: 952px) {
+  .page-box,
+  .page-box-hover {
+    height: 100%;
+    width: 100%;
+    padding: 1.5%;
+  }
+
+  .box-icon {
+    width: 40px;
+    height: 40px;
+  }
+}
+@media (min-width: 953px) and (max-width: 999px) {
+  .page-box,
+  .page-box-hover {
+    height: 100%;
+    width: 100%;
+    padding: 1.5%;
+  }
+
+  .box-icon {
+    width: 43px;
+    height: 43px;
+  }
+}
+@media (min-width: 1000px) and (max-width: 1099px) {
+  .page-box,
+  .page-box-hover {
+    height: 100%;
+    width: 100%;
+    padding: 1.5%;
+  }
+
+  .box-icon {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+@media (min-width: 1100px) and (max-width: 1299px) {
+  .page-box,
+  .page-box-hover {
+    height: 100%;
+    width: 100%;
+    padding: 1.5%;
+  }
+
+  .box-icon {
+    width: 50px;
+    height: 50px;
+  }
+}
+@media (min-width: 1300px) and (max-width: 1399px) {
+  .page-box,
+  .page-box-hover {
+    height: 100%;
+    width: 100%;
+    padding: 1.5%;
+  }
+
+  .box-icon {
+    width: 54px;
+    height: 54px;
+  }
+}
+@media (min-width: 1400px) and (max-width: 1799px) {
+  .page-box,
+  .page-box-hover {
+    height: 100%;
+    width: 100%;
+    padding: 1.5%;
+  }
+
+  .box-icon {
+    width: 55px;
+    height: 55px;
+  }
+}
+@media (min-width: 1800px) and (max-width: 1999px) {
+  .page-box,
+  .page-box-hover {
+    width: 100%;
+    height: 100%;
+    padding: 1.5%;
+  }
+
+  .box-icon {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+/* Screen sizes between 2000px and above */
+@media (min-width: 2000px) {
+  .page-box,
+  .page-box-hover {
+    width: 100%;
+    height: 100%;
+  }
+
+  .box-icon {
+    width: 80px;
+    height: 80px;
+  }
+}
+/* -------------------for 10 boxes END---------------------------- */
