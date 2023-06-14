@@ -445,18 +445,7 @@ function Imager_Settings() {
               >
                 Edit existing user
               </button>
-              {/* <div
-                style={{
-                  position: "absolute",
-                  top: "-100%",
-                  left: "50%",
-                  transform: "translate(-50%, -50%)",
-                  color: "#fff",
-                  fontSize: "20px",
-                }}
-              >
-                Users
-              </div> */}
+              <div className="user-title">Users</div>
             </div>
           </div>
         </Col>

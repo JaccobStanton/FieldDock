@@ -1,15 +1,11 @@
 .select-fielddock-menu {
   display: flex;
   align-items: center;
-  height: 40px;
-  width: 95%;
   background-color: transparent;
   border: 1px solid #00e1b4;
   padding: 0px 0px 0px 0.8em;
   justify-content: space-between;
-  margin-top: 2rem;
   border-radius: 4px;
-  font-size: 0.8rem;
   cursor: pointer;
   white-space: nowrap;
 }
@@ -19,7 +15,7 @@
   align-items: center;
   padding: 10px;
   margin-bottom: 5px;
-  margin-left: 25px;
+  margin-left: 15px;
   width: 90%;
 }
 
@@ -86,14 +82,14 @@
   flex-wrap: wrap;
   margin-bottom: 20px;
   margin-top: 10px;
-  margin-left: 10px;
+  margin-left: 12px;
 }
 
 .second-five-boxes {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  margin-left: 10px;
+  margin-left: 12px;
 }
 
 .box-icon {
@@ -118,7 +114,7 @@
   border: 1px solid #00e1b4;
 }
 
-/* -------------------10 page boxes END-------------------------------- */
+/* -------------------10 page boxes END---------------------------------- */
 /*  */
 /*  */
 /* --------------------second row START---------------------------------- */
@@ -134,6 +130,15 @@
 .button-row {
   position: relative;
   display: inline-block;
+}
+.user-title {
+  position: absolute;
+  top: -85%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
 }
 .create-user-button-hovered,
 .create-user-button {
@@ -170,26 +175,175 @@
   border: 1px solid #00e1b4;
   color: orange;
 }
-/* --------------------second row END---------------------------------- */
+/* --------------------second row END---------------------------------------------- */
 
 /*  */
 /*  */
 /*  */
 /*  */
 /*  */
-/*                                 ***MEDIA QUERIES***                  */
-
-@media (min-width: 450px) and (max-width: 550px) {
+/**********************************************************MEDIA QUERIES**************************************************************/
+/* -------------------media queries for SELECT FIELDDOCK BOX START--------------------- */
+@media (min-width: 400px) and (max-width: 767px) {
   .select-fielddock-menu {
-    font-size: 0.9em;
+    font-size: 0.85em;
+    height: 30px;
+    margin-top: 2rem;
+  }
+}
+@media (min-width: 768px) and (max-width: 799px) {
+  .select-fielddock-menu {
+    height: 30px;
+    width: 95%;
+    margin-top: 1.7rem;
+    font-size: 0.7rem;
+  }
+}
+@media (min-width: 800px) and (max-width: 899px) {
+  .select-fielddock-menu {
+    height: 30px;
+    width: 95%;
+    margin-top: 1.7rem;
+    font-size: 0.8rem;
+  }
+}
+@media (min-width: 900px) and (max-width: 999px) {
+  .select-fielddock-menu {
+    height: 30px;
+    width: 95%;
+    margin-top: 1.8rem;
+    font-size: 0.8rem;
+  }
+}
+@media (min-width: 1000px) and (max-width: 1099px) {
+  .select-fielddock-menu {
+    height: 40px;
+    width: 95%;
+    margin-top: 1.9rem;
+    font-size: 0.9rem;
+  }
+}
+@media (min-width: 1100px) and (max-width: 1149px) {
+  .select-fielddock-menu {
+    height: 40px;
+    width: 95%;
+    margin-top: 2.6rem;
+    font-size: 0.9rem;
+  }
+}
+@media (min-width: 1150px) and (max-width: 1199px) {
+  .select-fielddock-menu {
+    height: 40px;
+    width: 95%;
+    margin-top: 2.6rem;
+    font-size: 1rem;
+  }
+}
+@media (min-width: 1200px) and (max-width: 1299px) {
+  .select-fielddock-menu {
+    height: 40px;
+    width: 95%;
+    margin-top: 2.5rem;
+    font-size: 1rem;
+  }
+}
+@media (min-width: 1300px) and (max-width: 1399px) {
+  .select-fielddock-menu {
+    height: 40px;
+    width: 95%;
+    margin-top: 2.6rem;
+    font-size: 1.2rem;
   }
 }
 
+@media (min-width: 1400px) and (max-width: 1499px) {
+  .select-fielddock-menu {
+    height: 40px;
+    width: 95%;
+    margin-top: 2.6rem;
+    font-size: 1.2rem;
+  }
+}
+@media (min-width: 1500px) and (max-width: 1550px) {
+  .select-fielddock-menu {
+    height: 40px;
+    width: 95%;
+    margin-top: 2.6rem;
+    font-size: 1.2rem;
+  }
+}
+@media (min-width: 1550px) and (max-width: 1599px) {
+  .select-fielddock-menu {
+    height: 40px;
+    width: 95%;
+    margin-top: 2.5rem;
+    font-size: 1.2rem;
+  }
+}
+
+@media (min-width: 1600px) and (max-width: 1650px) {
+  .select-fielddock-menu {
+    height: 40px;
+    width: 95%;
+    margin-top: 2.4rem;
+    font-size: 1.2rem;
+  }
+}
+@media (min-width: 1650px) and (max-width: 1699px) {
+  .select-fielddock-menu {
+    height: 40px;
+    width: 95%;
+    margin-top: 2.3rem;
+    font-size: 1.2rem;
+  }
+}
+@media (min-width: 1700px) and (max-width: 1799px) {
+  .select-fielddock-menu {
+    height: 40px;
+    width: 95%;
+    margin-top: 2.3rem;
+    font-size: 1.2rem;
+  }
+}
+@media (min-width: 1800px) and (max-width: 1849px) {
+  .select-fielddock-menu {
+    height: 40px;
+    width: 95%;
+    margin-top: 2.6rem;
+    font-size: 1.3rem;
+  }
+}
+@media (min-width: 1850px) and (max-width: 1900px) {
+  .select-fielddock-menu {
+    height: 40px;
+    width: 95%;
+    margin-top: 2.5rem;
+    font-size: 1.4rem;
+  }
+}
+@media (min-width: 1901px) and (max-width: 2000px) {
+  .select-fielddock-menu {
+    height: 40px;
+    width: 95%;
+    margin-top: 2.4rem;
+    font-size: 1.5em;
+  }
+}
+@media (min-width: 2000px) {
+  .select-fielddock-menu {
+    height: 55px;
+    width: 95%;
+    margin-top: 2.1rem;
+    font-size: 1.5em;
+  }
+}
+
+/* -------------------media queries for SELECT FIELDDOCK BOX END--------------------- */
 /*  */
 /*  */
 /*  */
 /*  */
-/* -------------------media queries for User/LogOut text START--------------- */
+/* -------------------media queries for User/LogOut text START--------------------- */
 @media (min-width: 450px) and (max-width: 550px) {
   .user-box {
     font-size: 0.85em;
@@ -200,7 +354,7 @@
     font-size: 0.85em;
   }
 }
-/* -------------------media queries for User/LogOut text END--------------- */
+/* -------------------media queries for User/LogOut text END----------------------- */
 /*  */
 /*  */
 /*  */
@@ -224,59 +378,49 @@
 
 @media (min-width: 600px) and (max-width: 999px) {
   .responsive-text {
-    font-size: 0.9em;
+    font-size: 0.8em;
   }
 }
-@media (min-width: 1100px) and (max-width: 1199px) {
+@media (min-width: 1000px) and (max-width: 1099px) {
   .responsive-text {
     font-size: 0.9em;
   }
 }
 @media (min-width: 1100px) and (max-width: 1199px) {
   .responsive-text {
-    font-size: 1em;
-  }
-}
-@media (min-width: 1200px) and (max-width: 1299px) {
-  .responsive-text {
-    font-size: 1em;
+    font-size: 1.05em;
   }
 }
 
-@media (min-width: 1300px) and (max-width: 1399px) {
+@media (min-width: 1199px) and (max-width: 1299px) {
+  .responsive-text {
+    font-size: 1.09em;
+  }
+}
+
+@media (min-width: 1300px) and (max-width: 1499px) {
   .responsive-text {
     font-size: 1.2em;
   }
 }
-@media (min-width: 1400px) and (max-width: 1499px) {
-  .responsive-text {
-    font-size: 1.2em;
-  }
-}
-@media (min-width: 1500px) and (max-width: 1699px) {
+
+@media (min-width: 1500px) and (max-width: 1799px) {
   .responsive-text {
     font-size: 1.3em;
   }
 }
 
-@media (min-width: 1700px) and (max-width: 1799px) {
-  .responsive-text {
-    font-size: 1.3em;
-  }
-}
-
-@media (min-width: 1800px) and (max-width: 1999px) {
-  .responsive-text {
-    font-size: 1.4em;
-  }
-}
-
-@media (min-width: 2000px) {
+@media (min-width: 1800px) and (max-width: 2000px) {
   .responsive-text {
     font-size: 1.5em;
   }
 }
-/*  */
+@media (min-width: 2000px) {
+  .responsive-text {
+    font-size: 1.7em;
+  }
+}
+/* ---------------------- media queries for Last Reading Taken/GPS END-----------*/
 /*  */
 /*  */
 /*  */
@@ -284,7 +428,14 @@
 /*  */
 /*  */
 /* -------------------for User/Logout parent box START---------------------------- */
-@media (min-width: 500px) and (max-width: 550px) {
+@media (min-width: 500px) and (max-width: 549px) {
+  .logout-button-hovered,
+  .logout-button {
+    font-size: 0.85em;
+  }
+}
+
+@media (min-width: 500px) and (max-width: 549px) {
   .user-logout-box {
     margin-left: 5px;
     font-size: 0.85em;
@@ -305,9 +456,52 @@
     margin-left: 15px;
   }
 }
+@media (min-width: 767px) and (max-width: 799px) {
+  .logout-button-hovered,
+  .logout-button,
+  .user-box {
+    font-size: 0.6em;
+    height: 3.1em;
+  }
+}
+@media (min-width: 800px) and (max-width: 899px) {
+  .logout-button-hovered,
+  .logout-button,
+  .user-box {
+    font-size: 0.7em;
+    height: 3.2em;
+  }
+}
+@media (min-width: 900px) and (max-width: 999px) {
+  .logout-button-hovered,
+  .logout-button,
+  .user-box {
+    font-size: 0.8em;
+    height: 3.3em;
+  }
+}
+@media (min-width: 1000px) and (max-width: 1100px) {
+  .logout-button-hovered,
+  .logout-button,
+  .user-box {
+    font-size: 0.9em;
+    height: 3.4em;
+  }
+}
+@media (min-width: 2000px) {
+  .logout-button-hovered,
+  .logout-button,
+  .user-box {
+    font-size: 1.2em;
+    height: 4.4em;
+  }
+}
 /* -------------------for User/Logout parent box END---------------------------- */
-
-/* -------------------for 10 boxes START---------------------------- */
+/*  */
+/*  */
+/*  */
+/*  */
+/* -------------------for 10 boxes START----------------------------------------- */
 @media (min-width: 500px) and (max-width: 598px) {
   .page-box,
   .page-box-hover {
@@ -364,6 +558,7 @@
     height: 50px;
   }
 }
+/* screen splits here */
 @media (min-width: 751px) and (max-width: 767px) {
   .page-box,
   .page-box-hover {
@@ -378,12 +573,12 @@
     height: 55px;
   }
 }
-@media (min-width: 768px) and (max-width: 776px) {
+@media (min-width: 768px) and (max-width: 781px) {
   .page-box,
   .page-box-hover {
     height: 100%;
     width: 100%;
-    padding: 1.5%;
+    padding: 0.4%;
   }
 
   .box-icon {
@@ -391,12 +586,12 @@
     height: 32px;
   }
 }
-@media (min-width: 776px) and (max-width: 799px) {
+@media (min-width: 782px) and (max-width: 799px) {
   .page-box,
   .page-box-hover {
     height: 100%;
     width: 100%;
-    padding: 1.5%;
+    padding: 0.4%;
   }
 
   .box-icon {
@@ -409,7 +604,7 @@
   .page-box-hover {
     height: 100%;
     width: 100%;
-    padding: 1.5%;
+    padding: 0.5%;
   }
 
   .box-icon {
@@ -417,12 +612,12 @@
     height: 34px;
   }
 }
-@media (min-width: 824px) and (max-width: 855px) {
+@media (min-width: 824px) and (max-width: 854px) {
   .page-box,
   .page-box-hover {
     height: 100%;
     width: 100%;
-    padding: 1.5%;
+    padding: 0.5%;
   }
 
   .box-icon {
@@ -430,12 +625,12 @@
     height: 35px;
   }
 }
-@media (min-width: 855px) and (max-width: 873px) {
+@media (min-width: 855px) and (max-width: 872px) {
   .page-box,
   .page-box-hover {
     height: 100%;
     width: 100%;
-    padding: 1.5%;
+    padding: 0.6%;
   }
 
   .box-icon {
@@ -448,7 +643,7 @@
   .page-box-hover {
     height: 100%;
     width: 100%;
-    padding: 1.5%;
+    padding: 0.7%;
   }
 
   .box-icon {
@@ -461,7 +656,7 @@
   .page-box-hover {
     height: 100%;
     width: 100%;
-    padding: 1.5%;
+    padding: 0.8%;
   }
 
   .box-icon {
@@ -474,7 +669,7 @@
   .page-box-hover {
     height: 100%;
     width: 100%;
-    padding: 1.5%;
+    padding: 0.9%;
   }
 
   .box-icon {
@@ -487,7 +682,7 @@
   .page-box-hover {
     height: 100%;
     width: 100%;
-    padding: 1.5%;
+    padding: 1%;
   }
 
   .box-icon {
@@ -555,6 +750,7 @@
   .page-box-hover {
     width: 100%;
     height: 100%;
+    margin-bottom: 35px;
   }
 
   .box-icon {
@@ -563,3 +759,71 @@
   }
 }
 /* -------------------for 10 boxes END---------------------------- */
+/*  */
+/*  */
+/*  */
+/*  */
+/* ------------------for create/edit user boxes START------------------ */
+@media (min-width: 400px) and (max-width: 599px) {
+  .user-title {
+    font-size: 16px;
+  }
+}
+@media (min-width: 400px) and (max-width: 599px) {
+  .edit-existing-user,
+  .edit-existing-user-hovered,
+  .create-user-button-hovered,
+  .create-user-button {
+    width: 140px;
+    height: 4em;
+    font-size: 0.9em;
+  }
+}
+@media (min-width: 600px) and (max-width: 799px) {
+  .edit-existing-user-hovered,
+  .create-user-button-hovered,
+  .edit-existing-user,
+  .create-user-button {
+    width: 150px;
+    height: 4em;
+    font-size: 1em;
+  }
+}
+@media (min-width: 800px) and (max-width: 999px) {
+  .edit-existing-user-hovered,
+  .create-user-button-hovered,
+  .edit-existing-user,
+  .create-user-button {
+    width: 170px;
+    height: 3.8em;
+    font-size: 1em;
+  }
+}
+@media (min-width: 1000px) and (max-width: 1199px) {
+  .edit-existing-user-hovered,
+  .create-user-button-hovered,
+  .edit-existing-user,
+  .create-user-button {
+    width: 190px;
+    height: 4em;
+  }
+}
+@media (min-width: 1200px) and (max-width: 1299px) {
+  .edit-existing-user-hovered,
+  .create-user-button-hovered,
+  .edit-existing-user,
+  .create-user-button {
+    width: 200px;
+    height: 4em;
+  }
+}
+@media (min-width: 1300px) and (max-width: 1999px) {
+  .edit-existing-user-hovered,
+  .create-user-button-hovered,
+  .edit-existing-user,
+  .create-user-button {
+    width: 230px;
+    height: 4em;
+  }
+}
+/* ------------------for create/edit user boxes END  ------------------ */
