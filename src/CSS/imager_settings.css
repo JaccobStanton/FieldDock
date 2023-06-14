@@ -135,7 +135,7 @@
   position: relative;
   display: inline-block;
 }
-
+.create-user-button-hovered,
 .create-user-button {
   background-color: transparent;
   border-radius: 5px;
@@ -146,8 +146,14 @@
   padding: 15px;
   transition: border-color 0s, color 0s;
   width: 230px;
+  height: 4em;
   margin-right: 20px;
 }
+.create-user-button-hovered {
+  border: 1px solid #00e1b4;
+  color: orange;
+}
+.edit-existing-user-hovered,
 .edit-existing-user {
   background-color: transparent;
   border-radius: 5px;
@@ -158,8 +164,11 @@
   padding: 15px;
   transition: border-color 0s, color 0s;
   width: 230px;
-  position: relative;
-  display: inline-block;
+  height: 4em;
+}
+.edit-existing-user-hovered {
+  border: 1px solid #00e1b4;
+  color: orange;
 }
 /* --------------------second row END---------------------------------- */
 
@@ -168,7 +177,14 @@
 /*  */
 /*  */
 /*  */
-/*                                 ***MEDIA QUERIES***                                   */
+/*                                 ***MEDIA QUERIES***                  */
+
+@media (min-width: 450px) and (max-width: 550px) {
+  .select-fielddock-menu {
+    font-size: 0.9em;
+  }
+}
+
 /*  */
 /*  */
 /*  */
@@ -176,12 +192,12 @@
 /* -------------------media queries for User/LogOut text START--------------- */
 @media (min-width: 450px) and (max-width: 550px) {
   .user-box {
-    font-size: 0.9em;
+    font-size: 0.85em;
   }
 }
 @media (min-width: 450px) and (max-width: 550px) {
   .logout-button {
-    font-size: 0.9em;
+    font-size: 0.85em;
   }
 }
 /* -------------------media queries for User/LogOut text END--------------- */
@@ -271,6 +287,7 @@
 @media (min-width: 500px) and (max-width: 550px) {
   .user-logout-box {
     margin-left: 5px;
+    font-size: 0.85em;
   }
 }
 @media (min-width: 550px) and (max-width: 598px) {

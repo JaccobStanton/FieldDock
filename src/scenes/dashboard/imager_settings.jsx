@@ -80,6 +80,7 @@ function Imager_Settings() {
   //---------------------------logic for live date and time END------------------------------
   //
   //
+  //---------------------------logic for logout button---------------------------------------
   const [hovered, setHovered] = useState(false);
 
   const handleMouseEnter = () => {
@@ -90,8 +91,39 @@ function Imager_Settings() {
     setHovered(false);
   };
   const buttonClassName = hovered ? "logout-button-hovered" : "logout-button";
+  //---------------------------logic for logout button END ---------------------------------------
   //
   //
+  //
+  //----------------------------logic for create new user/edit existing users---------------------
+  const [isCreateUserHovered, setCreateUserHovered] = useState(false);
+  const [isEditUserHovered, setEditUserHovered] = useState(false);
+
+  const handleCreateUserMouseEnter = () => {
+    setCreateUserHovered(true);
+  };
+
+  const handleCreateUserMouseOut = () => {
+    setCreateUserHovered(false);
+  };
+
+  const handleEditUserMouseEnter = () => {
+    setEditUserHovered(true);
+  };
+
+  const handleEditUserMouseOut = () => {
+    setEditUserHovered(false);
+  };
+
+  const createUserButtonClassName = isCreateUserHovered
+    ? "create-user-button-hovered"
+    : "create-user-button";
+  const editUserButtonClassName = isEditUserHovered
+    ? "edit-existing-user-hovered"
+    : "edit-existing-user";
+
+  //----------------------------logic for create new user/edit existing users END---------------------
+
   return (
     <Container
       fluid
@@ -400,28 +432,16 @@ function Imager_Settings() {
           <div className="entire-second-row">
             <div className="button-row">
               <button
-                className="create-user-button"
-                onMouseOver={(e) => {
-                  e.target.style.borderColor = "#fff";
-                  e.target.style.color = "orange";
-                }}
-                onMouseOut={(e) => {
-                  e.target.style.borderColor = "orange";
-                  e.target.style.color = "#fff";
-                }}
+                className={createUserButtonClassName}
+                onMouseEnter={handleCreateUserMouseEnter}
+                onMouseOut={handleCreateUserMouseOut}
               >
                 Create a new user
               </button>
               <button
-                className="edit-existing-user"
-                onMouseOver={(e) => {
-                  e.target.style.borderColor = "#fff";
-                  e.target.style.color = "orange";
-                }}
-                onMouseOut={(e) => {
-                  e.target.style.borderColor = "orange";
-                  e.target.style.color = "#fff";
-                }}
+                className={editUserButtonClassName}
+                onMouseEnter={handleEditUserMouseEnter}
+                onMouseOut={handleEditUserMouseOut}
               >
                 Edit existing user
               </button>
