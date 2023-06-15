@@ -6,9 +6,8 @@ import { useState, useEffect } from "react";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import { ExpandMore } from "@mui/icons-material";
-
-import "/Users/jstanton/Coding/FieldDock/FieldDockMain/src/CSS/CommonRow.css";
-import axios from "axios";
+import "../CSS/CommonRow.css";
+import { ReactComponent as FieldDockLogo } from "../assets/FieldDock-Logo.svg";
 
 function CommonRow() {
   //
@@ -143,12 +142,7 @@ function CommonRow() {
             }}
           >
             <div className="field-dock-logo-container">
-              {/* //box surrounding object "field dock logo */}
-              <object
-                className="logo-svg"
-                data="../../assets/FieldDock-Logo.svg"
-                type="image/svg+xml"
-              />
+              <FieldDockLogo className="logo-svg" />
             </div>
 
             <div className="select-fielddock-menu" onClick={handleHangerOpen}>
