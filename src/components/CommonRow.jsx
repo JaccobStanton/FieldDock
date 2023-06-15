@@ -7,10 +7,10 @@ import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import { ExpandMore } from "@mui/icons-material";
 
-import "/Users/jstanton/Coding/FieldDock/FieldDockMain/src/CSS/imager_settings.css";
+import "/Users/jstanton/Coding/FieldDock/FieldDockMain/src/CSS/CommonRow.css";
 import axios from "axios";
 
-function Imager_Settings() {
+function CommonRow() {
   //
   //
   //---------------------------select hanger system logic-----------------------
@@ -425,33 +425,8 @@ function Imager_Settings() {
       {/*  */}
       {/*  */}
       {/*  */}
-      {/* -------------------------------------------------PARENT column row 2 START ----------------------------- */}
-      <Row>
-        <Col xs={12} sm={12} md={12} lg={12} xl={12} xxl={12}>
-          <div className="entire-second-row">
-            <div className="button-row">
-              <button
-                className={createUserButtonClassName}
-                onMouseEnter={handleCreateUserMouseEnter}
-                onMouseOut={handleCreateUserMouseOut}
-              >
-                Create a new user
-              </button>
-              <button
-                className={editUserButtonClassName}
-                onMouseEnter={handleEditUserMouseEnter}
-                onMouseOut={handleEditUserMouseOut}
-              >
-                Edit existing user
-              </button>
-              <div className="user-title">Users</div>
-            </div>
-          </div>
-        </Col>
-        {/* -------------------------------------------------PARENT column row 2 END ----------------------------- */}
-      </Row>
     </Container>
   );
 }
 
-export default Imager_Settings;
+export default CommonRow;

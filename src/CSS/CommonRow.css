@@ -104,9 +104,9 @@
 
 .box-icon {
   /* width: auto;
-  height: auto;
-  max-width: 100%;
-  max-height: 100%; */
+    height: auto;
+    max-width: 100%;
+    max-height: 100%; */
   object-fit: contain;
 }
 
@@ -127,66 +127,6 @@
 /* -------------------10 page boxes END---------------------------------- */
 /*  */
 /*  */
-/* --------------------second row START---------------------------------- */
-.entire-second-row {
-  background-color: transparent;
-  height: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 40px;
-}
-
-.button-row {
-  position: relative;
-  display: inline-block;
-}
-.user-title {
-  position: absolute;
-  top: -85%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #fff;
-  font-size: 20px;
-  font-weight: bold;
-}
-.create-user-button-hovered,
-.create-user-button {
-  background-color: transparent;
-  border-radius: 5px;
-  border: 1px solid orange;
-  color: #fff;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 15px;
-  transition: border-color 0s, color 0s;
-  width: 230px;
-  height: 4em;
-  margin-right: 20px;
-}
-.create-user-button-hovered {
-  border: 1px solid #00e1b4;
-  color: orange;
-}
-.edit-existing-user-hovered,
-.edit-existing-user {
-  background-color: transparent;
-  border-radius: 5px;
-  border: 1px solid orange;
-  color: #fff;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 15px;
-  transition: border-color 0s, color 0s;
-  width: 230px;
-  height: 4em;
-}
-.edit-existing-user-hovered {
-  border: 1px solid #00e1b4;
-  color: orange;
-}
-/* --------------------------------second row END-------------------------------------- */
-
 /*  */
 /*  */
 /*  */
@@ -391,12 +331,12 @@
 /*  */
 /*  */
 /* -------------------media queries for User/LogOut text START--------------------- */
-@media (min-width: 450px) and (max-width: 550px) {
+@media (min-width: 450px) and (max-width: 650px) {
   .user-box {
     font-size: 0.85em;
   }
 }
-@media (min-width: 450px) and (max-width: 550px) {
+@media (min-width: 450px) and (max-width: 650px) {
   .logout-button {
     font-size: 0.85em;
   }
@@ -819,67 +759,3 @@
 /*  */
 /*  */
 /*  */
-/* ------------------for create/edit user boxes START------------------ */
-@media (min-width: 400px) and (max-width: 599px) {
-  .user-title {
-    font-size: 16px;
-  }
-}
-@media (min-width: 400px) and (max-width: 599px) {
-  .edit-existing-user,
-  .edit-existing-user-hovered,
-  .create-user-button-hovered,
-  .create-user-button {
-    width: 140px;
-    height: 4em;
-    font-size: 0.9em;
-  }
-}
-@media (min-width: 600px) and (max-width: 799px) {
-  .edit-existing-user-hovered,
-  .create-user-button-hovered,
-  .edit-existing-user,
-  .create-user-button {
-    width: 150px;
-    height: 4em;
-    font-size: 1em;
-  }
-}
-@media (min-width: 800px) and (max-width: 999px) {
-  .edit-existing-user-hovered,
-  .create-user-button-hovered,
-  .edit-existing-user,
-  .create-user-button {
-    width: 170px;
-    height: 3.8em;
-    font-size: 1em;
-  }
-}
-@media (min-width: 1000px) and (max-width: 1199px) {
-  .edit-existing-user-hovered,
-  .create-user-button-hovered,
-  .edit-existing-user,
-  .create-user-button {
-    width: 190px;
-    height: 4em;
-  }
-}
-@media (min-width: 1200px) and (max-width: 1299px) {
-  .edit-existing-user-hovered,
-  .create-user-button-hovered,
-  .edit-existing-user,
-  .create-user-button {
-    width: 200px;
-    height: 4em;
-  }
-}
-@media (min-width: 1300px) and (max-width: 1999px) {
-  .edit-existing-user-hovered,
-  .create-user-button-hovered,
-  .edit-existing-user,
-  .create-user-button {
-    width: 230px;
-    height: 4em;
-  }
-}
-/* ------------------for create/edit user boxes END  ------------------ */
