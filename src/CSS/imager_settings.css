@@ -64,6 +64,30 @@
   border-color: white;
 }
 
+.largeBox {
+  display: block;
+  position: relative;
+  border: 1px solid #797979;
+  border-radius: 5px;
+  height: 550px;
+  width: 1795px; /* This will make the box take up the entire height of the screen. Adjust this value as needed. */
+  margin-left: 48px;
+}
+.dropdown {
+  position: absolute;
+  background-color: transparent;
+  border: 1px solid #00e1b4;
+  border-radius: 4px;
+  top: 25px; /* This will position the dropdown at the top of the box, adjust this as needed */
+  left: 50%;
+  height: 45px;
+  font-size: 1.3em;
+  width: 300px;
+  color: #e0e0e0;
+  transform: translateX(-50%); /* This will center the dropdown */
+  /* Add any additional styling you want for the dropdown */
+}
+
 /* ------------------------------------------------------------------------MEDIA QUERIES------------------------------------------------------------------------ */
 @media (min-width: 500px) and (max-width: 525px) {
   .mainDiv {
@@ -71,13 +95,13 @@
     margin-left: 9px;
   }
   .toggleType {
-    font-size: 1.1em;
+    font-size: 1em;
   }
   .button {
     font-size: 0.9em;
   }
   .buttonContainer {
-    height: 100px;
+    height: 80px;
   }
 }
 @media (min-width: 526px) and (max-width: 550px) {
@@ -91,6 +115,9 @@
   .button {
     font-size: 1em;
   }
+  .buttonContainer {
+    height: 85px;
+  }
 }
 @media (min-width: 551px) and (max-width: 582px) {
   .mainDiv {
@@ -101,7 +128,10 @@
     font-size: 1.1em;
   }
   .button {
-    font-size: 1.1em;
+    font-size: 1.05em;
+  }
+  .buttonContainer {
+    height: 90px;
   }
 }
 @media (min-width: 583px) and (max-width: 607px) {
@@ -156,6 +186,9 @@
   .toggleType {
     font-size: 0.9em;
   }
+  .buttonContainer {
+    height: 90px;
+  }
 }
 @media (min-width: 792px) and (max-width: 818px) {
   .button {
@@ -163,6 +196,9 @@
   }
   .toggleType {
     font-size: 1em;
+  }
+  .buttonContainer {
+    height: 100px;
   }
 }
 @media (min-width: 819px) and (max-width: 847px) {
@@ -172,16 +208,22 @@
   .toggleType {
     font-size: 1.1em;
   }
+  .buttonContainer {
+    height: 100px;
+  }
 }
-@media (min-width: 848px) and (max-width: 899px) {
+@media (min-width: 848px) and (max-width: 904px) {
   .button {
     font-size: 0.9em;
   }
   .toggleType {
     font-size: 1.2em;
   }
+  .buttonContainer {
+    height: 100px;
+  }
 }
-@media (min-width: 900px) and (max-width: 999px) {
+@media (min-width: 905px) and (max-width: 999px) {
   .button {
     font-size: 1em;
   }
