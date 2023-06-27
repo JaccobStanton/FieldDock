@@ -48,12 +48,6 @@
   margin: 0 10px;
 }
 
-/* .buttonFielddock {
-}
-
-.buttonMosaicked {
-} */
-
 .button:hover {
   color: white;
   border-color: #3898ec;
@@ -69,26 +63,72 @@
   position: relative;
   border: 1px solid #797979;
   border-radius: 5px;
-  height: 550px;
-  width: 1795px; /* This will make the box take up the entire height of the screen. Adjust this value as needed. */
-  margin-left: 48px;
 }
-.dropdown {
+
+.dropdown-textbox-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; /* You can adjust this as per your needs. */
   position: absolute;
+  top: 25px;
+  left: 51%;
+  transform: translateX(-50%);
+}
+
+.dropdown {
   background-color: transparent;
   border: 1px solid #00e1b4;
   border-radius: 4px;
-  top: 25px; /* This will position the dropdown at the top of the box, adjust this as needed */
-  left: 50%;
   height: 45px;
   font-size: 1.3em;
   width: 300px;
   color: #e0e0e0;
-  transform: translateX(-50%); /* This will center the dropdown */
-  /* Add any additional styling you want for the dropdown */
+}
+
+.textbox {
+  background-color: transparent;
+  border: 1px solid #00e1b4;
+  border-radius: 4px;
+  height: 45px;
+  font-size: 1.3em;
+  width: 120px; /* Adjust this as per your needs */
+  color: #e0e0e0;
+  text-align: center;
+}
+.enterButton {
+  background-color: transparent;
+  border: 1px solid #00e1b4;
+  border-radius: 4px;
+  color: #e0e0e0;
+  text-align: center;
+  display: inline-block;
+  font-size: 1.3em;
+  width: 120px;
+  height: 45px;
+  padding: 0 20px; /* Adjust padding as needed */
+  cursor: pointer;
+}
+
+.enterButton:hover {
+  border-color: #e0e0e0;
+  color: #00e1b4;
+}
+
+.arrowIcon {
+  color: #e0e0e0; /* Adjust color as needed */
+  cursor: pointer;
+  /* Add any other styles as needed */
 }
 
 /* ------------------------------------------------------------------------MEDIA QUERIES------------------------------------------------------------------------ */
+
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/* ------------------------------------------------Toggle Image Type start--------------------------- */
 @media (min-width: 500px) and (max-width: 525px) {
   .mainDiv {
     width: 88%;
@@ -134,7 +174,7 @@
     height: 90px;
   }
 }
-@media (min-width: 583px) and (max-width: 607px) {
+@media (min-width: 583px) and (max-width: 608px) {
   .mainDiv {
     width: 89%;
     margin-left: 12px;
@@ -146,7 +186,7 @@
     font-size: 1.2em;
   }
 }
-@media (min-width: 608px) and (max-width: 699px) {
+@media (min-width: 609px) and (max-width: 699px) {
   .mainDiv {
     width: 90%;
     margin-left: 12px;
@@ -251,3 +291,290 @@
     font-size: 1.4em;
   }
 }
+/* ------------------------------------------------Toggle Image Type end--------------------------- */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/* ------------------------------------big box and content start-------------------------------------------- */
+@media (min-width: 500px) and (max-width: 544px) {
+  .largeBox {
+    height: 550px;
+    width: 77.6%;
+    margin-left: 49px;
+  }
+}
+@media (min-width: 545px) and (max-width: 564px) {
+  .largeBox {
+    height: 550px;
+    width: 78.5%;
+    margin-left: 52px;
+  }
+}
+@media (min-width: 565px) and (max-width: 582px) {
+  .largeBox {
+    height: 550px;
+    width: 79.3%;
+    margin-left: 52px;
+  }
+}
+@media (min-width: 583px) and (max-width: 599px) {
+  .largeBox {
+    height: 550px;
+    width: 80.7%;
+    margin-left: 52px;
+  }
+}
+@media (min-width: 600px) and (max-width: 699px) {
+  .largeBox {
+    height: 550px;
+    width: 82%;
+    margin-left: 52px;
+  }
+}
+@media (min-width: 700px) and (max-width: 767px) {
+  .largeBox {
+    height: 550px;
+    width: 83.5%;
+    margin-left: 52px;
+  }
+}
+@media (min-width: 768px) and (max-width: 799px) {
+  .largeBox {
+    height: 550px;
+    width: 89%;
+    margin-left: 48px;
+  }
+}
+@media (min-width: 800px) and (max-width: 899px) {
+  .largeBox {
+    height: 550px;
+    width: 90%;
+    margin-left: 48px;
+  }
+}
+@media (min-width: 900px) and (max-width: 999px) {
+  .largeBox {
+    height: 550px;
+    width: 91%;
+    margin-left: 48px;
+  }
+}
+@media (min-width: 1000px) and (max-width: 1159px) {
+  .largeBox {
+    height: 550px;
+    width: 92%;
+    margin-left: 48px;
+  }
+}
+@media (min-width: 1160px) and (max-width: 1749px) {
+  .largeBox {
+    height: 550px;
+    width: 93%;
+    margin-left: 48px;
+  }
+}
+@media (min-width: 1750px) and (max-width: 2000px) {
+  .largeBox {
+    height: 550px;
+    width: 94.5%;
+    margin-left: 48px;
+  }
+}
+/* @media(min-width: 2001px){
+
+} */
+
+/* ------------------------------------big box and content end-------------------------------------------- */
+/*  */
+/*  */
+/*  */
+/* -----------------------------------timescale bar start------------------------------------------------- */
+@media (min-width: 500px) and (max-width: 554px) {
+  .enterButton,
+  .textbox {
+    font-size: 0.85em;
+    width: 50px;
+    height: 40px;
+  }
+  .dropdown {
+    height: 40px;
+    font-size: 0.85em;
+    width: 170px;
+  }
+  .enterButton {
+    padding: 0 12px;
+  }
+}
+@media (min-width: 555px) and (max-width: 574px) {
+  .enterButton,
+  .textbox {
+    font-size: 0.9em;
+    width: 65px;
+    height: 50px;
+  }
+  .dropdown {
+    height: 50px;
+    font-size: 0.9em;
+    width: 190px;
+  }
+}
+@media (min-width: 575px) and (max-width: 599px) {
+  .enterButton,
+  .textbox {
+    font-size: 0.9em;
+    width: 70px;
+    height: 50px;
+  }
+  .dropdown {
+    height: 50px;
+    font-size: 0.9em;
+    width: 200px;
+  }
+}
+@media (min-width: 600px) and (max-width: 616px) {
+  .enterButton,
+  .textbox {
+    font-size: 1em;
+    width: 75px;
+    height: 50px;
+  }
+  .dropdown {
+    height: 50px;
+    font-size: 1em;
+    width: 220px;
+  }
+}
+@media (min-width: 617px) and (max-width: 659px) {
+  .enterButton,
+  .textbox {
+    font-size: 1em;
+    width: 80px;
+    height: 50px;
+  }
+  .dropdown {
+    height: 50px;
+    font-size: 1em;
+    width: 230px;
+  }
+}
+@media (min-width: 660px) and (max-width: 699px) {
+  .enterButton,
+  .textbox {
+    font-size: 1.1em;
+    width: 90px;
+    height: 50px;
+  }
+  .dropdown {
+    height: 50px;
+    font-size: 1.1em;
+    width: 240px;
+  }
+}
+@media (min-width: 700px) and (max-width: 729px) {
+  .enterButton,
+  .textbox {
+    font-size: 1.2em;
+    width: 100px;
+    height: 50px;
+  }
+  .dropdown {
+    height: 50px;
+    font-size: 1.2em;
+    width: 240px;
+  }
+}
+@media (min-width: 730px) and (max-width: 767px) {
+  .enterButton,
+  .textbox {
+    font-size: 1.3em;
+    width: 110px;
+    height: 50px;
+  }
+  .dropdown {
+    height: 50px;
+    font-size: 1.3em;
+    width: 260px;
+  }
+}
+@media (min-width: 768px) and (max-width: 799px) {
+  .enterButton,
+  .textbox {
+    font-size: 0.8em;
+    width: 80px;
+    height: 40px;
+  }
+  .dropdown {
+    height: 40px;
+    font-size: 0.8em;
+    width: 175px;
+  }
+}
+@media (min-width: 800px) and (max-width: 899px) {
+  .enterButton,
+  .textbox {
+    font-size: 0.9em;
+    width: 85px;
+    height: 40px;
+  }
+  .dropdown {
+    height: 40px;
+    font-size: 0.9em;
+    width: 200px;
+  }
+}
+@media (min-width: 900px) and (max-width: 999px) {
+  .enterButton,
+  .textbox {
+    font-size: 1em;
+    width: 90px;
+    height: 40px;
+  }
+  .dropdown {
+    height: 40px;
+    font-size: 1em;
+    width: 235px;
+  }
+}
+@media (min-width: 1000px) and (max-width: 1099px) {
+  .enterButton,
+  .textbox {
+    font-size: 1em;
+    width: 90px;
+    height: 40px;
+  }
+  .dropdown {
+    height: 40px;
+    font-size: 1em;
+    width: 235px;
+  }
+}
+@media (min-width: 1100px) and (max-width: 1199px) {
+  .enterButton,
+  .textbox {
+    font-size: 1.1em;
+    width: 100px;
+    height: 40px;
+  }
+  .dropdown {
+    height: 40px;
+    font-size: 1.1em;
+    width: 250px;
+  }
+}
+@media (min-width: 1200px) and (max-width: 1250px) {
+  .enterButton,
+  .textbox {
+    font-size: 1.2em;
+    width: 110px;
+    height: 40px;
+  }
+  .dropdown {
+    height: 40px;
+    font-size: 1.2em;
+    width: 275px;
+  }
+}
+
+/* -----------------------------------timescale bar end--------------------------------------------------- */
