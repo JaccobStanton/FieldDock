@@ -6,7 +6,7 @@ import CommonRow from "../../components/CommonRow";
 import "../../CSS/images.css";
 // import { ReactComponent as DroneDiagram } from "../../assets/Drone-Diagram.svg";
 
-function Imager_Settings() {
+function Images() {
   return (
     <Container fluid>
       <div>
@@ -53,4 +53,4 @@ function Imager_Settings() {
   );
 }
 
-export default Imager_Settings;
+export default Images;
