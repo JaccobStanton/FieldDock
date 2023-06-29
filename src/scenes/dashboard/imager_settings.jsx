@@ -4,13 +4,23 @@ import CommonRow from "../../components/CommonRow";
 import "../../CSS/imager_settings.css";
 
 function handleHover(e) {
-  e.target.style.borderColor = "#fff";
+  e.target.style.borderColor = "#e0e0e0";
   e.target.style.color = "orange";
 }
 
 function handleUnhover(e) {
   e.target.style.borderColor = "orange";
-  e.target.style.color = "#fff";
+  e.target.style.color = "#e0e0e0";
+}
+
+function handleHover1(e) {
+  e.target.style.borderColor = "#e0e0e0";
+  e.target.style.color = "#3898ec";
+}
+
+function handleUnhover1(e) {
+  e.target.style.borderColor = "#3898ec";
+  e.target.style.color = "#e0e0e0";
 }
 
 function Imager_Settings() {
@@ -19,10 +29,10 @@ function Imager_Settings() {
       <div>
         <CommonRow />
       </div>
-      {/* -------------------------------------------------PARENT column row 1 END ----------------------------- */}
+      {/* ------------------------------------------------- row 1 END ----------------------------- */}
 
       <Row>
-        <Col xs={12} sm={12} md={12} lg={12} xl={12} xxl={12}>
+        <Col xs={6} sm={6} md={12} lg={12} xl={12} xxl={12}>
           <div className="main">
             <div className="content">
               <div className="software-box">
@@ -52,10 +62,70 @@ function Imager_Settings() {
                   Set
                 </button>
               </div>
+              <div className="rename-box">
+                <div className="rename-title">Rename this FieldDock System</div>
+                <div className="fielddock-name">0001:</div>
+                <input type="text" className="rename-here" placeholder="" />
+                <button
+                  className="rename-button"
+                  onMouseOver={handleHover}
+                  onMouseOut={handleUnhover}
+                >
+                  Rename
+                </button>
+              </div>
+              <div className="wifi-box">
+                <div className="wifi-title">Connect to Wifi</div>
+                <div className="available-networks">Available Networks:</div>
+
+                <div className="network-selection">
+                  <button
+                    className="network-button"
+                    onMouseOver={handleHover1}
+                    onMouseOut={handleUnhover1}
+                  >
+                    Search for Networks
+                  </button>
+                  <select className="network-dropdown">
+                    <option>Select a network...</option>
+                    {/* Insert more <option> elements here as needed */}
+                  </select>
+                </div>
+
+                <div className="network-connection">
+                  <div className="password-input">
+                    <div className="password-instruction">
+                      Enter password for selected network:
+                    </div>
+                    <input type="text" className="password-box" />
+                  </div>
+                  <button
+                    className="connect-button"
+                    onMouseOver={handleHover}
+                    onMouseOut={handleUnhover}
+                  >
+                    Connect
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </Col>
-        {/* -------------------------------------------------PARENT column row 2 END ----------------------------- */}
+        {/* ------------------------------------------------- row 2 END ----------------------------- */}
+      </Row>
+
+      <Row className="center-row">
+        <Col xs={12} sm={12} md={12} lg={12} xl={12} xxl={12}>
+          <div className="center-box">
+            <button
+              className="admin-button"
+              onMouseOver={handleHover}
+              onMouseOut={handleUnhover}
+            >
+              Super Admin
+            </button>
+          </div>
+        </Col>
       </Row>
     </Container>
   );
