@@ -1,0 +1,204 @@
+/* ----------------------Sensor Measurement Settings start ----------------*/
+
+.sensor-measurement-settings {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+}
+.sensor-measurement-settings-title {
+  background-color: #181818;
+  padding: 5px;
+  color: white;
+  font-size: 1.5rem;
+}
+
+/* ------------------Sensor Measurement Settings start end --------------- */
+
+/* -------------------------Sensor Module start -------------------------- */
+.sensor-modules {
+  border: 1px solid #797979;
+  border-radius: 5px;
+  height: 120px;
+  width: 90%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 50px;
+}
+
+.sensor-modules-title {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #181818;
+  padding: 0 5px;
+  z-index: 1;
+  font-size: 20px;
+  color: white;
+}
+
+.sensor-modules-content {
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+}
+
+.sensor-modules-description {
+  position: relative;
+  color: #00e1b4;
+  margin-right: 2rem;
+  margin-left: 2rem;
+  font-size: 1rem;
+  top: 5px;
+}
+
+.sensor-modules-select {
+  background-color: transparent;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 0.5px solid white;
+  color: white;
+  padding: 10px;
+  width: 40%;
+  margin-right: 20px;
+}
+/* -------------------------Sensor Module end -------------------------- */
+
+/* --------------------------wireless box start-------------------------- */
+/* wireless Modules */
+.wireless-modules {
+  border: 1px solid #797979;
+  border-radius: 5px;
+  height: 120px;
+  width: 90%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 40px;
+}
+.wireless-modules-title {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #181818;
+  padding: 0 5px;
+  z-index: 1;
+  font-size: 20px;
+  color: white;
+}
+
+.wireless-modules-content {
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+  font-size: 1rem;
+}
+
+.wireless-modules-description {
+  position: relative;
+  color: #00e1b4;
+  margin-right: 2rem;
+  margin-left: 2rem;
+  font-size: 1rem;
+  top: 5px;
+}
+
+.wireless-modules-select {
+  background-color: transparent;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 0.5px solid white;
+  color: white;
+  padding: 10px;
+  width: 40%;
+  margin-right: 20px;
+}
+
+/* --------------------------wireless box end----------------------- */
+/*  */
+/*  */
+/*  */
+/*  */
+/* -------------------------- media queries ------------------------ */
+
+@media (min-width: 450px) and (max-width: 519px) {
+  .responsive-text {
+    font-size: 0.8em;
+  }
+}
+
+@media (min-width: 520px) and (max-width: 599px) {
+  .responsive-text {
+    font-size: 0.85em;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 999px) {
+  .responsive-text {
+    font-size: 0.8em;
+  }
+}
+@media (min-width: 1000px) and (max-width: 1099px) {
+  .responsive-text {
+    font-size: 0.9em;
+  }
+}
+@media (min-width: 1400px) and (max-width: 1499px) {
+  .wireless-modules {
+    width: 88%;
+  }
+  .sensor-modules-select,
+  .wireless-modules-select,
+  .sensor-modules-description,
+  .wireless-modules-description {
+    font-size: 0.85rem;
+  }
+}
+@media (min-width: 1500px) and (max-width: 1550px) {
+  .sensor-modules,
+  .wireless-modules {
+    width: 88.5%;
+  }
+  .sensor-modules-select,
+  .wireless-modules-select,
+  .sensor-modules-description,
+  .wireless-modules-description {
+    font-size: 0.9rem;
+  }
+}
+@media (min-width: 1551px) and (max-width: 1599px) {
+  .sensor-modules,
+  .wireless-modules {
+    width: 88.5%;
+  }
+}
+
+@media (min-width: 1600px) and (max-width: 1699px) {
+  .sensor-modules,
+  .wireless-modules {
+    width: 89%;
+  }
+}
+
+@media (min-width: 1700px) and (max-width: 1799px) {
+  .sensor-modules,
+  .wireless-modules {
+    width: 89.5%;
+  }
+}
+
+@media (min-width: 1800px) and (max-width: 2000px) {
+  .responsive-text {
+    font-size: 1.5em;
+  }
+}
+/* @media (min-width: 2000px) {
+    .responsive-text {
+      font-size: 1.7em;
+    }
+  } */
