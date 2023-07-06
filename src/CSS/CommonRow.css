@@ -444,7 +444,7 @@
   }
 }
 
-@media (min-width: 693px) and (max-width: 766px) {
+@media (min-width: 693px) and (max-width: 767px) {
   .user-logout-box {
     margin-left: 15px;
   }
@@ -453,7 +453,7 @@
     margin-left: 35px;
   }
 }
-@media (min-width: 767px) and (max-width: 799px) {
+@media (min-width: 768px) and (max-width: 799px) {
   .logout-button-hovered,
   .logout-button,
   .user-box {

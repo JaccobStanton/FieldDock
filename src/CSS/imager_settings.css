@@ -38,6 +38,7 @@
   z-index: 1;
   font-size: 20px;
   color: white;
+  white-space: nowrap;
 }
 
 .sensor-modules-content {
@@ -90,6 +91,7 @@
   z-index: 1;
   font-size: 20px;
   color: white;
+  white-space: nowrap;
 }
 
 .wireless-modules-content {
@@ -126,29 +128,453 @@
 /*  */
 /* -------------------------- media queries ------------------------ */
 
-@media (min-width: 450px) and (max-width: 519px) {
-  .responsive-text {
-    font-size: 0.8em;
+@media (min-width: 500px) and (max-width: 550px) {
+  .sensor-modules,
+  .wireless-modules {
+    width: 78%;
+    height: 140px;
+  }
+
+  .wireless-modules {
+    margin-left: -6px;
+  }
+  .sensor-modules-content,
+  .wireless-modules-content {
+    flex-direction: column;
+    align-items: center;
+  }
+  .sensor-modules-title,
+  .wireless-modules-title {
+    font-size: 16px;
+  }
+
+  .sensor-modules-description {
+    font-size: 0.65rem;
+    text-align: left;
+    width: 95%;
+    margin-right: 18px;
+    margin-left: 1px;
+  }
+  .wireless-modules-description {
+    margin-right: 18px;
+    margin-left: 1px;
+    width: 95%;
+    font-size: 0.65rem;
+    text-align: left;
+  }
+
+  .sensor-modules-select,
+  .wireless-modules-select {
+    width: 95%;
+    font-size: 0.71rem;
+  }
+  .sensor-measurement-settings-title {
+    font-size: 1.2rem;
+  }
+}
+@media (min-width: 550px) and (max-width: 599px) {
+  .sensor-modules,
+  .wireless-modules {
+    width: 79%;
+    height: 140px;
+  }
+  .wireless-modules {
+    margin-left: -5px;
+  }
+  .sensor-modules-content,
+  .wireless-modules-content {
+    flex-direction: column;
+    align-items: center;
+  }
+  .sensor-modules-title,
+  .wireless-modules-title {
+    font-size: 16px;
+  }
+
+  .sensor-modules-description {
+    font-size: 0.71rem;
+    text-align: left;
+    width: 95%;
+    margin-right: 18px;
+    margin-left: 1px;
+  }
+  .wireless-modules-description {
+    margin-right: 18px;
+    margin-left: 1px;
+    width: 95%;
+    font-size: 0.71rem;
+    text-align: left;
+  }
+
+  .sensor-modules-select,
+  .wireless-modules-select {
+    width: 95%;
+    font-size: 0.71rem;
+  }
+  .sensor-measurement-settings-title {
+    font-size: 1.2rem;
+  }
+}
+@media (min-width: 600px) and (max-width: 650px) {
+  .sensor-modules,
+  .wireless-modules {
+    width: 80%;
+    height: 130px;
+  }
+  .wireless-modules {
+    margin-left: -5px;
+  }
+  .sensor-modules-content,
+  .wireless-modules-content {
+    flex-direction: column;
+    align-items: center;
+  }
+  .sensor-modules-title,
+  .wireless-modules-title {
+    font-size: 17px;
+  }
+
+  .sensor-modules-description {
+    font-size: 0.73rem;
+    text-align: left;
+    width: 95%;
+    margin-right: 18px;
+    margin-left: 1px;
+  }
+  .wireless-modules-description {
+    margin-right: 18px;
+    margin-left: 1px;
+    width: 95%;
+    font-size: 0.73rem;
+    text-align: left;
+  }
+
+  .sensor-modules-select,
+  .wireless-modules-select {
+    width: 95%;
+    font-size: 0.73rem;
+  }
+  .sensor-measurement-settings-title {
+    font-size: 1.3rem;
+  }
+}
+@media (min-width: 650px) and (max-width: 699px) {
+  .sensor-modules,
+  .wireless-modules {
+    width: 83%;
+    height: 130px;
+  }
+  .wireless-modules {
+    margin-left: -5px;
+  }
+  .sensor-modules-content,
+  .wireless-modules-content {
+    flex-direction: column;
+    align-items: center;
+  }
+  .sensor-modules-title,
+  .wireless-modules-title {
+    font-size: 19px;
+  }
+
+  .sensor-modules-description {
+    font-size: 0.75rem;
+    text-align: left;
+    width: 95%;
+    margin-right: 18px;
+    margin-left: 1px;
+  }
+  .wireless-modules-description {
+    margin-right: 18px;
+    margin-left: 1px;
+    width: 95%;
+    font-size: 0.75rem;
+    text-align: left;
+  }
+
+  .sensor-modules-select,
+  .wireless-modules-select {
+    width: 95%;
+    font-size: 0.75rem;
+  }
+  .sensor-measurement-settings-title {
+    font-size: 1.5rem;
+  }
+}
+@media (min-width: 700px) and (max-width: 767px) {
+  .sensor-modules,
+  .wireless-modules {
+    width: 83%;
+    height: 130px;
+  }
+  .wireless-modules {
+    margin-left: -5px;
+  }
+  .sensor-modules-content,
+  .wireless-modules-content {
+    flex-direction: column;
+    align-items: center;
+  }
+  .sensor-modules-title,
+  .wireless-modules-title {
+    font-size: 19px;
+  }
+
+  .sensor-modules-description {
+    font-size: 0.75rem;
+    text-align: left;
+    width: 95%;
+    margin-right: 18px;
+    margin-left: 1px;
+  }
+  .wireless-modules-description {
+    margin-right: 18px;
+    margin-left: 1px;
+    width: 95%;
+    font-size: 0.75rem;
+    text-align: left;
+  }
+
+  .sensor-modules-select,
+  .wireless-modules-select {
+    width: 95%;
+    font-size: 0.75rem;
+  }
+  .sensor-measurement-settings-title {
+    font-size: 1.5rem;
+  }
+}
+@media (min-width: 768px) and (max-width: 799px) {
+  .sensor-modules,
+  .wireless-modules {
+    width: 79%;
+    height: 110px;
+  }
+  .sensor-modules-content,
+  .wireless-modules-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sensor-modules-description {
+    font-size: 0.69rem;
+    text-align: left;
+    width: 95%;
+    margin-right: 18px;
+    margin-left: 1px;
+  }
+  .wireless-modules-description {
+    margin-right: 18px;
+    margin-left: 1px;
+    width: 95%;
+    font-size: 0.69rem;
+    text-align: left;
+  }
+
+  .sensor-modules-select,
+  .wireless-modules-select {
+    width: 95%;
+    font-size: 0.69rem;
+  }
+  .sensor-modules-title,
+  .wireless-modules-title {
+    font-size: 14px;
+  }
+}
+@media (min-width: 800px) and (max-width: 899px) {
+  .sensor-modules,
+  .wireless-modules {
+    width: 79%;
+    height: 110px;
+  }
+  .sensor-modules-content,
+  .wireless-modules-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sensor-modules-description {
+    font-size: 0.71rem;
+    text-align: left;
+    width: 95%;
+    margin-right: 18px;
+    margin-left: 1px;
+  }
+  .wireless-modules-description {
+    margin-right: 18px;
+    margin-left: 1px;
+    width: 95%;
+    font-size: 0.71rem;
+    text-align: left;
+  }
+
+  .sensor-modules-select,
+  .wireless-modules-select {
+    width: 95%;
+    font-size: 0.7rem;
+  }
+  .sensor-modules-title,
+  .wireless-modules-title {
+    font-size: 16px;
+  }
+}
+@media (min-width: 900px) and (max-width: 999px) {
+  .sensor-modules,
+  .wireless-modules {
+    width: 82%;
+    height: 110px;
+  }
+  .sensor-modules-content,
+  .wireless-modules-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sensor-modules-description {
+    font-size: 0.72rem;
+    text-align: left;
+    width: 95%;
+    margin-right: 18px;
+    margin-left: 1px;
+  }
+  .wireless-modules-description {
+    margin-right: 18px;
+    margin-left: 1px;
+    width: 95%;
+    font-size: 0.72rem;
+    text-align: left;
+  }
+
+  .sensor-modules-select,
+  .wireless-modules-select {
+    width: 95%;
+    font-size: 0.72rem;
+  }
+  .sensor-modules-title,
+  .wireless-modules-title {
+    font-size: 17px;
+  }
+}
+@media (min-width: 1000px) and (max-width: 1067px) {
+  .sensor-modules,
+  .wireless-modules {
+    width: 85%;
+    height: 110px;
+  }
+  .sensor-modules-content,
+  .wireless-modules-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sensor-modules-description {
+    font-size: 0.72rem;
+    text-align: left;
+    width: 95%;
+    margin-right: 18px;
+    margin-left: 1px;
+  }
+  .wireless-modules-description {
+    margin-right: 18px;
+    margin-left: 1px;
+    width: 95%;
+    font-size: 0.72rem;
+    text-align: left;
+  }
+
+  .sensor-modules-select,
+  .wireless-modules-select {
+    width: 95%;
+    font-size: 0.72rem;
+  }
+  .sensor-modules-title,
+  .wireless-modules-title {
+    font-size: 17px;
+  }
+}
+@media (min-width: 1068px) and (max-width: 1099px) {
+  .sensor-modules,
+  .wireless-modules {
+    width: 85%;
+    height: 100px;
+  }
+
+  .sensor-modules-description,
+  .wireless-modules-description {
+    font-size: 0.73rem;
+  }
+  .sensor-modules-select,
+  .wireless-modules-select {
+    width: 70%;
+    font-size: 0.73rem;
+  }
+  .sensor-modules-title,
+  .wireless-modules-title {
+    font-size: 17px;
+  }
+}
+@media (min-width: 1100px) and (max-width: 1199px) {
+  .sensor-modules,
+  .wireless-modules {
+    width: 86%;
+    height: 100px;
+  }
+
+  .sensor-modules-description,
+  .wireless-modules-description {
+    font-size: 0.75rem;
+  }
+  .sensor-modules-select,
+  .wireless-modules-select {
+    width: 70%;
+    font-size: 0.75rem;
+  }
+  .sensor-modules-title,
+  .wireless-modules-title {
+    font-size: 18px;
   }
 }
 
-@media (min-width: 520px) and (max-width: 599px) {
-  .responsive-text {
-    font-size: 0.85em;
+@media (min-width: 1200px) and (max-width: 1299px) {
+  .sensor-modules,
+  .wireless-modules {
+    width: 87.5%;
+    height: 100px;
   }
-}
 
-@media (min-width: 600px) and (max-width: 999px) {
-  .responsive-text {
-    font-size: 0.8em;
+  .sensor-modules-description,
+  .wireless-modules-description {
+    font-size: 0.77rem;
+  }
+  .sensor-modules-select,
+  .wireless-modules-select {
+    width: 60%;
+    font-size: 0.75rem;
+  }
+  .sensor-modules-title,
+  .wireless-modules-title {
+    font-size: 18px;
   }
 }
-@media (min-width: 1000px) and (max-width: 1099px) {
-  .responsive-text {
-    font-size: 0.9em;
+@media (min-width: 1300px) and (max-width: 1399px) {
+  .sensor-modules,
+  .wireless-modules {
+    width: 87.5%;
+    height: 110px;
+  }
+  .sensor-modules-select,
+  .wireless-modules-select,
+  .sensor-modules-description,
+  .wireless-modules-description {
+    font-size: 0.77rem;
+  }
+  .sensor-modules-select,
+  .wireless-modules-select {
+    width: 60%;
   }
 }
 @media (min-width: 1400px) and (max-width: 1499px) {
+  .sensor-modules,
   .wireless-modules {
     width: 88%;
   }
