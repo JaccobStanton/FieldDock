@@ -205,7 +205,7 @@ function Imager_Settings() {
       {/* ------------------------------------------------- row 5 END ----------------------------- */}
 
       <Row>
-        <Col xs={6} sm={6} md={6} lg={12} xl={12} xxl={12}>
+        <Col xs={12} sm={12} md={12} lg={12} xl={12} xxl={12}>
           <div className="image-preference-box">
             <div className="checkboxes">
               <label>
