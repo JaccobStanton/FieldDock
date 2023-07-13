@@ -73,6 +73,7 @@
   -webkit-background-clip: text;
   background-clip: text;
   animation: colorWave 10s ease infinite;
+  white-space: nowrap;
 }
 
 .software-update-options {
@@ -278,7 +279,6 @@ label span {
 
 .password-instruction {
   margin-bottom: 5px;
-  width: 100%;
   white-space: nowrap;
 }
 
@@ -305,7 +305,7 @@ label span {
   cursor: pointer;
   font-size: 1.2em;
   margin-left: 30px;
-  margin-top: -27px;
+  margin-top: -30px;
 }
 /* ---------------------------------------third box end----------------------------- */
 /*  */
@@ -347,17 +347,344 @@ label span {
 /* ---------------------------------------third ROW end----------------------------- */
 
 /* ----------------------------------------------------------------------------------media queries-------------------------------------------------------------- */
-@media (min-width: 700px) and (max-width: 767px) {
-  .software-box {
+@media (min-width: 500px) and (max-width: 550px) {
+  .software-update-box,
+  .rename-box {
+    width: 72%;
+  }
+  .rename-box {
+    margin-left: 10px;
+  }
+  .wifi-box {
+    margin-left: 47px;
+    width: 80%;
+  }
+
+  .software-update-title,
+  .rename-title,
+  .wifi-title {
+    top: -10px;
+    left: 51%;
+    transform: translateX(-50%);
+    font-size: 0.82em;
+  }
+
+  .pending-message {
+    font-size: 9px;
+    margin-top: 5px;
+  }
+
+  label {
+    font-size: 0.85em;
+    margin-right: 10px;
+    margin-bottom: 12px;
+  }
+  label span {
+    margin-top: 5px; /* Move the text down */
+    margin-bottom: 13.5px; /* Move the text up */
+  }
+
+  .checkbox-text {
+    top: -6px; /* Adjust the value to move text up or down */
+  }
+  .set-button,
+  .rename-button {
+    width: 25%;
+    font-size: 0.8em;
+  }
+  .fielddock-name {
+    font-size: 18px;
+    margin-bottom: 30px;
+  }
+  .rename-button {
+    width: 41%;
+  }
+
+  .connect-button {
+    font-size: 1em;
+  }
+  .password-instruction {
+    font-size: 1em;
+  }
+  .available-networks {
+    font-size: 0.9em;
+    margin-left: 50px;
+  }
+  .center-box {
+    margin-left: 165px;
+    width: 35%;
+    margin-top: -40px;
+    margin-bottom: 20px;
+  }
+  .admin-button {
+    font-size: 12px;
+  }
+  .network-selection {
+    width: 350px;
+  }
+  .network-connection {
+    margin-left: 130px;
+  }
+  .password-input {
+    width: 250px;
+  }
+}
+@media (min-width: 551px) and (max-width: 599px) {
+  .software-update-box,
+  .rename-box {
+    width: 76%;
+  }
+  .rename-box {
+    margin-left: 10px;
+  }
+  .wifi-box {
+    margin-left: 47px;
+    width: 82.7%;
+  }
+
+  .software-update-title,
+  .rename-title,
+  .wifi-title {
+    top: -15px;
+    left: 51%;
+    transform: translateX(-50%);
+    font-size: 1em;
+  }
+
+  .pending-message {
+    font-size: 11px;
+  }
+
+  label {
+    font-size: 0.9em;
+    margin-right: 10px;
+  }
+  label span {
+    margin-top: 5px; /* Move the text down */
+    margin-bottom: 13.5px; /* Move the text up */
+  }
+
+  .checkbox-text {
+    top: -6px; /* Adjust the value to move text up or down */
+  }
+  .set-button,
+  .rename-button {
+    width: 23%;
+    font-size: 1em;
+  }
+  .fielddock-name {
+    font-size: 18px;
+    margin-bottom: 30px;
+  }
+  .rename-button {
     width: 39%;
   }
 
-  .software-title {
-    top: -17px;
+  .connect-button {
+    font-size: 1.1em;
+  }
+  .password-instruction {
+    font-size: 1em;
+  }
+  .available-networks {
+    font-size: 1em;
+    margin-left: 40px;
+  }
+  .center-box {
+    margin-left: 175px;
+    width: 35%;
+    margin-top: -40px;
+    margin-bottom: 20px;
+  }
+  .admin-button {
+    font-size: 13px;
+  }
+  .network-selection {
+    width: 370px;
+  }
+  .network-connection {
+    margin-left: 130px;
+  }
+  .password-input {
+    width: 270px;
+  }
+}
+@media (min-width: 600px) and (max-width: 624px) {
+  .software-update-box,
+  .rename-box {
+    width: 79%;
+  }
+  .rename-box {
+    margin-left: 10px;
+  }
+  .wifi-box {
+    margin-left: 47px;
+    width: 85%;
+  }
+
+  .software-update-title,
+  .rename-title,
+  .wifi-title {
+    top: -15px;
     left: 51%;
     transform: translateX(-50%);
     padding: 0 10px;
-    font-size: 1.3em;
+    font-size: 1.1em;
+  }
+
+  .pending-message {
+    font-size: 12px;
+  }
+
+  label {
+    font-size: 0.9em;
+    margin-right: 10px;
+  }
+  label span {
+    margin-top: 5px; /* Move the text down */
+    margin-bottom: 13.5px; /* Move the text up */
+  }
+
+  .checkbox-text {
+    top: -6px; /* Adjust the value to move text up or down */
+  }
+  .set-button,
+  .rename-button {
+    width: 20%;
+    font-size: 1em;
+  }
+  .fielddock-name {
+    font-size: 18px;
+    margin-bottom: 30px;
+  }
+  .rename-button {
+    width: 35%;
+  }
+  .network-connection {
+    margin-left: 130px;
+  }
+  .password-input {
+    width: 340px;
+  }
+
+  .connect-button {
+    font-size: 1.1em;
+  }
+  .password-instruction {
+    font-size: 1em;
+  }
+  .available-networks {
+    font-size: 1em;
+  }
+  .center-box {
+    margin-left: 180px;
+    width: 40%;
+    margin-top: -40px;
+    margin-bottom: 20px;
+  }
+  .admin-button {
+    font-size: 15px;
+  }
+}
+@media (min-width: 625px) and (max-width: 699px) {
+  .software-update-box,
+  .rename-box {
+    width: 79%;
+  }
+  .rename-box {
+    margin-left: 10px;
+  }
+  .wifi-box {
+    margin-left: 47px;
+    width: 85%;
+  }
+
+  .software-update-title,
+  .rename-title,
+  .wifi-title {
+    top: -15px;
+    left: 51%;
+    transform: translateX(-50%);
+    padding: 0 10px;
+    font-size: 1.1em;
+  }
+
+  .pending-message {
+    font-size: 13px;
+  }
+
+  label {
+    font-size: 0.9em;
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+  label span {
+    margin-top: 5px; /* Move the text down */
+    margin-bottom: 13.5px; /* Move the text up */
+  }
+
+  .checkbox-text {
+    top: -6px; /* Adjust the value to move text up or down */
+  }
+  .set-button,
+  .rename-button {
+    width: 20%;
+    font-size: 1em;
+  }
+  .fielddock-name {
+    font-size: 18px;
+    margin-bottom: 30px;
+  }
+  .rename-button {
+    width: 35%;
+  }
+  .network-connection {
+    margin-left: 130px;
+  }
+  .password-input {
+    width: 340px;
+  }
+
+  .connect-button {
+    font-size: 1.1em;
+  }
+  .password-instruction {
+    font-size: 1em;
+  }
+  .available-networks {
+    font-size: 1em;
+  }
+  .center-box {
+    margin-left: 180px;
+    width: 40%;
+    margin-top: -40px;
+    margin-bottom: 20px;
+  }
+  .admin-button {
+    font-size: 15px;
+  }
+}
+@media (min-width: 700px) and (max-width: 729px) {
+  .software-update-box,
+  .rename-box {
+    width: 80%;
+  }
+  .rename-box {
+    margin-left: 10px;
+  }
+  .wifi-box {
+    margin-left: 47px;
+    width: 85.5%;
+  }
+
+  .software-update-title,
+  .rename-title,
+  .wifi-title {
+    top: -16px;
+    left: 51%;
+    transform: translateX(-50%);
+    padding: 0 10px;
+    font-size: 1.25em;
   }
 
   .pending-message {
@@ -365,29 +692,110 @@ label span {
   }
 
   label {
-    font-size: 0.8em;
+    font-size: 1em;
     margin-right: 10px;
   }
   label span {
     margin-top: 5px; /* Move the text down */
-    margin-bottom: 5px; /* Move the text up */
+    margin-bottom: 13.5px; /* Move the text up */
   }
 
   .checkbox-text {
     top: -6px; /* Adjust the value to move text up or down */
   }
-  .set-button {
+  .fielddock-name {
+    font-size: 18px;
+    margin-bottom: 30px;
+  }
+  .set-button,
+  .rename-button {
     padding: 10px;
     width: 20%;
-    font-size: 0.9em;
+    font-size: 1em;
+  }
+  .rename-button {
+    width: 28%;
+  }
+  .network-connection {
+    margin-left: 130px;
+  }
+  .password-input {
+    width: 340px;
+  }
+  .center-box {
+    margin-left: 210px;
+    width: 40%;
+    margin-top: -40px;
+    margin-bottom: 20px;
+  }
+}
+@media (min-width: 730px) and (max-width: 767px) {
+  .software-update-box,
+  .rename-box {
+    width: 80%;
+  }
+  .rename-box {
+    margin-left: 10px;
+  }
+  .wifi-box {
+    margin-left: 47px;
+    width: 85.5%;
+  }
+
+  .software-update-title,
+  .rename-title,
+  .wifi-title {
+    top: -16px;
+    left: 51%;
+    transform: translateX(-50%);
+    padding: 0 10px;
+    font-size: 1.35em;
+  }
+
+  .pending-message {
+    font-size: 16px;
+  }
+
+  label {
+    font-size: 1em;
+    margin-right: 10px;
+  }
+  label span {
+    margin-top: 5px; /* Move the text down */
+    margin-bottom: 13.5px; /* Move the text up */
+  }
+
+  .checkbox-text {
+    top: -6px; /* Adjust the value to move text up or down */
+  }
+  .set-button,
+  .rename-button {
+    padding: 10px;
+    width: 20%;
+    font-size: 1em;
+  }
+  .rename-button {
+    width: 32%;
+  }
+  .network-connection {
+    margin-left: 130px;
+  }
+  .password-input {
+    width: 340px;
+  }
+  .center-box {
+    margin-left: 210px;
+    width: 40%;
+    margin-top: -40px;
+    margin-bottom: 20px;
   }
 }
 @media (min-width: 768px) and (max-width: 799px) {
-  .software-box {
-    width: 43%;
+  .software-update-box {
+    width: 80.5%;
   }
 
-  .software-title {
+  .software-update-title {
     top: -14px;
     left: 51%;
     transform: translateX(-50%);
@@ -418,12 +826,12 @@ label span {
   }
 }
 @media (min-width: 800px) and (max-width: 849px) {
-  .software-box {
-    width: 43%;
+  .software-update-box {
+    width: 81%;
   }
 
-  .software-title {
-    top: -17px;
+  .software-update-title {
+    top: -16px;
     left: 51%;
     transform: translateX(-50%);
     padding: 0 10px;
@@ -453,12 +861,12 @@ label span {
   }
 }
 @media (min-width: 850px) and (max-width: 899px) {
-  .software-box {
-    width: 39%;
+  .software-update-box {
+    width: 81.3%;
   }
 
-  .software-title {
-    top: -17px;
+  .software-update-title {
+    top: -16px;
     left: 51%;
     transform: translateX(-50%);
     padding: 0 10px;
@@ -488,12 +896,12 @@ label span {
   }
 }
 @media (min-width: 900px) and (max-width: 949px) {
-  .software-box {
-    width: 39%;
+  .software-update-box {
+    width: 81.8%;
   }
 
-  .software-title {
-    top: -17px;
+  .software-update-title {
+    top: -16px;
     left: 51%;
     transform: translateX(-50%);
     padding: 0 10px;
@@ -518,12 +926,12 @@ label span {
   }
 }
 @media (min-width: 950px) and (max-width: 999px) {
-  .software-box {
-    width: 36%;
+  .software-update-box {
+    width: 82%;
   }
 
-  .software-title {
-    top: -17px;
+  .software-update-title {
+    top: -16px;
     left: 51%;
     transform: translateX(-50%);
     padding: 0 10px;
@@ -548,11 +956,11 @@ label span {
   }
 }
 @media (min-width: 1000px) and (max-width: 1069px) {
-  .software-box {
-    width: 33%;
+  .software-update-box {
+    width: 82.3%;
   }
 
-  .software-title {
+  .software-update-title {
     top: -17px;
     left: 51%;
     transform: translateX(-50%);
@@ -578,11 +986,11 @@ label span {
   }
 }
 @media (min-width: 1070px) and (max-width: 1099px) {
-  .software-box {
-    width: 33%;
+  .software-update-box {
+    width: 82.5%;
   }
 
-  .software-title {
+  .software-update-title {
     top: -17px;
     left: 51%;
     transform: translateX(-50%);
@@ -610,11 +1018,11 @@ label span {
   }
 }
 @media (min-width: 1100px) and (max-width: 1166px) {
-  .software-box {
-    width: 32%;
+  .software-update-box {
+    width: 82.7%;
   }
 
-  .software-title {
+  .software-update-title {
     top: -17px;
     left: 51%;
     transform: translateX(-50%);
@@ -642,11 +1050,11 @@ label span {
   }
 }
 @media (min-width: 1167px) and (max-width: 1199px) {
-  .software-box {
-    width: 31%;
+  .software-update-box {
+    width: 83.5%;
   }
 
-  .software-title {
+  .software-update-title {
     font-size: 1.65em;
   }
 
@@ -663,11 +1071,11 @@ label span {
   }
 }
 @media (min-width: 1200px) and (max-width: 1218px) {
-  .software-box {
-    width: 31%;
+  .software-update-box {
+    width: 84%;
   }
 
-  .software-title {
+  .software-update-title {
     font-size: 1.6em;
   }
 
@@ -684,11 +1092,11 @@ label span {
 }
 
 @media (min-width: 1219px) and (max-width: 1299px) {
-  .software-box {
-    width: 30%;
+  .software-update-box {
+    width: 85%;
   }
 
-  .software-title {
+  .software-update-title {
     font-size: 1.65em;
   }
 
@@ -696,7 +1104,7 @@ label span {
     font-size: 19px;
   }
 
-  .software-options {
+  .software-update-options {
     margin-bottom: 10px;
   }
   label {
@@ -712,11 +1120,11 @@ label span {
   }
 }
 @media (min-width: 1300px) and (max-width: 1359px) {
-  .software-box {
-    width: 28.7%;
+  .software-update-box {
+    width: 85.5%;
   }
 
-  .software-title {
+  .software-update-title {
     top: -19px;
     left: 51%;
     transform: translateX(-50%);
@@ -730,7 +1138,7 @@ label span {
     margin-bottom: 25px;
   }
 
-  .software-options {
+  .software-update-options {
     margin-bottom: 10px;
   }
   label {
@@ -746,40 +1154,40 @@ label span {
   }
 }
 @media (min-width: 1360px) and (max-width: 1399px) {
-  .software-box {
-    width: 28.7%;
+  .software-update-box {
+    width: 86.2%;
   }
 
-  .software-title {
+  .software-update-title {
     font-size: 1.6em;
     /* decreased font */
   }
 }
 @media (min-width: 1400px) and (max-width: 1499px) {
-  .software-box {
-    width: 28.1%;
+  .software-update-box {
+    width: 87%;
   }
 }
 @media (min-width: 1500px) and (max-width: 1599px) {
-  .software-box {
-    width: 28.1%;
+  .software-update-box {
+    width: 87.5%;
   }
 }
 
 @media (min-width: 1600px) and (max-width: 1699px) {
-  .software-box {
-    width: 28.2%;
+  .software-update-box {
+    width: 88%;
   }
 }
 @media (min-width: 1700px) and (max-width: 1799px) {
-  .software-box {
-    width: 28.5%;
+  .software-update-box {
+    width: 88.3%;
   }
 }
 
 @media (min-width: 1800px) and (max-width: 2000px) {
-  .software-box {
-    width: 28.6%;
+  .software-update-box {
+    width: 88.7%;
   }
 }
 

@@ -2,6 +2,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import React from "react";
 import CommonRow from "../../components/CommonRow";
 import "../../CSS/settings.css";
+import useWindowWidth from "../../components/useWindowWidth";
 
 function handleHover(e) {
   e.target.style.borderColor = "#e0e0e0";
@@ -24,6 +25,7 @@ function handleUnhover1(e) {
 }
 
 function Settings() {
+  const windowWidth = useWindowWidth();
   return (
     <Container fluid>
       <div>
@@ -45,7 +47,9 @@ function Settings() {
               <div className="software-update-box">
                 <div className="software-update-title">Software Update</div>
                 <div className="pending-message">
-                  You have a pending software update
+                  {windowWidth <= 767
+                    ? "Pending Software Update"
+                    : "You have a pending software update"}
                 </div>
                 <div className="software-update-options">
                   <label>
@@ -77,7 +81,7 @@ function Settings() {
           <div className="main">
             <div className="content">
               <div className="rename-box">
-                <div className="rename-title">Rename this FieldDock System</div>
+                <div className="rename-title">Rename FieldDock System</div>
                 <div className="fielddock-name">0001:</div>
                 <input type="text" className="rename-here" placeholder="" />
                 <button
