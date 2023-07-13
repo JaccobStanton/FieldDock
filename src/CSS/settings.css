@@ -1,10 +1,23 @@
+.sensor-settings {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+}
+.sensor-settings-title {
+  background-color: #181818;
+  padding: 5px;
+  color: white;
+  font-size: 1.5rem;
+}
+/* ------------------------------------title end------------------------------- */
 .main {
   background-color: transparent;
   height: 250px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 4rem;
+  margin-top: 1rem;
   margin-bottom: 4rem;
 }
 
@@ -14,21 +27,21 @@
   height: 100%;
 }
 
-.software-box {
+.software-update-box {
   border: 1px solid #797979;
   padding: 10px;
   position: relative;
-  width: 28.7%;
+  width: 88.7%;
+  display: flex;
   height: 100%;
   border-radius: 5px;
-  display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   margin-left: 3rem;
 }
 
-.software-title {
+.software-update-title {
   position: absolute;
   top: -19px;
   left: 51%;
@@ -62,7 +75,7 @@
   animation: colorWave 10s ease infinite;
 }
 
-.software-options {
+.software-update-options {
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
@@ -123,19 +136,19 @@ label span {
   border: 1px solid #797979;
   padding: 10px;
   position: relative;
-  width: 26.3%;
+  width: 82%;
   height: 100%;
   border-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-left: 105px;
+  margin-left: 53px;
 }
 .rename-title {
   position: absolute;
   top: -19px;
-  left: 50%;
+  left: 51%;
   transform: translateX(-50%);
   background-color: #181818;
   padding: 0 10px;
@@ -187,14 +200,14 @@ label span {
   border: 1px solid #797979;
   padding: 10px;
   position: relative;
-  width: 29%;
+  width: 89.3%;
   height: 100%;
   border-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-left: 98px;
+  margin-left: 14px;
 }
 .wifi-title {
   position: absolute;
@@ -769,3 +782,9 @@ label span {
     width: 28.6%;
   }
 }
+
+/* @media (min-width: 2000px) { ///////////////////////////////////////
+  .software-box {
+    width: 28.6%;
+  }
+} */

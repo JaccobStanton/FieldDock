@@ -30,17 +30,24 @@ function Settings() {
         <CommonRow />
       </div>
       {/* ------------------------------------------------- row 1 END ----------------------------- */}
+      <Row>
+        <Col xs={12} sm={12} md={12} lg={12} xl={12} xxl={12}>
+          <div className="sensor-settings">
+            <div className="sensor-settings-title">Sensor Settings</div>
+          </div>
+        </Col>
+      </Row>
 
       <Row>
-        <Col xs={6} sm={6} md={12} lg={12} xl={12} xxl={12}>
+        <Col xs={6} sm={6} md={4} lg={4} xl={4} xxl={4}>
           <div className="main">
             <div className="content">
-              <div className="software-box">
-                <div className="software-title">Software Update</div>
+              <div className="software-update-box">
+                <div className="software-update-title">Software Update</div>
                 <div className="pending-message">
                   You have a pending software update
                 </div>
-                <div className="software-options">
+                <div className="software-update-options">
                   <label>
                     <input className="begin-checkbox" type="checkbox" />
                     <span>
@@ -62,6 +69,13 @@ function Settings() {
                   Set
                 </button>
               </div>
+            </div>
+          </div>
+        </Col>
+
+        <Col xs={6} sm={6} md={4} lg={4} xl={4} xxl={4}>
+          <div className="main">
+            <div className="content">
               <div className="rename-box">
                 <div className="rename-title">Rename this FieldDock System</div>
                 <div className="fielddock-name">0001:</div>
@@ -74,10 +88,16 @@ function Settings() {
                   Rename
                 </button>
               </div>
+            </div>
+          </div>
+        </Col>
+
+        <Col xs={12} sm={12} md={4} lg={4} xl={4} xxl={4}>
+          <div className="main">
+            <div className="content">
               <div className="wifi-box">
                 <div className="wifi-title">Connect to Wifi</div>
                 <div className="available-networks">Available Networks:</div>
-
                 <div className="network-selection">
                   <button
                     className="network-button"
@@ -91,7 +111,6 @@ function Settings() {
                     {/* Insert more <option> elements here as needed */}
                   </select>
                 </div>
-
                 <div className="network-connection">
                   <div className="password-input">
                     <div className="password-instruction">
@@ -111,8 +130,9 @@ function Settings() {
             </div>
           </div>
         </Col>
-        {/* ------------------------------------------------- row 2 END ----------------------------- */}
       </Row>
+
+      {/* ------------------------------------------------- row 2 END ----------------------------- */}
 
       <Row className="center-row">
         <Col xs={12} sm={12} md={12} lg={12} xl={12} xxl={12}>

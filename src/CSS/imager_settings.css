@@ -1,1039 +1,536 @@
-/* ----------------------Sensor Measurement Settings start ----------------*/
-
-.sensor-measurement-settings {
+/* ----------------------------"Download Data" title start ----------------------------*/
+.download-data-box {
   display: flex;
   justify-content: center;
   margin-top: 2rem;
   margin-bottom: 3rem;
 }
-.sensor-measurement-settings-title {
+.download-data-title {
   background-color: #181818;
   padding: 5px;
   color: white;
   font-size: 1.5rem;
+  margin-left: 5px;
 }
-
-/* ------------------Sensor Measurement Settings start end --------------- */
-
-/* -------------------------Sensor Module start -------------------------- */
-.sensor-modules {
+/* ----------------------------"Download Data" title end ------------------------------ */
+/*  */
+/*  */
+/*  */
+/* ---------------------------Environmental Data column start -------------------------- */
+.environmental-modules,
+.images-modules,
+.drone-modules {
   border: 1px solid #797979;
   border-radius: 5px;
   height: 120px;
-  width: 90%;
+  width: 80%;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-left: 50px;
+  align-items: center;
+  margin-left: 165px;
   margin-bottom: 40px;
 }
 
-.sensor-modules-title {
+.environmental-modules-title,
+.images-modules-title,
+.drone-modules-title,
+.trait-modules-title,
+.mosaicked-modules-title,
+.wireless-sensor-modules-title {
   position: absolute;
-  top: -15px;
+  top: -18px;
   left: 50%;
   transform: translateX(-50%);
   background-color: #181818;
   padding: 0 5px;
   z-index: 1;
-  font-size: 20px;
+  font-size: 1.35rem;
   color: white;
   white-space: nowrap;
 }
-
-.sensor-modules-content {
-  display: flex;
-  align-items: center;
-  margin-left: 1rem;
-}
-
-.sensor-modules-description {
-  position: relative;
-  color: #00e1b4;
-  margin-right: 2rem;
-  margin-left: 2rem;
-  font-size: 1rem;
-  top: 5px;
-}
-
-.sensor-modules-select {
-  background-color: transparent;
-  font-size: 1rem;
-  border-radius: 5px;
-  border: 0.5px solid white;
-  color: white;
-  padding: 10px;
-  width: 40%;
-  margin-right: 20px;
-}
-/* -------------------------Sensor Module end -------------------------- */
-
-/* --------------------------wireless box start-------------------------- */
-/* wireless Modules */
-.wireless-modules {
+/* -------------------------Trait Scorecard Column start--------------------------------- */
+.trait-modules,
+.mosaicked-modules,
+.wireless-sensor-modules {
   border: 1px solid #797979;
   border-radius: 5px;
   height: 120px;
-  width: 90%;
+  width: 80%;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-left: 40px;
+  margin-left: 20px;
   margin-bottom: 40px;
 }
-.wireless-modules-title {
-  position: absolute;
-  top: -15px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #181818;
-  padding: 0 5px;
-  z-index: 1;
-  font-size: 20px;
-  color: white;
-  white-space: nowrap;
-}
-
-.wireless-modules-content {
+.env-button-container,
+.images-button-container,
+.drone-button-container,
+.trait-button-container,
+.mosaicked-button-container,
+.wireless-sensor-button-container,
+.all-data-button-container {
   display: flex;
-  align-items: center;
-  margin-left: 1rem;
-  font-size: 1rem;
+  justify-content: space-between; /* Ensure equal spacing between elements */
 }
-
-.wireless-modules-description {
-  position: relative;
-  color: #00e1b4;
-  margin-right: 2rem;
-  margin-left: 2rem;
-  font-size: 1rem;
-  top: 5px;
-}
-
-.wireless-modules-select {
-  background-color: transparent;
-  font-size: 1rem;
-  border-radius: 5px;
-  border: 0.5px solid white;
-  color: white;
+/* -------------------------Trait Scorecard Column start--------------------------------- */
+.env-button,
+.env-input-start,
+.env-input-end,
+.images-button,
+.images-input-start,
+.images-input-end,
+.drone-button,
+.drone-input-start,
+.drone-input-end,
+.trait-button,
+.trait-input-start,
+.trait-input-end,
+.mosaicked-button,
+.mosaicked-input-start,
+.mosaicked-input-end,
+.wireless-sensor-button,
+.wireless-sensor-input-start,
+.wireless-sensor-input-end,
+.all-data-button,
+.all-data-input-start,
+.all-data-input-end {
   padding: 10px;
-  width: 40%;
-  margin-right: 20px;
-}
-
-/* --------------------------wireless box end----------------------- */
-/*  */
-/*  */
-/* --------------------------image preference box start----------------------- */
-
-.image-preference-box {
-  border: 1px solid #797979;
   border-radius: 5px;
-  height: 120px;
-  width: 94.7%;
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-left: 50px;
-  margin-right: 40px;
-  margin-bottom: 15px;
-}
-
-.checkboxes {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-left: 40px;
-}
-
-.checkboxes label {
-  margin-bottom: 10px; /* Add this line to increase the spacing between checkboxes */
-}
-
-.checkboxes input[type="checkbox"] {
-  display: none;
-}
-
-/* Create a custom checkbox */
-.checkboxes input[type="checkbox"] + span::before {
-  content: "";
-  width: 20px;
-  height: 20px;
-  border: 1px solid #00e1b4;
+  border: 1px solid #e0e0e0;
+  height: 60px;
   background-color: transparent;
-  display: inline-block;
-  margin-right: 18px;
-  vertical-align: -16%;
-}
-
-/* Style for when the checkbox is checked */
-.checkboxes input[type="checkbox"]:checked + span::before {
-  background-color: #00e1b4;
-}
-
-.image-preferences-button {
-  margin-right: 20px;
-}
-
-.image-preferences-button button {
-  background-color: transparent;
-  border-radius: 4px;
-  height: 50px;
-  width: 270px;
-  border: 1px solid orange;
-  cursor: pointer;
-  color: #e0e0e0;
   font-size: 1.2rem;
-  padding: 5px;
+  margin-right: 25px;
+  width: 200px;
+  text-align: center;
+}
+.env-input-start,
+.images-input-start,
+.drone-input-start,
+.trait-input-start,
+.mosaicked-input-start,
+.wireless-sensor-input-start,
+.all-data-input-start {
+  margin-left: 40px;
 }
 
-/* --------------------------image preference box end----------------------- */
+.trait-input-end,
+.mosaicked-input-end,
+.wireless-sensor-input-end,
+.all-data-input-end {
+  margin-right: -4px;
+  margin-left: -31px;
+}
 
+.env-button,
+.images-button,
+.drone-button,
+.all-data-button,
+.trait-button,
+.mosaicked-button,
+.wireless-sensor-button,
+.all-data-button {
+  border: 1px solid orange;
+  color: #e0e0e0;
+  margin-right: 35px;
+}
+/* -------------------------All Data Download start -------------------------------- */
+.all-data-modules {
+  border: 1px solid #00e1b4;
+  border-radius: 5px;
+  height: 120px;
+  width: 40%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 565px;
+  margin-bottom: 40px;
+}
+
+.all-data-modules-title {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #181818;
+  padding: 0 5px;
+  z-index: 1;
+  font-size: 1.4rem;
+  color: white;
+  white-space: nowrap;
+}
+/* -------------------------All Data Download end ---------------------------------- */
 /*  */
 /*  */
-/* -------------------------- media queries ------------------------ */
+/*  */
+/*  */
+/* ----------------------------- MEDIA QUERIES BELOW ----------------------------------- */
 
 @media (min-width: 500px) and (max-width: 550px) {
-  .sensor-modules,
-  .wireless-modules {
+  .drone-modules,
+  .wireless-modules,
+  .environmental-modules,
+  .trait-modules,
+  .images-modules,
+  .mosaicked-modules {
     width: 78%;
     height: 140px;
   }
-
+  .trait-modules,
+  .mosaicked-modules,
   .wireless-modules {
     margin-left: -6px;
   }
-  .sensor-modules-content,
-  .wireless-modules-content {
-    flex-direction: column;
-    align-items: center;
-  }
-  .sensor-modules-title,
-  .wireless-modules-title {
+
+  .wireless-modules-title,
+  .drone-modules-title,
+  .environmental-modules-title,
+  .trait-modules-title,
+  .images-modules-title,
+  .mosaicked-modules-title {
     font-size: 16px;
   }
 
-  .sensor-modules-description {
-    font-size: 0.65rem;
-    text-align: left;
-    width: 95%;
-    margin-right: 18px;
-    margin-left: 1px;
-  }
-  .wireless-modules-description {
-    margin-right: 18px;
-    margin-left: 1px;
-    width: 95%;
-    font-size: 0.65rem;
-    text-align: left;
-  }
-
-  .sensor-modules-select,
-  .wireless-modules-select {
-    width: 95%;
-    font-size: 0.71rem;
-  }
-  .sensor-measurement-settings-title {
+  .download-data-title {
     font-size: 1.2rem;
-  }
-  .image-preference-box {
-    width: 78.3%;
-    height: 140px;
-    flex-direction: column;
-  }
-  .checkboxes {
-    margin-top: 12px;
-    margin-left: 12px;
-  }
-  .checkboxes label span {
-    font-size: 0.64rem;
-  }
-  .checkboxes input[type="checkbox"] + span::before {
-    width: 12px; /* Decrease the width */
-    height: 12px; /* Decrease the height */
-  }
-
-  .image-preferences-button {
-    width: 160px;
-    height: 90px;
-    margin-left: 20px;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
-  }
-  .image-preferences-button button {
-    font-size: 0.71rem;
-    width: 160px;
-    height: 40px;
   }
 }
 @media (min-width: 551px) and (max-width: 599px) {
-  .sensor-modules,
+  .environmental-modules,
+  .trait-modules,
+  .images-modules,
+  .mosaicked-modules,
+  .drone-modules,
   .wireless-modules {
     width: 79%;
     height: 140px;
   }
+  .trait-modules,
+  .mosaicked-modules,
   .wireless-modules {
     margin-left: -5px;
   }
-  .sensor-modules-content,
-  .wireless-modules-content {
-    flex-direction: column;
-    align-items: center;
-  }
-  .sensor-modules-title,
+  .environmental-modules-title,
+  .trait-modules-title,
+  .images-modules-title,
+  .mosaicked-modules-title,
+  .drone-modules-title,
   .wireless-modules-title {
     font-size: 16px;
   }
 
-  .sensor-modules-description {
-    font-size: 0.71rem;
-    text-align: left;
-    width: 95%;
-    margin-right: 18px;
-    margin-left: 1px;
-  }
-  .wireless-modules-description {
-    margin-right: 18px;
-    margin-left: 1px;
-    width: 95%;
-    font-size: 0.71rem;
-    text-align: left;
-  }
-
-  .sensor-modules-select,
-  .wireless-modules-select {
-    width: 95%;
-    font-size: 0.71rem;
-  }
-  .sensor-measurement-settings-title {
+  .download-data-title {
     font-size: 1.2rem;
-  }
-  .image-preference-box {
-    width: 80.7%;
-    height: 150px;
-    flex-direction: column;
-  }
-  .checkboxes {
-    margin-top: 12px;
-    margin-left: 12px;
-  }
-  .checkboxes label span {
-    font-size: 0.75rem;
-  }
-  .checkboxes input[type="checkbox"] + span::before {
-    width: 13px; /* Decrease the width */
-    height: 13px; /* Decrease the height */
-  }
-
-  .image-preferences-button {
-    width: 170px;
-    height: 100px;
-    margin-left: 20px;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
-  }
-  .image-preferences-button button {
-    font-size: 0.74rem;
-    width: 170px;
-    height: 45px;
   }
 }
 @media (min-width: 600px) and (max-width: 650px) {
-  .sensor-modules,
+  .environmental-modules,
+  .trait-modules,
+  .images-modules,
+  .mosaicked-modules,
+  .drone-modules,
   .wireless-modules {
     width: 80%;
     height: 130px;
   }
+  .trait-modules,
+  .mosaicked-modules,
   .wireless-modules {
     margin-left: -5px;
   }
-  .sensor-modules-content,
-  .wireless-modules-content {
-    flex-direction: column;
-    align-items: center;
-  }
-  .sensor-modules-title,
+  .environmental-modules-title,
+  .trait-modules-title,
+  .images-modules-title,
+  .mosaicked-modules-title,
+  .drone-modules-title,
   .wireless-modules-title {
     font-size: 17px;
   }
-
-  .sensor-modules-description {
-    font-size: 0.73rem;
-    text-align: left;
-    width: 95%;
-    margin-right: 18px;
-    margin-left: 1px;
-  }
-  .wireless-modules-description {
-    margin-right: 18px;
-    margin-left: 1px;
-    width: 95%;
-    font-size: 0.73rem;
-    text-align: left;
-  }
-
-  .sensor-modules-select,
-  .wireless-modules-select {
-    width: 95%;
-    font-size: 0.73rem;
-  }
-  .sensor-measurement-settings-title {
+  .download-data-title {
     font-size: 1.3rem;
-  }
-  .image-preference-box {
-    width: 82%;
-    height: 150px;
-    flex-direction: column;
-  }
-  .checkboxes {
-    margin-top: 12px;
-    margin-left: 12px;
-  }
-  .checkboxes label span {
-    font-size: 0.75rem;
-  }
-  .checkboxes input[type="checkbox"] + span::before {
-    width: 13px; /* Decrease the width */
-    height: 13px; /* Decrease the height */
-  }
-
-  .image-preferences-button {
-    width: 175px;
-    margin-left: 18px;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
-  }
-  .image-preferences-button button {
-    font-size: 0.77rem;
-    width: 170px;
   }
 }
 @media (min-width: 651px) and (max-width: 699px) {
-  .sensor-modules,
+  .environmental-modules,
+  .trait-modules,
+  .images-modules,
+  .mosaicked-modules,
+  .drone-modules,
   .wireless-modules {
     width: 83%;
     height: 130px;
   }
+  .trait-modules,
+  .mosaicked-modules,
   .wireless-modules {
     margin-left: -5px;
   }
-  .sensor-modules-content,
-  .wireless-modules-content {
-    flex-direction: column;
-    align-items: center;
-  }
-  .sensor-modules-title,
+  .environmental-modules-title,
+  .trait-modules-title,
+  .images-modules-title,
+  .mosaicked-modules-title,
+  .drone-modules-title,
   .wireless-modules-title {
     font-size: 19px;
   }
 
-  .sensor-modules-description {
-    font-size: 0.75rem;
-    text-align: left;
-    width: 95%;
-    margin-right: 18px;
-    margin-left: 1px;
-  }
-  .wireless-modules-description {
-    margin-right: 18px;
-    margin-left: 1px;
-    width: 95%;
-    font-size: 0.75rem;
-    text-align: left;
-  }
-
-  .sensor-modules-select,
-  .wireless-modules-select {
-    width: 95%;
-    font-size: 0.75rem;
-  }
-  .sensor-measurement-settings-title {
+  .download-data-title {
     font-size: 1.5rem;
-  }
-  .image-preference-box {
-    width: 84.3%;
-    height: 150px;
-    flex-direction: column;
-  }
-  .checkboxes {
-    margin-top: 12px;
-    margin-left: 12px;
-  }
-  .checkboxes label span {
-    font-size: 0.8rem;
-  }
-  .checkboxes input[type="checkbox"] + span::before {
-    width: 14px; /* Decrease the width */
-    height: 14px; /* Decrease the height */
-  }
-
-  .image-preferences-button {
-    font-size: 0.75rem;
-    width: 185px;
-    margin-left: 18px;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
-  }
-  .image-preferences-button button {
-    font-size: 0.8rem;
-    width: 170px;
   }
 }
 @media (min-width: 700px) and (max-width: 767px) {
-  .sensor-modules,
+  .environmental-modules,
+  .trait-modules,
+  .images-modules,
+  .mosaicked-modules,
+  .drone-modules,
   .wireless-modules {
     width: 83%;
     height: 130px;
   }
+  .trait-modules,
+  .mosaicked-modules,
   .wireless-modules {
     margin-left: -5px;
   }
-  .sensor-modules-content,
-  .wireless-modules-content {
-    flex-direction: column;
-    align-items: center;
-  }
-  .sensor-modules-title,
+  .environmental-modules-title,
+  .trait-modules-title,
+  .images-modules-title,
+  .mosaicked-modules-title,
+  .drone-modules-title,
   .wireless-modules-title {
     font-size: 19px;
   }
 
-  .sensor-modules-description {
-    font-size: 0.75rem;
-    text-align: left;
-    width: 95%;
-    margin-right: 18px;
-    margin-left: 1px;
-  }
-  .wireless-modules-description {
-    margin-right: 18px;
-    margin-left: 1px;
-    width: 95%;
-    font-size: 0.75rem;
-    text-align: left;
-  }
-
-  .sensor-modules-select,
-  .wireless-modules-select {
-    width: 95%;
-    font-size: 0.75rem;
-  }
-  .sensor-measurement-settings-title {
+  .download-data-title {
     font-size: 1.5rem;
-  }
-  .image-preference-box {
-    width: 84.7%;
-    height: 150px;
-    flex-direction: column;
-  }
-  .checkboxes {
-    margin-top: 12px;
-    margin-left: 12px;
-  }
-  .checkboxes label span {
-    font-size: 0.8rem;
-  }
-  .checkboxes input[type="checkbox"] + span::before {
-    width: 14px; /* Decrease the width */
-    height: 14px; /* Decrease the height */
-  }
-
-  .image-preferences-button {
-    font-size: 0.75rem;
-    width: 185px;
-    margin-left: 15px;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
-  }
-  .image-preferences-button button {
-    font-size: 0.8rem;
-    width: 170px;
   }
 }
 @media (min-width: 768px) and (max-width: 799px) {
-  .sensor-modules,
+  .environmental-modules,
+  .trait-modules,
+  .images-modules,
+  .mosaicked-modules,
+  .drone-modules,
   .wireless-modules {
     width: 79%;
     height: 110px;
   }
-  .sensor-modules-content,
-  .wireless-modules-content {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .sensor-modules-description {
-    font-size: 0.69rem;
-    text-align: left;
-    width: 95%;
-    margin-right: 18px;
-    margin-left: 1px;
-  }
-  .wireless-modules-description {
-    margin-right: 18px;
-    margin-left: 1px;
-    width: 95%;
-    font-size: 0.69rem;
-    text-align: left;
-  }
-
-  .sensor-modules-select,
-  .wireless-modules-select {
-    width: 95%;
-    font-size: 0.69rem;
-  }
-  .sensor-modules-title,
+  .environmental-modules-title,
+  .trait-modules-title,
+  .images-modules-title,
+  .mosaicked-modules-title,
+  .drone-modules-title,
   .wireless-modules-title {
     font-size: 14px;
   }
-  .image-preference-box {
-    width: 88.7%;
-    height: 100px;
-  }
-  .checkboxes {
-    margin-top: 10px;
-  }
-  .checkboxes label span {
-    font-size: 0.77rem;
-  }
-  .checkboxes input[type="checkbox"] + span::before {
-    width: 12px; /* Decrease the width */
-    height: 12px; /* Decrease the height */
-  }
-  .image-preferences-button button {
-    font-size: 0.8rem;
-    width: 175px;
-  }
 }
 @media (min-width: 800px) and (max-width: 899px) {
-  .sensor-modules,
+  .environmental-modules,
+  .trait-modules,
+  .images-modules,
+  .mosaicked-modules,
+  .drone-modules,
   .wireless-modules {
     width: 79%;
     height: 110px;
   }
-  .sensor-modules-content,
-  .wireless-modules-content {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .sensor-modules-description {
-    font-size: 0.71rem;
-    text-align: left;
-    width: 95%;
-    margin-right: 18px;
-    margin-left: 1px;
-  }
-  .wireless-modules-description {
-    margin-right: 18px;
-    margin-left: 1px;
-    width: 95%;
-    font-size: 0.71rem;
-    text-align: left;
-  }
-
-  .sensor-modules-select,
-  .wireless-modules-select {
-    width: 95%;
-    font-size: 0.7rem;
-  }
-  .sensor-modules-title,
+  .environmental-modules-title,
+  .trait-modules-title,
+  .images-modules-title,
+  .mosaicked-modules-title,
+  .drone-modules-title,
   .wireless-modules-title {
     font-size: 16px;
   }
-  .image-preference-box {
-    width: 88.6%;
-    height: 100px;
-  }
-  .checkboxes {
-    margin-top: 10px;
-  }
-  .checkboxes label span {
-    font-size: 0.8rem;
-  }
-  .checkboxes input[type="checkbox"] + span::before {
-    width: 13px; /* Decrease the width */
-    height: 13px; /* Decrease the height */
-  }
-  .image-preferences-button button {
-    font-size: 0.85rem;
-    width: 185px;
-  }
 }
 @media (min-width: 900px) and (max-width: 999px) {
-  .sensor-modules,
+  .environmental-modules,
+  .trait-modules,
+  .images-modules,
+  .mosaicked-modules,
+  .drone-modules,
   .wireless-modules {
     width: 82%;
     height: 110px;
   }
-  .sensor-modules-content,
-  .wireless-modules-content {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .sensor-modules-description {
-    font-size: 0.72rem;
-    text-align: left;
-    width: 95%;
-    margin-right: 18px;
-    margin-left: 1px;
-  }
-  .wireless-modules-description {
-    margin-right: 18px;
-    margin-left: 1px;
-    width: 95%;
-    font-size: 0.72rem;
-    text-align: left;
-  }
-
-  .sensor-modules-select,
-  .wireless-modules-select {
-    width: 95%;
-    font-size: 0.72rem;
-  }
-  .sensor-modules-title,
+  .environmental-modules-title,
+  .trait-modules-title,
+  .images-modules-title,
+  .mosaicked-modules-title,
+  .drone-modules-title,
   .wireless-modules-title {
     font-size: 17px;
-  }
-  .image-preference-box {
-    width: 90.3%;
-    height: 100px;
-  }
-  .checkboxes {
-    margin-top: 10px;
-  }
-  .checkboxes label span {
-    font-size: 0.82rem;
-  }
-  .checkboxes input[type="checkbox"] + span::before {
-    width: 14px; /* Decrease the width */
-    height: 14px; /* Decrease the height */
-  }
-  .image-preferences-button button {
-    font-size: 0.87rem;
-    width: 200px;
   }
 }
 @media (min-width: 1000px) and (max-width: 1067px) {
-  .sensor-modules,
+  .environmental-modules,
+  .trait-modules,
+  .images-modules,
+  .mosaicked-modules,
+  .drone-modules,
   .wireless-modules {
     width: 85%;
     height: 110px;
   }
-  .sensor-modules-content,
-  .wireless-modules-content {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .sensor-modules-description {
-    font-size: 0.72rem;
-    text-align: left;
-    width: 95%;
-    margin-right: 18px;
-    margin-left: 1px;
-  }
-  .wireless-modules-description {
-    margin-right: 18px;
-    margin-left: 1px;
-    width: 95%;
-    font-size: 0.72rem;
-    text-align: left;
-  }
-
-  .sensor-modules-select,
-  .wireless-modules-select {
-    width: 95%;
-    font-size: 0.72rem;
-  }
-  .sensor-modules-title,
+  .environmental-modules-title,
+  .trait-modules-title,
+  .images-modules-title,
+  .mosaicked-modules-title,
+  .drone-modules-title,
   .wireless-modules-title {
     font-size: 17px;
   }
-  .image-preference-box {
-    width: 91.9%;
-    height: 110px;
-  }
-  .checkboxes {
-    margin-top: 10px;
-  }
-
-  .checkboxes label span {
-    font-size: 0.83rem;
-  }
-  .checkboxes input[type="checkbox"] + span::before {
-    width: 14px; /* Decrease the width */
-    height: 14px; /* Decrease the height */
-  }
-  .image-preferences-button button {
-    font-size: 0.87rem;
-    width: 200px;
-  }
 }
 @media (min-width: 1068px) and (max-width: 1099px) {
-  .sensor-modules,
+  .environmental-modules,
+  .trait-modules,
+  .images-modules,
+  .mosaicked-modules,
+  .drone-modules,
   .wireless-modules {
     width: 85%;
     height: 100px;
   }
-
-  .sensor-modules-description,
-  .wireless-modules-description {
-    font-size: 0.73rem;
-  }
-  .sensor-modules-select,
-  .wireless-modules-select {
-    width: 70%;
-    font-size: 0.73rem;
-  }
-  .sensor-modules-title,
+  .environmental-modules-title,
+  .trait-modules-title,
+  .images-modules-title,
+  .mosaicked-modules-title,
+  .drone-modules-title,
   .wireless-modules-title {
     font-size: 17px;
   }
-  .image-preference-box {
-    width: 91.9%;
-  }
-  .checkboxes {
-    margin-top: 10px;
-  }
-  .checkboxes label span {
-    font-size: 0.83rem;
-  }
-  .checkboxes input[type="checkbox"] + span::before {
-    width: 14px; /* Decrease the width */
-    height: 14px; /* Decrease the height */
-  }
-  .image-preferences-button button {
-    font-size: 0.9rem;
-    width: 210px;
-  }
 }
 @media (min-width: 1100px) and (max-width: 1199px) {
-  .sensor-modules,
+  .environmental-modules,
+  .trait-modules,
+  .images-modules,
+  .mosaicked-modules,
+  .drone-modules,
   .wireless-modules {
     width: 86%;
     height: 100px;
   }
-
-  .sensor-modules-description,
-  .wireless-modules-description {
-    font-size: 0.75rem;
-  }
-  .sensor-modules-select,
-  .wireless-modules-select {
-    width: 70%;
-    font-size: 0.75rem;
-  }
-  .sensor-modules-title,
+  .environmental-modules-title,
+  .trait-modules-title,
+  .images-modules-title,
+  .mosaicked-modules-title,
+  .drone-modules-title,
   .wireless-modules-title {
     font-size: 18px;
-  }
-  .image-preference-box {
-    width: 92.5%;
-  }
-  .checkboxes {
-    margin-top: 10px;
-  }
-  .checkboxes label span {
-    font-size: 0.85rem;
-  }
-  .checkboxes input[type="checkbox"] + span::before {
-    width: 15px; /* Decrease the width */
-    height: 15px; /* Decrease the height */
-  }
-  .image-preferences-button button {
-    font-size: 0.91rem;
-    width: 220px;
   }
 }
 
 @media (min-width: 1200px) and (max-width: 1299px) {
-  .sensor-modules,
+  .environmental-modules,
+  .trait-modules,
+  .images-modules,
+  .mosaicked-modules,
+  .drone-modules,
   .wireless-modules {
     width: 87.5%;
     height: 100px;
   }
-
-  .sensor-modules-description,
-  .wireless-modules-description {
-    font-size: 0.77rem;
-  }
-  .sensor-modules-select,
-  .wireless-modules-select {
-    width: 60%;
-    font-size: 0.75rem;
-  }
-  .sensor-modules-title,
+  .environmental-modules-title,
+  .trait-modules-title,
+  .images-modules-title,
+  .mosaicked-modules-title,
+  .drone-modules-title,
   .wireless-modules-title {
     font-size: 18px;
   }
-  .image-preference-box {
-    width: 93.2%;
-  }
-  .checkboxes {
-    margin-top: 10px;
-  }
-  .checkboxes label span {
-    font-size: 0.88rem;
-  }
-  .checkboxes input[type="checkbox"] + span::before {
-    width: 16px; /* Decrease the width */
-    height: 16px; /* Decrease the height */
-  }
-  .image-preferences-button button {
-    font-size: 0.94rem;
-    width: 230px;
-  }
 }
 @media (min-width: 1300px) and (max-width: 1399px) {
-  .sensor-modules,
+  .environmental-modules,
+  .trait-modules,
+  .images-modules,
+  .mosaicked-modules,
+  .drone-modules,
   .wireless-modules {
     width: 87.5%;
     height: 110px;
   }
-  .sensor-modules-select,
-  .wireless-modules-select,
-  .sensor-modules-description,
-  .wireless-modules-description {
-    font-size: 0.77rem;
-  }
-  .sensor-modules-select,
-  .wireless-modules-select {
-    width: 60%;
-  }
-  .image-preference-box {
-    width: 93.3%;
-  }
-  .checkboxes {
-    margin-top: 10px;
-  }
-  .checkboxes label span {
-    font-size: 0.88rem;
-  }
-  .checkboxes input[type="checkbox"] + span::before {
-    width: 17px; /* Decrease the width */
-    height: 17px; /* Decrease the height */
-  }
-  .image-preferences-button button {
-    font-size: 0.98rem;
-    width: 250px;
-  }
 }
 
 @media (min-width: 1400px) and (max-width: 1499px) {
-  .sensor-modules,
+  .environmental-modules,
+  .trait-modules,
+  .images-modules,
+  .mosaicked-modules,
+  .drone-modules,
   .wireless-modules {
     width: 88%;
   }
-  .sensor-modules-select,
-  .wireless-modules-select,
-  .sensor-modules-description,
-  .wireless-modules-description {
-    font-size: 0.85rem;
-  }
-  .image-preference-box {
-    width: 93.5%;
-  }
-  .checkboxes {
-    margin-top: 10px;
-  }
-  .checkboxes label span {
-    font-size: 0.9rem;
-  }
-  .checkboxes input[type="checkbox"] + span::before {
-    width: 18px; /* Decrease the width */
-    height: 18px; /* Decrease the height */
-  }
-  .image-preferences-button button {
-    font-size: 1rem;
-    width: 260px;
-  }
 }
 @media (min-width: 1500px) and (max-width: 1550px) {
-  .sensor-modules,
+  .environmental-modules,
+  .trait-modules,
+  .images-modules,
+  .mosaicked-modules,
+  .drone-modules,
   .wireless-modules {
     width: 88.5%;
-  }
-  .sensor-modules-select,
-  .wireless-modules-select,
-  .sensor-modules-description,
-  .wireless-modules-description {
-    font-size: 0.9rem;
-  }
-  .image-preference-box {
-    width: 93.7%;
-  }
-  .checkboxes {
-    margin-top: 10px;
-  }
-  .checkboxes label span {
-    font-size: 1rem;
-  }
-  .image-preferences-button button {
-    font-size: 1.1rem;
   }
 }
 @media (min-width: 1551px) and (max-width: 1599px) {
-  .sensor-modules,
+  .environmental-modules,
+  .trait-modules,
+  .images-modules,
+  .mosaicked-modules,
+  .drone-modules,
   .wireless-modules {
     width: 88.5%;
-  }
-  .image-preference-box {
-    width: 93.8%;
-  }
-  .checkboxes {
-    margin-top: 10px;
   }
 }
 
 @media (min-width: 1600px) and (max-width: 1699px) {
-  .sensor-modules,
+  .environmental-modules,
+  .trait-modules,
+  .images-modules,
+  .mosaicked-modules,
+  .drone-modules,
   .wireless-modules {
     width: 89%;
-  }
-  .image-preference-box {
-    width: 94.1%;
-  }
-  .checkboxes {
-    margin-top: 10px;
   }
 }
 
 @media (min-width: 1700px) and (max-width: 1799px) {
-  .sensor-modules,
+  .environmental-modules,
+  .trait-modules,
+  .images-modules,
+  .mosaicked-modules,
+  .drone-modules,
   .wireless-modules {
-    width: 89.5%;
+    width: 80%;
   }
-  .image-preference-box {
-    width: 94.4%;
+}
+@media (min-width: 1800px) and (max-width: 1899px) {
+  .environmental-modules,
+  .trait-modules,
+  .images-modules,
+  .mosaicked-modules,
+  .drone-modules,
+  .wireless-modules {
+    width: 80%;
   }
-  .checkboxes {
-    margin-top: 10px;
+  .environmental-modules,
+  .trait-modules,
+  .images-modules {
+    margin-right: 5px;
   }
 }
 
 @media (min-width: 2000px) {
-  .sensor-modules,
+  .environmental-modules,
+  .trait-modules,
+  .images-modules,
+  .mosaicked-modules,
+  .drone-modules,
   .wireless-modules {
-    width: 92%;
-  }
-  .image-preference-box {
-    width: 94.4%;
-  }
-  .checkboxes {
-    margin-top: 10px;
-  }
-  .image-preference-box {
-    width: 95.7%;
-    height: 140px;
+    width: 80%;
   }
 }

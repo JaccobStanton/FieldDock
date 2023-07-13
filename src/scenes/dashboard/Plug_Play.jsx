@@ -5,7 +5,6 @@ import MenuItem from "@mui/material/MenuItem";
 import { useState, useEffect } from "react";
 import { ExpandMore } from "@mui/icons-material";
 import { Link } from "react-router-dom";
-import Chart from "../../components/Chart";
 import axios from "axios";
 
 const Plug_Play = () => {
@@ -359,7 +358,7 @@ const Plug_Play = () => {
                 fontSize: "1vw", // dynamic font size based on viewport width
               }}
             >
-              Plug and Play Sensor
+              {/* Plug and Play Sensor
               {showChart && (
                 <div
                   style={{
@@ -374,7 +373,7 @@ const Plug_Play = () => {
                 >
                   <Chart />
                 </div>
-              )}
+              )} */}
             </Box>
             <div>
               {/* "Select sensor....START" */}

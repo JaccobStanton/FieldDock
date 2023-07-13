@@ -27,7 +27,7 @@ const Dashboard = () => {
   const [selectedSensor, setSelectedSensor] = useState(null);
   const [selectedSensor1, setSelectedSensor1] = useState(null);
   const [selectedSensor2, setSelectedSensor2] = useState(null);
-  const [showChart, setShowChart] = useState(false);
+  // const [showChart, setShowChart] = useState(false);
   // const [weatherData, setWeatherData] = useState(null);  //for weather data
 
   //two functions, one to handle the opening of the dropdown menu and another to handle the closing of the dropdown menu.
@@ -843,8 +843,8 @@ const Dashboard = () => {
             }}
           >
             <Box
-              onMouseEnter={() => setShowChart(true)}
-              onMouseLeave={() => setShowChart(false)}
+              // onMouseEnter={() => setShowChart(true)}
+              // onMouseLeave={() => setShowChart(false)}
               style={{
                 position: "absolute",
                 top: "-15px",
