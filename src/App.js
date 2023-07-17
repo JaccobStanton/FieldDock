@@ -1,11 +1,11 @@
 import { Routes, Route } from "react-router-dom";
 import Dashboard from "./scenes/dashboard";
-import Plug_Play from "./scenes/dashboard/Plug_Play";
+import Plug_Play from "./scenes/dashboard/plug_play";
 import Drone from "./scenes/dashboard/drone.jsx";
 import Images from "./scenes/dashboard/images.jsx";
 import Settings from "./scenes/dashboard/settings.jsx";
 import Imager_Settings from "./scenes/dashboard/imager_settings.jsx";
-import RealTime_Settings from "./scenes/dashboard/RealTime_Settings.jsx";
+import RealTime_Settings from "./scenes/dashboard/realtime_settings";
 import Diagnostics from "./scenes/dashboard/diagnostics.jsx";
 import Users from "./scenes/dashboard/users.jsx";
 import Download_data from "./scenes/dashboard/download_data.jsx";

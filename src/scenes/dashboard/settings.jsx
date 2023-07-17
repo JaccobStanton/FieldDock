@@ -35,7 +35,7 @@ function Settings() {
       <Row>
         <Col xs={12} sm={12} md={12} lg={12} xl={12} xxl={12}>
           <div className="sensor-settings">
-            <div className="sensor-settings-title">Sensor Settings</div>
+            <div className="sensor-settings-title"> Settings</div>
           </div>
         </Col>
       </Row>

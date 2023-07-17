@@ -336,8 +336,6 @@
   .user-box {
     font-size: 0.85em;
   }
-}
-@media (min-width: 450px) and (max-width: 650px) {
   .logout-button {
     font-size: 0.85em;
   }
@@ -421,9 +419,6 @@
   .logout-button {
     font-size: 0.85em;
   }
-}
-
-@media (min-width: 500px) and (max-width: 549px) {
   .user-logout-box {
     margin-left: 5px;
     font-size: 0.85em;
@@ -549,7 +544,6 @@
     padding: 1%;
     margin-left: -25px;
   }
-
   .box-icon {
     width: 50px;
     height: 50px;
@@ -564,7 +558,6 @@
     padding: 1%;
     margin-left: -30px;
   }
-
   .box-icon {
     width: 55px;
     height: 55px;

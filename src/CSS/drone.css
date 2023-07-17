@@ -1,0 +1,41 @@
+.drone-header-title-box {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.drone-header-title {
+  background-color: #181818;
+  padding: 5px;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.drone-svg-container {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Adjust the height as needed */
+}
+.drone-large-svg {
+  height: 100%;
+  width: 48%;
+}
+
+.center-row {
+  justify-content: space-around;
+  align-items: center;
+}
+
+.box {
+  width: 33%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.title-text {
+  text-align: center;
+}
