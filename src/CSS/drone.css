@@ -34,8 +34,47 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
-.title-text {
+.flight-text,
+.status-text,
+.battery-text {
   text-align: center;
+  color: #afafaf;
+  font-size: 1.3rem;
+}
+
+.date-text,
+.charging-text,
+.percent-text {
+  text-align: center;
+  color: #00e1b4;
+  font-size: 1.3rem;
+}
+
+@keyframes colorWave {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 400%;
+  }
+}
+/* colorwave effect */
+.charging-text {
+  background: linear-gradient(
+    90deg,
+    #50ddc1,
+    #2b8c79,
+    #36f0cb,
+    #00e1b4,
+    #00c9a2
+  );
+
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: colorWave 10s ease infinite;
 }

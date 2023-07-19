@@ -36,18 +36,18 @@ function Drone() {
         <Col xs={12} sm={12} md={12} lg={12} xl={12} xxl={12}>
           <Row className="center-row">
             <div className="box">
-              <p className="title-text">Last flight completed:</p>
-              <p className="title-text">May 7, 2021 1:28pm</p>
+              <p className="flight-text">Last flight completed:</p>
+              <p className="date-text">May 7, 2021 1:28pm</p>
             </div>
 
             <div className="box">
-              <p className="title-text">Status:</p>
-              <p className="title-text">Charging</p>
+              <p className="status-text">Status:</p>
+              <p className="charging-text">Charging</p>
             </div>
 
             <div className="box">
-              <p className="title-text">Battery Charge:</p>
-              <p className="title-text">38.41%</p>
+              <p className="battery-text">Battery Charge:</p>
+              <p className="percent-text">38.41%</p>
             </div>
           </Row>
         </Col>
