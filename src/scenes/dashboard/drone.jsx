@@ -1,7 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Box, ListItemIcon, Typography } from "@mui/material";
-import { ExpandMore } from "@mui/icons-material";
 import CommonRow from "../../components/CommonRow";
 import { Container, Row, Col } from "react-bootstrap";
 import "../../CSS/drone.css";
@@ -25,7 +22,7 @@ function Drone() {
           <div className="drone-svg-container">
             <img
               src={process.env.PUBLIC_URL + "/assets/drone_diagram_large.svg"}
-              alt="Drone Image"
+              alt="Drone"
               className="drone-large-svg"
             />
           </div>

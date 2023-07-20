@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import Login from "./login/login";
 import Dashboard from "./scenes/dashboard";
 import Plug_Play from "./scenes/dashboard/plug_play";
 import Drone from "./scenes/dashboard/drone.jsx";
@@ -25,7 +26,8 @@ function App() {
         <div className="app">
           <main className="content">
             <Routes>
-              <Route path="/" element={<Dashboard />} />
+              <Route path="/" element={<Login />} />
+              <Route path="/Dashboard" element={<Dashboard />} />
               <Route path="/Plug_Play" element={<Plug_Play />} />
               <Route path="/drone" element={<Drone />} />
               <Route path="/images" element={<Images />} />

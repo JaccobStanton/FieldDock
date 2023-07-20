@@ -35,6 +35,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  white-space: nowrap;
 }
 
 .flight-text,
@@ -61,7 +62,7 @@
     background-position: 400%;
   }
 }
-/* colorwave effect */
+/* colorwave effect for charging status*/
 .charging-text {
   background: linear-gradient(
     90deg,
@@ -77,4 +78,108 @@
   -webkit-background-clip: text;
   background-clip: text;
   animation: colorWave 10s ease infinite;
+}
+
+/* ---------------------------------------------Media Queries ------------------------------------------*/
+@media (min-width: 500px) and (max-width: 599px) {
+  .drone-large-svg {
+    width: 75%;
+  }
+  .flight-text,
+  .status-text,
+  .battery-text,
+  .date-text,
+  .charging-text,
+  .percent-text {
+    font-size: 0.9rem;
+  }
+  .drone-header-title {
+    font-size: 1.2rem;
+  }
+}
+@media (min-width: 600px) and (max-width: 699px) {
+  .drone-large-svg {
+    width: 80%;
+  }
+  .flight-text,
+  .status-text,
+  .battery-text,
+  .date-text,
+  .charging-text,
+  .percent-text {
+    font-size: 1rem;
+  }
+  .drone-header-title {
+    font-size: 1.4rem;
+  }
+}
+
+@media (min-width: 700px) and (max-width: 767px) {
+  .drone-large-svg {
+    width: 85%;
+  }
+  .flight-text,
+  .status-text,
+  .battery-text,
+  .date-text,
+  .charging-text,
+  .percent-text {
+    font-size: 1.1rem;
+  }
+  .drone-header-title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 799px) {
+  .flight-text,
+  .status-text,
+  .battery-text,
+  .date-text,
+  .charging-text,
+  .percent-text {
+    font-size: 0.9rem;
+  }
+}
+
+@media (min-width: 800px) and (max-width: 899px) {
+  .flight-text,
+  .status-text,
+  .battery-text,
+  .date-text,
+  .charging-text,
+  .percent-text {
+    font-size: 1rem;
+  }
+}
+@media (min-width: 900px) and (max-width: 999px) {
+  .flight-text,
+  .status-text,
+  .battery-text,
+  .date-text,
+  .charging-text,
+  .percent-text {
+    font-size: 1.1rem;
+  }
+}
+@media (min-width: 1000px) and (max-width: 1099px) {
+  .flight-text,
+  .status-text,
+  .battery-text,
+  .date-text,
+  .charging-text,
+  .percent-text {
+    font-size: 1.2rem;
+  }
+}
+
+@media (min-width: 2000px) {
+  .flight-text,
+  .status-text,
+  .battery-text,
+  .date-text,
+  .charging-text,
+  .percent-text {
+    font-size: 1.5rem;
+  }
 }

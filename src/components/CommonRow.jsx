@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import { ExpandMore } from "@mui/icons-material";
-import "../CSS/CommonRow.css";
+import "../CSS/common_row.css";
 import { ReactComponent as FieldDockLogo } from "../assets/FieldDock-Logo.svg";
 
 function CommonRow() {

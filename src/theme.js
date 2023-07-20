@@ -140,8 +140,9 @@ export const themeSettings = (mode) => {
               main: colors.grey[500],
               light: colors.grey[100],
             },
-            background: {  //SETS THE MAIN BACKGROUND COLOR FOR THE PAGE 
-              default: ['#181818'],
+            background: {
+              //SETS THE MAIN BACKGROUND COLOR FOR THE PAGE
+              default: ["#181818"],
             },
           }
         : {
