@@ -12,14 +12,16 @@
   position: relative;
   display: inline-block;
 }
+.user-header-title-box {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
 .user-title {
-  position: absolute;
-  top: -85%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #fff;
-  font-size: 20px;
-  font-weight: bold;
+  padding: 5px;
+  color: white;
+  font-size: 1.5rem;
 }
 .create-user-button-hovered,
 .create-user-button {
@@ -94,6 +96,9 @@
     height: 4em;
     font-size: 0.9em;
   }
+  .user-title {
+    font-size: 1.3rem;
+  }
 }
 @media (min-width: 600px) and (max-width: 799px) {
   .edit-existing-user-hovered,
@@ -103,6 +108,9 @@
     width: 150px;
     height: 4em;
     font-size: 1em;
+  }
+  .user-title {
+    font-size: 1.5rem;
   }
 }
 @media (min-width: 800px) and (max-width: 999px) {

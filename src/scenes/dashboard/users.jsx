@@ -42,6 +42,9 @@ function Users() {
       </div>
       <Row>
         <Col xs={12} sm={12} md={12} lg={12} xl={12} xxl={12}>
+          <div className="user-header-title-box">
+            <div className="user-title">Users</div>
+          </div>
           <div className="entire-second-row">
             <div className="button-row">
               <button
@@ -58,7 +61,6 @@ function Users() {
               >
                 Edit existing user
               </button>
-              <div className="user-title">Users</div>
             </div>
           </div>
         </Col>

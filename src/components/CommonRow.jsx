@@ -9,8 +9,17 @@ import { ExpandMore } from "@mui/icons-material";
 import "../CSS/common_row.css";
 import { ReactComponent as FieldDockLogo } from "../assets/FieldDock-Logo.svg";
 
+import { useNavigate } from "react-router-dom";
+
 function CommonRow() {
   //
+
+  let navigate = useNavigate();
+
+  function handleButtonLogout() {
+    navigate("/");
+    console.log(handleButtonLogout);
+  }
   //
   //---------------------------select hanger system logic-----------------------
   const [anchorEl, setAnchorEl] = useState(null);
@@ -197,6 +206,7 @@ function CommonRow() {
               className={buttonClassName}
               onMouseEnter={handleMouseEnter}
               onMouseOut={handleMouseOut}
+              onClick={handleButtonLogout}
             >
               Log Out
             </button>
@@ -242,7 +252,7 @@ function CommonRow() {
               onMouseEnter={() => setIsHovered1(true)}
               onMouseLeave={() => setIsHovered1(false)}
             >
-              <Link to="/">
+              <Link to="/Dashboard">
                 <img
                   className="box-icon"
                   src={
