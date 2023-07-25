@@ -1,7 +1,7 @@
 import { Container, Row, Col } from "react-bootstrap";
 import React from "react";
 import { useState } from "react";
-import CommonRow from "../../components/CommonRow";
+import CommonRow from "../../components/NavBar/CommonRow";
 import "../../CSS/users.css";
 import { Login } from "@mui/icons-material";
 

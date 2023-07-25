@@ -1,6 +1,6 @@
 import { Container, Row, Col } from "react-bootstrap";
 import React from "react";
-import CommonRow from "../../components/CommonRow";
+import CommonRow from "../../components/NavBar/CommonRow";
 import "../../CSS/settings.css";
 import useWindowWidth from "../../components/useWindowWidth";
 

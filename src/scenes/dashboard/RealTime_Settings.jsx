@@ -1,6 +1,6 @@
 import { Container, Row, Col } from "react-bootstrap";
 import React, { useState } from "react";
-import CommonRow from "../../components/CommonRow";
+import CommonRow from "../../components/NavBar/CommonRow";
 import "../../CSS/realtime_settings.css";
 
 function Realtime_Settings() {

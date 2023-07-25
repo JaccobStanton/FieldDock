@@ -6,8 +6,8 @@ import { useState, useEffect } from "react";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import { ExpandMore } from "@mui/icons-material";
-import "../CSS/common_row.css";
-import { ReactComponent as FieldDockLogo } from "../assets/FieldDock-Logo.svg";
+import "../NavBar/common_row.css";
+import { ReactComponent as FieldDockLogo } from "../../assets/FieldDock-Logo.svg";
 
 import { useNavigate } from "react-router-dom";
 

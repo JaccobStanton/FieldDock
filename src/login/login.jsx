@@ -1,4 +1,4 @@
-import "../CSS/login.css";
+import "./login.css";
 import React, { useEffect } from "react";
 import { ReactComponent as FieldDockLogo } from "../assets/FieldDock-Logo.svg";
 import { useNavigate } from "react-router-dom";

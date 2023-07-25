@@ -2,7 +2,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import React from "react";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import CommonRow from "../../components/CommonRow";
+import CommonRow from "../../components/NavBar/CommonRow";
 import "../../CSS/images.css";
 // import { ReactComponent as DroneDiagram } from "../../assets/Drone-Diagram.svg";
 
