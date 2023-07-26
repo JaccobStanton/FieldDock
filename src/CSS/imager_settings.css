@@ -85,28 +85,67 @@
   width: 27%;
   font-size: 1.1rem;
 }
+/* -------------------------Sensor Module end -------------------------- */
+/*  */
+/*  */
+/*  */
+/*  */
 .centered-content {
   display: flex;
   justify-content: center;
 }
-
-.download-all-box {
+.download-all-modules {
   border: 1px solid #00e1b4;
   border-radius: 5px;
   height: 120px;
-  width: 40%;
+  width: 45%;
   position: relative;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  /* margin-left: 50px;
-  margin-right: 40px; */
-  margin-bottom: 15px;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 50px;
+  margin-bottom: 40px;
 }
 
-/* -------------------------Sensor Module end -------------------------- */
+.download-all-modules-title {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #181818;
+  padding: 0 5px;
+  z-index: 1;
+  font-size: 20px;
+  color: white;
+  white-space: nowrap;
+}
 
-/*  */
+.download-all-modules-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.download-all-modules-content input {
+  background: transparent;
+  border-radius: 5px;
+  border: 1px solid #797979;
+  text-align: center;
+  margin-right: 2em;
+  height: 60px;
+  width: 27%;
+  font-size: 1.1rem;
+  color: #e0e0e0;
+}
+.download-all-modules-content button {
+  background: transparent;
+  border-radius: 5px;
+  border: 1px solid orange;
+  color: #e0e0e0;
+  height: 60px;
+  width: 27%;
+  font-size: 1.1rem;
+}
 /* -------------------------- media queries ------------------------ */
 
 @media (min-width: 500px) and (max-width: 550px) {

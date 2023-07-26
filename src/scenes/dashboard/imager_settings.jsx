@@ -10,6 +10,15 @@ import Drone_Data from "../../components/Download_Data/drone_data";
 import Sensor_Data from "../../components/Download_Data/sensor_data";
 
 function Imager_Settings() {
+  function handleHover(e) {
+    e.target.style.borderColor = "#e0e0e0";
+    e.target.style.color = "orange";
+  }
+
+  function handleUnhover(e) {
+    e.target.style.borderColor = "orange";
+    e.target.style.color = "#e0e0e0";
+  }
   return (
     <Container fluid>
       <div>
@@ -64,7 +73,16 @@ function Imager_Settings() {
           xxl={12}
           className="centered-content"
         >
-          <div className="download-all-box"></div>
+          <div className="download-all-modules">
+            <div className="download-all-modules-title">Download All Data</div>
+            <div className="download-all-modules-content">
+              <input type="text" placeholder="Start Date" />
+              <input type="text" placeholder="End Date" />
+              <button onMouseOver={handleHover} onMouseOut={handleUnhover}>
+                Download
+              </button>
+            </div>
+          </div>
         </Col>
       </Row>
 
