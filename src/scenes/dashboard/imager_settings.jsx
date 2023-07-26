@@ -1,7 +1,7 @@
 import "../../CSS/imager_settings.css";
 import { Container, Row, Col } from "react-bootstrap";
 import React, { useState } from "react";
-import CommonRow from "../../components/NavBar/CommonRow";
+import CommonRow from "../../components/NavBar/common_row";
 import EnvData from "../../components/Download_Data/env_data";
 import TraitData from "../../components/Download_Data/trait_data";
 import Fielddock_Data from "../../components/Download_Data/fielddock_data";
@@ -55,8 +55,16 @@ function Imager_Settings() {
       {/* ------------------------------------------------- row 5 END ----------------------------- */}
 
       <Row>
-        <Col xs={12} sm={12} md={12} lg={12} xl={12} xxl={12}>
-          <div className="image-preference-box"></div>
+        <Col
+          xs={12}
+          sm={12}
+          md={12}
+          lg={12}
+          xl={12}
+          xxl={12}
+          className="centered-content"
+        >
+          <div className="download-all-box"></div>
         </Col>
       </Row>
 

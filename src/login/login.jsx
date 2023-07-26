@@ -39,9 +39,9 @@ function Login() {
                 </div>
                 <div className="form-box-login">
                   <form>
-                    <label>Enter Username</label>
+                    <label>Enter Username:</label>
                     <input type="text" />
-                    <label>Enter Password</label>
+                    <label>Enter Password:</label>
                     <input type="password" />
                     <div className="login-button-container">
                       <button type="button" onClick={handleButtonClick}>

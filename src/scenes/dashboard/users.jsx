@@ -1,9 +1,8 @@
 import { Container, Row, Col } from "react-bootstrap";
 import React from "react";
 import { useState } from "react";
-import CommonRow from "../../components/NavBar/CommonRow";
+import CommonRow from "../../components/NavBar/common_row";
 import "../../CSS/users.css";
-import { Login } from "@mui/icons-material";
 
 function Users() {
   //----------------------------logic for create new user/edit existing users---------------------

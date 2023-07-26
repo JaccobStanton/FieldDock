@@ -85,18 +85,22 @@
   width: 27%;
   font-size: 1.1rem;
 }
+.centered-content {
+  display: flex;
+  justify-content: center;
+}
 
-.image-preference-box {
-  border: 1px solid #797979;
+.download-all-box {
+  border: 1px solid #00e1b4;
   border-radius: 5px;
   height: 120px;
-  width: 94.7%;
+  width: 40%;
   position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-left: 50px;
-  margin-right: 40px;
+  /* margin-left: 50px;
+  margin-right: 40px; */
   margin-bottom: 15px;
 }
 
