@@ -1,4 +1,5 @@
 import React from "react";
+import { Col } from "react-bootstrap";
 
 function EnvData() {
   function handleHover(e) {
@@ -11,16 +12,18 @@ function EnvData() {
     e.target.style.color = "#e0e0e0";
   }
   return (
-    <div className="sensor-modules">
-      <div className="sensor-modules-title">Download Environmental Data</div>
-      <div className="sensor-modules-content">
-        <input type="text" placeholder="Start Date" />
-        <input type="text" placeholder="End Date" />
-        <button onMouseOver={handleHover} onMouseOut={handleUnhover}>
-          Download
-        </button>
+    <Col xs={6} sm={6} md={6} lg={6} xl={6} xxl={6}>
+      <div className="sensor-modules">
+        <div className="sensor-modules-title">Download Environmental Data</div>
+        <div className="sensor-modules-content">
+          <input type="text" placeholder="Start Date" />
+          <input type="text" placeholder="End Date" />
+          <button onMouseOver={handleHover} onMouseOut={handleUnhover}>
+            Download
+          </button>
+        </div>
       </div>
-    </div>
+    </Col>
   );
 }
 
