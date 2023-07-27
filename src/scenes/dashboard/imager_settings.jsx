@@ -2,6 +2,7 @@ import "../../CSS/imager_settings.css";
 import { Container, Row, Col } from "react-bootstrap";
 import React, { useState } from "react";
 import CommonRow from "../../components/NavBar/common_row";
+import Diagnostics_Table from "../../components/Diagnostics Log/diagnostics_table";
 
 function Imager_Settings() {
   return (
@@ -25,60 +26,149 @@ function Imager_Settings() {
         <Col xs={12} sm={12} md={12} lg={12} xl={12} xxl={12}>
           <div className="diagnostics-log-parent">
             <div className="diagnostics-log-box">
-              <h2 // Diagnostics Log title
+              <h2 // "Diagnostics Log" table title
                 style={{
                   textAlign: "center",
+                  marginTop: "20px",
                   marginBottom: "20px",
                 }}
               >
                 FieldDock Diagnostics Log
               </h2>
-
-              <table // Table with bullet points and underlines
-                style={{
-                  width: "95%",
-                  borderCollapse: "collapse",
-                  textAlign: "left",
-                  fontSize: "16px",
-                  lineHeight: "1.5",
-                }}
-              >
-                <tbody>
-                  <tr>
-                    <td style={{ borderBottom: "1px solid #797979" }}>
-                      • 02/20/2021 / 13:45 / 0002:customer_1 / 0006: error_808.1
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style={{ borderBottom: "1px solid #797979" }}>
-                      • 02/20/2021 / 14:45 / 0002:customer_1 / 0006: error_808.1
-                    </td>
-                  </tr>
-                  {/* <tr>
-                <td style={{ borderBottom: "1px solid #00e1b4" }}>• Item 3</td>
-              </tr>
-              <tr>
-                <td style={{ borderBottom: "1px solid #00e1b4" }}>• Item 3</td>
-              </tr>
-              <tr>
-                <td style={{ borderBottom: "1px solid #00e1b4" }}>• Item 3</td>
-              </tr>
-              <tr>
-                <td style={{ borderBottom: "1px solid #00e1b4" }}>• Item 3</td>
-              </tr>
-              <tr>
-                <td style={{ borderBottom: "1px solid #00e1b4" }}>• Item 3</td>
-              </tr> */}
-                </tbody>
-              </table>
+              <Diagnostics_Table />
             </div>
           </div>
         </Col>
       </Row>
       {/* ------------------------------------------------- row 4 END ----------------------------- */}
-      <Row></Row>
-      {/* ------------------------------------------------- row 5 END ----------------------------- */}
-      <Row></Row>
+      <Row>
+        <Col xs={12} sm={12} md={12} lg={12} xl={12} xxl={12}>
+          <div className="account-selection-main-container">
+            <div className="account-selection-containment-box">
+              <div className="account-box">
+                <div className="title">
+                  <h4>Select Customer Account</h4>
+                </div>
+                <div style={{ margin: "10px 0" }}>
+                  <input
+                    type="text"
+                    placeholder="Search for customer account"
+                    style={{ width: "100%" }}
+                  />
+                </div>
+                <div style={{ margin: "10px 0" }}>
+                  <select style={{ width: "100%" }}>
+                    <option value="">Select an account...</option>
+                    {/* Other <option> elements go here for the other accounts */}
+                  </select>
+                </div>
+                <div style={{ margin: "10px 0" }}>
+                  <input
+                    type="checkbox"
+                    id="diagnostics"
+                    name="diagnostics"
+                    value="diagnostics"
+                  />
+                  <label htmlFor="diagnostics">
+                    Show all diagnostics for this account
+                  </label>
+                </div>
+              </div>
+              {/* box 1 end */}
+              <div className="account-box">
+                <div style={{ margin: "10px 0" }}>
+                  <h4>Select Customer Account</h4>
+                </div>
+                <div style={{ margin: "10px 0" }}>
+                  <input
+                    type="text"
+                    placeholder="Search for customer account"
+                    style={{ width: "100%" }}
+                  />
+                </div>
+                <div style={{ margin: "10px 0" }}>
+                  <select style={{ width: "100%" }}>
+                    <option value="">Select an account...</option>
+                    {/* Other <option> elements go here for the other accounts */}
+                  </select>
+                </div>
+                <div style={{ margin: "10px 0" }}>
+                  <input
+                    type="checkbox"
+                    id="diagnostics"
+                    name="diagnostics"
+                    value="diagnostics"
+                  />
+                  <label htmlFor="diagnostics">
+                    Show all diagnostics for this account
+                  </label>
+                </div>
+              </div>
+              {/* box 2 end */}
+              <div className="account-box">
+                <div style={{ margin: "10px 0" }}>
+                  <h4>Select Customer Account</h4>
+                </div>
+                <div style={{ margin: "10px 0" }}>
+                  <input
+                    type="text"
+                    placeholder="Search for customer account"
+                    style={{ width: "100%" }}
+                  />
+                </div>
+                <div style={{ margin: "10px 0" }}>
+                  <select style={{ width: "100%" }}>
+                    <option value="">Select an account...</option>
+                    {/* Other <option> elements go here for the other accounts */}
+                  </select>
+                </div>
+                <div style={{ margin: "10px 0" }}>
+                  <input
+                    type="checkbox"
+                    id="diagnostics"
+                    name="diagnostics"
+                    value="diagnostics"
+                  />
+                  <label htmlFor="diagnostics">
+                    Show all diagnostics for this account
+                  </label>
+                </div>
+              </div>
+              {/* box 3 end */}
+              <div className="account-box">
+                <div style={{ margin: "10px 0" }}>
+                  <h4>Select Customer Account</h4>
+                </div>
+                <div style={{ margin: "10px 0" }}>
+                  <input
+                    type="text"
+                    placeholder="Search for customer account"
+                    style={{ width: "100%" }}
+                  />
+                </div>
+                <div style={{ margin: "10px 0" }}>
+                  <select style={{ width: "100%" }}>
+                    <option value="">Select an account...</option>
+                    {/* Other <option> elements go here for the other accounts */}
+                  </select>
+                </div>
+                <div style={{ margin: "10px 0" }}>
+                  <input
+                    type="checkbox"
+                    id="diagnostics"
+                    name="diagnostics"
+                    value="diagnostics"
+                  />
+                  <label htmlFor="diagnostics">
+                    Show all diagnostics for this account
+                  </label>
+                </div>
+              </div>
+              {/* box 4 end */}
+            </div>
+          </div>
+        </Col>
+      </Row>
       {/* ------------------------------------------------- row 5 END ----------------------------- */}
     </Container>
   );

@@ -2,7 +2,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import React from "react";
 import CommonRow from "../../components/NavBar/common_row";
 import "../../CSS/settings.css";
-import useWindowWidth from "../../components/useWindowWidth";
+import useWindowWidth from "../../components/Software Update/useWindowWidth";
 
 function handleHover(e) {
   e.target.style.borderColor = "#e0e0e0";

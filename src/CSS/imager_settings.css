@@ -19,3 +19,28 @@
   align-items: center;
   padding: 5px;
 }
+
+.account-selection-main-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.account-selection-containment-box {
+  width: 83%;
+  margin-top: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.account-box {
+  width: 20%;
+}
+
+.title {
+  margin: 10px 0;
+}
