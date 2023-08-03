@@ -2,174 +2,97 @@ import "../../CSS/imager_settings.css";
 import { Container, Row, Col } from "react-bootstrap";
 import React, { useState } from "react";
 import CommonRow from "../../components/NavBar/common_row";
-import Diagnostics_Table from "../../components/Diagnostics Log/diagnostics_table";
+import LatLongTable from "../../components/Mission Planner/latLongTable";
+import MapComponent from "../../components/Mission Planner/map";
+import "../../components/Mission Planner/latLongTable.css";
 
 function Imager_Settings() {
+  const [data, setData] = useState([
+    {
+      id: 1,
+      command: "",
+      p1: "",
+      p2: "",
+      p3: "",
+      p4: "",
+      latitude: "",
+      longitude: "",
+      alt: "",
+      frame: "",
+      grad: "",
+      angle: "",
+      dist: "",
+      az: "",
+    },
+  ]);
+
+  const onMapClick = (event) => {
+    const lat = event.latLng.lat();
+    const lng = event.latLng.lng();
+
+    setData((oldData) => {
+      const newData = [...oldData];
+      const lastRow = newData[newData.length - 1];
+      lastRow.latitude = lat;
+      lastRow.longitude = lng;
+      return newData;
+    });
+  };
   return (
     <Container fluid>
       <div>
         <CommonRow />
       </div>
-      {/* ------------------------------------------------- row 1 END ----------------------------- */}
       <Row>
         <Col xs={12} sm={12} md={12} lg={12} xl={12} xxl={12}>
           <div className="sensor-measurement-settings">
-            <div className="sensor-measurement-settings-title">Diagnostics</div>
-          </div>
-        </Col>
-      </Row>
-      <Row>
-        {/* ------------------------------------------------- row 2 END ----------------------------- */}
-      </Row>
-      {/* ------------------------------------------------- row 3 END ----------------------------- */}
-      <Row>
-        <Col xs={12} sm={12} md={12} lg={12} xl={12} xxl={12}>
-          <div className="diagnostics-log-parent">
-            <div className="diagnostics-log-box">
-              <h2 // "Diagnostics Log" table title
-                style={{
-                  textAlign: "center",
-                  marginTop: "20px",
-                  marginBottom: "20px",
-                }}
-              >
-                FieldDock Diagnostics Log
-              </h2>
-              <Diagnostics_Table />
+            <div className="sensor-measurement-settings-title">
+              FieldDock Mission Planner
             </div>
           </div>
         </Col>
       </Row>
-      {/* ------------------------------------------------- row 4 END ----------------------------- */}
-      <Row>
-        <Col xs={12} sm={12} md={12} lg={12} xl={12} xxl={12}>
-          <div className="account-selection-main-container">
-            <div className="account-selection-containment-box">
-              <div className="account-box">
-                <div className="title">
-                  <h4>Select Customer Account</h4>
-                </div>
-                <div style={{ margin: "10px 0" }}>
-                  <input
-                    type="text"
-                    placeholder="Search for customer account"
-                    style={{ width: "100%" }}
-                  />
-                </div>
-                <div style={{ margin: "10px 0" }}>
-                  <select style={{ width: "100%" }}>
-                    <option value="">Select an account...</option>
-                    {/* Other <option> elements go here for the other accounts */}
-                  </select>
-                </div>
-                <div style={{ margin: "10px 0" }}>
-                  <input
-                    type="checkbox"
-                    id="diagnostics"
-                    name="diagnostics"
-                    value="diagnostics"
-                  />
-                  <label htmlFor="diagnostics">
-                    Show all diagnostics for this account
-                  </label>
-                </div>
-              </div>
-              {/* box 1 end */}
-              <div className="account-box">
-                <div style={{ margin: "10px 0" }}>
-                  <h4>Select Customer Account</h4>
-                </div>
-                <div style={{ margin: "10px 0" }}>
-                  <input
-                    type="text"
-                    placeholder="Search for customer account"
-                    style={{ width: "100%" }}
-                  />
-                </div>
-                <div style={{ margin: "10px 0" }}>
-                  <select style={{ width: "100%" }}>
-                    <option value="">Select an account...</option>
-                    {/* Other <option> elements go here for the other accounts */}
-                  </select>
-                </div>
-                <div style={{ margin: "10px 0" }}>
-                  <input
-                    type="checkbox"
-                    id="diagnostics"
-                    name="diagnostics"
-                    value="diagnostics"
-                  />
-                  <label htmlFor="diagnostics">
-                    Show all diagnostics for this account
-                  </label>
-                </div>
-              </div>
-              {/* box 2 end */}
-              <div className="account-box">
-                <div style={{ margin: "10px 0" }}>
-                  <h4>Select Customer Account</h4>
-                </div>
-                <div style={{ margin: "10px 0" }}>
-                  <input
-                    type="text"
-                    placeholder="Search for customer account"
-                    style={{ width: "100%" }}
-                  />
-                </div>
-                <div style={{ margin: "10px 0" }}>
-                  <select style={{ width: "100%" }}>
-                    <option value="">Select an account...</option>
-                    {/* Other <option> elements go here for the other accounts */}
-                  </select>
-                </div>
-                <div style={{ margin: "10px 0" }}>
-                  <input
-                    type="checkbox"
-                    id="diagnostics"
-                    name="diagnostics"
-                    value="diagnostics"
-                  />
-                  <label htmlFor="diagnostics">
-                    Show all diagnostics for this account
-                  </label>
-                </div>
-              </div>
-              {/* box 3 end */}
-              <div className="account-box">
-                <div style={{ margin: "10px 0" }}>
-                  <h4>Select Customer Account</h4>
-                </div>
-                <div style={{ margin: "10px 0" }}>
-                  <input
-                    type="text"
-                    placeholder="Search for customer account"
-                    style={{ width: "100%" }}
-                  />
-                </div>
-                <div style={{ margin: "10px 0" }}>
-                  <select style={{ width: "100%" }}>
-                    <option value="">Select an account...</option>
-                    {/* Other <option> elements go here for the other accounts */}
-                  </select>
-                </div>
-                <div style={{ margin: "10px 0" }}>
-                  <input
-                    type="checkbox"
-                    id="diagnostics"
-                    name="diagnostics"
-                    value="diagnostics"
-                  />
-                  <label htmlFor="diagnostics">
-                    Show all diagnostics for this account
-                  </label>
-                </div>
-              </div>
-              {/* box 4 end */}
+      <Row
+        style={{
+          justifyContent: "center",
+          alignItems: "center",
+          display: "flex",
+        }}
+      >
+        <div style={{ display: "flex", width: "94%" }}>
+          <Col xs={12} sm={6} md={6} lg={6} xl={6} xxl={6}>
+            <div
+              style={{
+                height: "700px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                marginRight: "15px",
+                border: "1px solid #797979",
+                backgroundColor: "transparent",
+              }}
+            >
+              <MapComponent onMapClick={onMapClick} />
             </div>
-          </div>
-        </Col>
+          </Col>
+          <Col xs={12} sm={6} md={6} lg={6} xl={6} xxl={6}>
+            <div
+              style={{
+                height: "700px",
+                justifyContent: "center",
+                alignItems: "center",
+                marginLeft: "15px",
+                border: "1px solid #797979",
+                backgroundColor: "transparent",
+                overflow: "auto", // This will add a scrollbar if the table exceeds the div's size
+              }}
+            >
+              <LatLongTable data={data} setData={setData} />
+            </div>
+          </Col>
+        </div>
       </Row>
-      {/* ------------------------------------------------- row 5 END ----------------------------- */}
+      {/* ------------------------------------------------- row 1 END ----------------------------- */}
     </Container>
   );
 }
