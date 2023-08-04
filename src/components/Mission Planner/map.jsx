@@ -1,9 +1,10 @@
 import React from "react";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
+import { geocode } from "../../api/map";
 
 const containerStyle = {
   width: "100%",
-  height: "700px",
+  height: "815px",
 };
 
 const center = {
@@ -11,7 +12,7 @@ const center = {
   lng: -122.4194,
 };
 
-const MapComponent = ({ onMapClick }) => {
+const MapComponent = ({ onMapClick, markerPositions }) => {
   return (
     <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}>
       <GoogleMap
@@ -20,7 +21,9 @@ const MapComponent = ({ onMapClick }) => {
         zoom={10}
         onClick={onMapClick}
       >
-        <Marker position={center} />
+        {markerPositions.map((position, index) => (
+          <Marker key={index} position={position} />
+        ))}
       </GoogleMap>
     </LoadScript>
   );
