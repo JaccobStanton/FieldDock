@@ -19,15 +19,19 @@ const LatLongTable = ({ data, setData }) => {
             <select
               id={`row-${row.values.id}`}
               value={row.values.command}
-              onChange={(e) =>
-                updateMyData(row.index, "command", e.target.value)
-              }
+              onChange={(e) => {
+                updateMyData(row.index, "command", e.target.value);
+                if (e.target.value === "Land") {
+                  updateMyData(row.index, "alt", "0");
+                }
+              }}
               style={{ width: "100%" }}
             >
-              <option>Take Off</option>
+              <option value="">Select</option>
               <option>Return to Launch</option>
               <option>Land</option>
               <option>Waypoint</option>
+              <option>Take Off</option>
             </select>
           </div>
         ),
@@ -37,7 +41,7 @@ const LatLongTable = ({ data, setData }) => {
         Header: "P1",
         accessor: "p1",
         Cell: ({ row, updateMyData }) => (
-          <div style={{ width: "100%%" }}>
+          <div style={{ width: "100%" }}>
             <input
               value={row.values.p1}
               onChange={(e) => updateMyData(row.index, "p1", e.target.value)}
@@ -50,7 +54,7 @@ const LatLongTable = ({ data, setData }) => {
         Header: "P2",
         accessor: "p2",
         Cell: ({ row, updateMyData }) => (
-          <div style={{ width: "100%%" }}>
+          <div style={{ width: "100%" }}>
             <input
               value={row.values.p2}
               onChange={(e) => updateMyData(row.index, "p2", e.target.value)}
@@ -63,7 +67,7 @@ const LatLongTable = ({ data, setData }) => {
         Header: "P3",
         accessor: "p3",
         Cell: ({ row, updateMyData }) => (
-          <div style={{ width: "100%%" }}>
+          <div style={{ width: "100%" }}>
             <input
               value={row.values.p3}
               onChange={(e) => updateMyData(row.index, "p3", e.target.value)}
@@ -76,7 +80,7 @@ const LatLongTable = ({ data, setData }) => {
         Header: "P4",
         accessor: "p4",
         Cell: ({ row, updateMyData }) => (
-          <div style={{ width: "100%%" }}>
+          <div style={{ width: "100%" }}>
             <input
               value={row.values.p4}
               onChange={(e) => updateMyData(row.index, "p4", e.target.value)}
@@ -89,7 +93,7 @@ const LatLongTable = ({ data, setData }) => {
         Header: "Latitude",
         accessor: "latitude",
         Cell: ({ row, updateMyData }) => (
-          <div style={{ width: "100%%" }}>
+          <div style={{ width: "100%" }}>
             <input
               value={row.values.latitude}
               onChange={(e) =>
@@ -122,8 +126,14 @@ const LatLongTable = ({ data, setData }) => {
           <div style={{ width: "100%%" }}>
             <input
               value={row.values.alt}
-              onChange={(e) => updateMyData(row.index, "alt", e.target.value)}
-              style={{ width: "100%", textAlign: "center" }}
+              onChange={(e) => {
+                if (row.values.command !== "Land") {
+                  // only update if command is not Land
+                  updateMyData(row.index, "alt", e.target.value);
+                }
+              }}
+              disabled={row.values.command === "Land"}
+              style={{ width: "100%" }}
             />
           </div>
         ),
@@ -135,10 +145,11 @@ const LatLongTable = ({ data, setData }) => {
           <div style={{ width: "80px" }}>
             <select
               id={`row-${row.values.id}`}
-              value={row.values.command}
+              value={row.values.frame}
               onChange={(e) => updateMyData(row.index, "frame", e.target.value)}
               style={{ width: "100%" }}
             >
+              <option value="">Select</option>
               <option>Relative</option>
               <option>Absolute</option>
               <option>Terrain</option>

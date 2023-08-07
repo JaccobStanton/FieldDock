@@ -5,9 +5,11 @@ import CommonRow from "../../components/NavBar/common_row";
 import LatLongTable from "../../components/Mission Planner/latLongTable";
 import MapComponent from "../../components/Mission Planner/map";
 import "../../components/Mission Planner/latLongTable.css";
+import { createMission } from "../../components/Mission Planner/launch.js"; // when you move file this is what it should be"./launch.js"
 
 function Imager_Settings() {
-  // --------------for button colors---------------
+  //-------------------------------------------------------------------------------------------------
+  // for button colors
   function handleHover(e) {
     e.target.style.borderColor = "#00e1b4";
     e.target.style.color = "orange";
@@ -27,10 +29,15 @@ function Imager_Settings() {
     e.target.style.borderColor = "orange";
     e.target.style.color = "#e0e0e0";
   }
-  // --------------for button colors---------------
+  //
+  //-------------------------------------------------------------------------------------------------
   //
   //
   //
+  //-------------------------------------------------------------------------------------------------
+  // this is the logic for the table and marker placement.  The table is initiliazed to start how it looks below
+  // from there, the rest of the logic shown below is for when the user clicks on the map, a marker is displayed, and the coordinates
+  // that correspond to these markers, are updated into the table.
   const [data, setData] = useState([
     {
       id: 1,
@@ -70,10 +77,10 @@ function Imager_Settings() {
         newData.push({
           id: newData.length + 1,
           command: "",
-          p1: "",
-          p2: "",
-          p3: "",
-          p4: "",
+          p1: "0",
+          p2: "0",
+          p3: "0",
+          p4: "0",
           latitude: lat,
           longitude: lng,
           alt: "",
@@ -89,6 +96,18 @@ function Imager_Settings() {
       { lat, lng },
     ]);
   };
+  //-------------------------------------------------------------------------------------------------
+  //
+  //
+  //
+  //-------------------------------------------------------------------------------------------------
+  // Defining two pieces of state to be stored when the user types in a home location, so it can be displayed in the "Home Location" box
+  // You'll need to manage the state of these two fields and update them when the home location changes.
+  // You'll need to update these state variables when the home location changes by
+  // passing these two function calls as props in the handleLocationSubmit function in map.jsx component
+  const [homeLat, setHomeLat] = useState("");
+  const [homeLng, setHomeLng] = useState("");
+  //-------------------------------------------------------------------------------------------------
 
   return (
     <Container fluid>
@@ -131,10 +150,12 @@ function Imager_Settings() {
                 backgroundColor: "transparent",
               }}
             >
-              {/* <MapComponent
+              <MapComponent
                 onMapClick={onMapClick}
                 markerPositions={markerPositions}
-              /> */}
+                setHomeLat={setHomeLat}
+                setHomeLng={setHomeLng}
+              />
             </div>
           </Col>
           <Col xs={12} sm={6} md={6} lg={4} xl={4} xxl={4}>
@@ -191,6 +212,7 @@ function Imager_Settings() {
                     Latitude:
                   </label>
                   <input
+                    value={homeLat}
                     style={{
                       borderBottom: "1px solid #797979",
                       borderLeft: "none",
@@ -214,6 +236,7 @@ function Imager_Settings() {
                     Longitude:
                   </label>
                   <input
+                    value={homeLng}
                     style={{
                       borderBottom: "1px solid #797979",
                       borderLeft: "none",
@@ -281,6 +304,17 @@ function Imager_Settings() {
                   }}
                   onMouseOver={handleHover}
                   onMouseOut={handleUnhover}
+                  onClick={() => {
+                    const missionString = createMission(data);
+                    const element = document.createElement("a");
+                    const file = new Blob([missionString], {
+                      type: "text/plain",
+                    });
+                    element.href = URL.createObjectURL(file);
+                    element.download = "myFile.waypoints";
+                    document.body.appendChild(element); // Required for this to work in FireFox
+                    element.click();
+                  }}
                 >
                   Launch
                 </button>
