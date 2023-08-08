@@ -1,6 +1,7 @@
-import "./login.css";
+import "../../CSS/login.css";
 import React, { useEffect } from "react";
-import { ReactComponent as FieldDockLogo } from "../assets/FieldDock-Logo.svg";
+import { ReactComponent as FieldDockLogo } from "../../assets/FieldDock-Logo.svg";
+//{ ReactComponent as FieldDockLogo } from "../assets/FieldDock-Logo.svg";
 import { useNavigate } from "react-router-dom";
 import { Container } from "@mui/material";
 import { Row, Col } from "react-bootstrap";
