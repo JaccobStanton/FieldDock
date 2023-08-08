@@ -6,6 +6,7 @@ import LatLongTable from "../../components/Mission Planner/latLongTable";
 import MapComponent from "../../components/Mission Planner/map";
 import "../../components/Mission Planner/latLongTable.css";
 import { createMission } from "../../components/Mission Planner/launch.js"; // when you move file this is what it should be"./launch.js"
+import axios from "axios";
 
 function Imager_Settings() {
   //-------------------------------------------------------------------------------------------------
@@ -304,16 +305,45 @@ function Imager_Settings() {
                   }}
                   onMouseOver={handleHover}
                   onMouseOut={handleUnhover}
-                  onClick={() => {
+                  // onClick={() => {
+                  //   const missionString = createMission(data);
+                  //   const element = document.createElement("a");
+                  //   const file = new Blob([missionString], {
+                  //     type: "text/plain",
+                  //   });
+                  //   element.href = URL.createObjectURL(file);
+                  //   element.download = "myFile.waypoints";
+                  //   document.body.appendChild(element); // Required for this to work in FireFox
+                  //   element.click();
+                  // }}
+                  onClick={async () => {
                     const missionString = createMission(data);
-                    const element = document.createElement("a");
                     const file = new Blob([missionString], {
                       type: "text/plain",
                     });
-                    element.href = URL.createObjectURL(file);
-                    element.download = "myFile.waypoints";
-                    document.body.appendChild(element); // Required for this to work in FireFox
-                    element.click();
+
+                    // Create a FormData instance
+                    const formData = new FormData();
+                    formData.append("file", file, "myFile.waypoints");
+
+                    try {
+                      // Upload the file to your API
+                      const response = await axios.post(
+                        "http://10.9.0.210:8000/upload",
+                        formData,
+                        {
+                          headers: {
+                            "Content-Type": "multipart/form-data",
+                          },
+                        }
+                      );
+
+                      // Handle the response as needed
+                      console.log(response.data);
+                    } catch (error) {
+                      // Handle the error as needed
+                      console.error("Error uploading the file:", error);
+                    }
                   }}
                 >
                   Launch

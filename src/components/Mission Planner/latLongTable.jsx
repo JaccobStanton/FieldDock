@@ -133,7 +133,7 @@ const LatLongTable = ({ data, setData }) => {
                 }
               }}
               disabled={row.values.command === "Land"}
-              style={{ width: "100%" }}
+              style={{ width: "100%", textAlign: "center" }}
             />
           </div>
         ),
