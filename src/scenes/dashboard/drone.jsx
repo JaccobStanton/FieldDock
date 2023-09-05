@@ -50,6 +50,8 @@ function Drone() {
           </Row>
         </Col>
       </Row>
+      {/* //! THIS ROW BELOW NEEDS TO BE HIDDEN AT A CERTAIN VIEWING HEIGHT */}
+      {/* //! NEEDS RESPONSIVENESS */}
       <Row>
         {/* Content for the fourth row */}
         <Col className="center-content">

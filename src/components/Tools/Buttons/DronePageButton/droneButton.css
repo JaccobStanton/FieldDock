@@ -10,11 +10,11 @@
   margin: 4px 2px;
   cursor: pointer;
   font-weight: bold;
-  margin-right: 10px; /*! MAKE A MEDIA QUERY TO ADDRESS THIS Needs to change upon screen shrink/growing  */
+  margin-right: 10px; /*! MAKE A MEDIA QUERY TO ADDRESS THIS Needs to change upon screen shrink/growing to align with text above it */
 }
 
 .center-content {
   display: flex;
   justify-content: space-around;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
