@@ -1,7 +1,8 @@
 import React from "react";
-import CommonRow from "../../components/NavBar/common_row";
+import CommonRow from "../../components/NavBar/NavBar";
 import { Container, Row, Col } from "react-bootstrap";
 import "../../CSS/drone.css";
+import context from "react-bootstrap/esm/AccordionContext";
 
 function Drone() {
   return (

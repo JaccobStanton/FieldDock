@@ -1,7 +1,7 @@
 import "../../CSS/mission_planner.css";
 import { Container, Row, Col } from "react-bootstrap";
 import React, { useState } from "react";
-import CommonRow from "../../components/NavBar/common_row";
+import CommonRow from "../../components/NavBar/NavBar";
 import LatLongTable from "../../components/Mission Planner/latLongTable";
 import MapComponent from "../../components/Mission Planner/map";
 import { createMission } from "../../components/Mission Planner/launch.js";
@@ -304,7 +304,7 @@ function Mission_Planner() {
                   }}
                   onMouseOver={handleHover}
                   onMouseOut={handleUnhover}
-                  // onClick={() => {
+                  // onClick={() => { //this is just saving file to local computer
                   //   const missionString = createMission(data);
                   //   const element = document.createElement("a");
                   //   const file = new Blob([missionString], {
@@ -321,6 +321,37 @@ function Mission_Planner() {
                   //       type: "text/plain",
                   //     });
 
+                  onClick={async () => {
+                    const missionString = createMission(data);
+
+                    // Logic for uploading the file
+                    const file = new Blob([missionString], {
+                      type: "text/plain",
+                    });
+
+                    // Create a FormData instance
+                    const formData = new FormData();
+                    formData.append("file", file, "myFile.waypoints");
+
+                    try {
+                      // Upload the file to the new API endpoint
+                      const response = await axios.post(
+                        "http://10.9.0.210:8000/upload", //http://3.145.131.67:8000/api/missiontest/
+                        formData,
+                        {
+                          headers: {
+                            "Content-Type": "multipart/form-data",
+                          },
+                        }
+                      );
+
+                      // Handle the response if necessary
+                      // console.log(response.data);
+                    } catch (error) {
+                      // Handle the error if necessary
+                      console.error("Error uploading the file:", error);
+                    }
+                  }}
                   //     // Create a FormData instance
                   //     const formData = new FormData();
                   //     formData.append("file", file, "myFile.waypoints");
@@ -344,28 +375,28 @@ function Mission_Planner() {
                   //       console.error("Error uploading the file:", error);
                   //     }
                   //   }}
-                  onClick={async () => {
-                    const missionString = createMission(data);
+                  //   onClick={async () => {
+                  //     const missionString = createMission(data);
 
-                    try {
-                      // Send the mission string to your API
-                      const response = await axios.post(
-                        "http://10.9.0.210:8000/upload",
-                        missionString,
-                        {
-                          headers: {
-                            "Content-Type": "text/plain",
-                          },
-                        }
-                      );
+                  //     try {
+                  //       // Send the mission string to your API
+                  //       const response = await axios.post(
+                  //         "http://10.9.0.210:8000/upload",
+                  //         missionString,
+                  //         {
+                  //           headers: {
+                  //             "Content-Type": "text/plain",
+                  //           },
+                  //         }
+                  //       );
 
-                      // Handle the response as needed
-                      console.log(response.data);
-                    } catch (error) {
-                      // Handle the error as needed
-                      console.error("Error uploading the mission:", error);
-                    }
-                  }}
+                  //       // Handle the response as needed
+                  //       console.log(response.data);
+                  //     } catch (error) {
+                  //       // Handle the error as needed
+                  //       console.error("Error uploading the mission:", error);
+                  //     }
+                  //   }}
                 >
                   Launch
                 </button>

@@ -1,9 +1,12 @@
 import "../../CSS/imager_settings.css";
 import { Container, Row, Col } from "react-bootstrap";
 import React, { useState } from "react";
-import CommonRow from "../../components/NavBar/common_row";
+import CommonRow from "../../components/NavBar/NavBar";
 import Diagnostics_Table from "../../components/Diagnostics Log/diagnostics_table";
-
+//? hello out there
+//! look
+//*pay attention
+//TODO fix
 function Imager_Settings() {
   return (
     <Container fluid>

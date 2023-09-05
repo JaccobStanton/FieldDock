@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import { ExpandMore } from "@mui/icons-material";
-import "../NavBar/common_row.css";
+import "../NavBar/NavBar.css";
 import { ReactComponent as FieldDockLogo } from "../../assets/FieldDock-Logo.svg";
 
 import { useNavigate } from "react-router-dom";
@@ -357,7 +357,7 @@ function CommonRow() {
               onMouseEnter={() => setIsHovered7(true)}
               onMouseLeave={() => setIsHovered7(false)}
             >
-              <Link to="/imager_settings">
+              <Link to="/mission_planner">
                 <img
                   className="box-icon"
                   src={
