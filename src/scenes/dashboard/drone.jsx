@@ -2,7 +2,6 @@ import React from "react";
 import CommonRow from "../../components/NavBar/NavBar";
 import { Container, Row, Col } from "react-bootstrap";
 import "../../CSS/drone.css";
-import context from "react-bootstrap/esm/AccordionContext";
 import { DroneButton } from "../../components/Tools/Buttons/DronePageButton/droneButton";
 
 function Drone() {
@@ -54,7 +53,9 @@ function Drone() {
       <Row>
         {/* Content for the fourth row */}
         <Col className="center-content">
-          <DroneButton />
+          <DroneButton text="Edit Mission" />
+          <DroneButton text="Plan Mission" />
+          <DroneButton text="Live View" />
         </Col>
       </Row>
     </Container>

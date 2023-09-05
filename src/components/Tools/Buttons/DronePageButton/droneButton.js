@@ -1,14 +1,14 @@
 import "./droneButton.css";
 import React from "react";
 
-export function DroneButton() {
+export function DroneButton({ text }) {
   return (
     <button
       className="drone-button"
       onMouseEnter={handleHover}
       onMouseLeave={handleUnhover}
     >
-      Plan Mission
+      {text}
     </button>
   );
 }
