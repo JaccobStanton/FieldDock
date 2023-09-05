@@ -150,12 +150,12 @@ function Mission_Planner() {
                 backgroundColor: "transparent",
               }}
             >
-              <MapComponent
+              {/* <MapComponent
                 onMapClick={onMapClick}
                 markerPositions={markerPositions}
                 setHomeLat={setHomeLat}
                 setHomeLng={setHomeLng}
-              />
+              /> */}
             </div>
           </Col>
           <Col xs={12} sm={6} md={6} lg={4} xl={4} xxl={4}>

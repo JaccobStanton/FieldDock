@@ -1,5 +1,6 @@
 import React, { useMemo } from "react";
 import { useTable, useRowSelect } from "react-table";
+import "./latLongTable.css";
 
 const LatLongTable = ({ data, setData }) => {
   // ------------------------------Define the structure of Header columns for table----------------------------------- //
@@ -15,6 +16,7 @@ const LatLongTable = ({ data, setData }) => {
         Header: "Command",
         accessor: "command",
         Cell: ({ row, updateMyData }) => (
+          //* this is the physical width of the box
           <div style={{ width: "100px" }}>
             <select
               id={`row-${row.values.id}`}
@@ -26,6 +28,7 @@ const LatLongTable = ({ data, setData }) => {
                 }
               }}
               style={{ width: "100%" }}
+              // * this is how much space the menu takes up of the physical box
             >
               <option value="">Select</option>
               <option>Return to Launch</option>
@@ -108,7 +111,7 @@ const LatLongTable = ({ data, setData }) => {
         Header: "Longitude",
         accessor: "longitude",
         Cell: ({ row, updateMyData }) => (
-          <div style={{ width: "100%%" }}>
+          <div style={{ width: "100%" }}>
             <input
               value={row.values.longitude}
               onChange={(e) =>
@@ -123,7 +126,7 @@ const LatLongTable = ({ data, setData }) => {
         Header: "Alt",
         accessor: "alt",
         Cell: ({ row, updateMyData }) => (
-          <div style={{ width: "100%%" }}>
+          <div style={{ width: "100%" }}>
             <input
               value={row.values.alt}
               onChange={(e) => {
@@ -142,12 +145,13 @@ const LatLongTable = ({ data, setData }) => {
         Header: "Frame",
         accessor: "frame",
         Cell: ({ row, updateMyData }) => (
+          //* this is the physical width of the box
           <div style={{ width: "80px" }}>
             <select
               id={`row-${row.values.id}`}
               value={row.values.frame}
               onChange={(e) => updateMyData(row.index, "frame", e.target.value)}
-              style={{ width: "100%" }}
+              style={{ width: "100%" }} //* this is how much space the menu takes up of the physical box
             >
               <option value="">Select</option>
               <option>Relative</option>
@@ -222,7 +226,7 @@ const LatLongTable = ({ data, setData }) => {
           return (
             <tr {...row.getRowProps()}>
               {row.cells.map((cell) => (
-                <td {...cell.getCellProps()}>
+                <td {...cell.getCellProps()} className="table-data">
                   {cell.render("Cell", { updateMyData: updateMyData })}
                 </td>
               ))}

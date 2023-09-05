@@ -3,6 +3,7 @@ import CommonRow from "../../components/NavBar/NavBar";
 import { Container, Row, Col } from "react-bootstrap";
 import "../../CSS/drone.css";
 import context from "react-bootstrap/esm/AccordionContext";
+import { DroneButton } from "../../components/Tools/Buttons/DronePageButton/droneButton";
 
 function Drone() {
   return (
@@ -48,6 +49,12 @@ function Drone() {
               <p className="percent-text">38.41%</p>
             </div>
           </Row>
+        </Col>
+      </Row>
+      <Row>
+        {/* Content for the fourth row */}
+        <Col className="center-content">
+          <DroneButton />
         </Col>
       </Row>
     </Container>
