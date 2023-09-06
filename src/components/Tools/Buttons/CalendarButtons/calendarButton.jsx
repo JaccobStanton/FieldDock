@@ -1,8 +1,8 @@
 import React from "react";
-import "./droneButton.css";
+import "./calendarButton.css";
 import { Link } from "react-router-dom";
 
-export function DroneButton({ text }) {
+export function CalendarButton({ text }) {
   function handleHover(e) {
     e.target.style.borderColor = "#e0e0e0";
     e.target.style.color = "orange";
@@ -13,11 +13,11 @@ export function DroneButton({ text }) {
     e.target.style.color = "#e0e0e0";
   }
 
-  if (text === "Plan Mission") {
+  if (text === "Next") {
     return (
-      <Link to="/date-mission">
+      <Link to="/plan-mission">
         <button
-          className="drone-button"
+          className="calendar-button"
           onMouseEnter={handleHover}
           onMouseLeave={handleUnhover}
         >
@@ -28,7 +28,7 @@ export function DroneButton({ text }) {
   } else {
     return (
       <button
-        className="drone-button"
+        className="calendar-button"
         onMouseEnter={handleHover}
         onMouseLeave={handleUnhover}
       >

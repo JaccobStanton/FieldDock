@@ -6,6 +6,7 @@ import interactionPlugin from "@fullcalendar/interaction";
 import "./calendar.css";
 import CommonRow from "../../components/NavBar/NavBar";
 import { Container, Row, Col } from "react-bootstrap";
+import { CalendarButton } from "../Tools/Buttons/CalendarButtons/calendarButton";
 
 function Calendar() {
   return (
@@ -41,6 +42,14 @@ function Calendar() {
           height={"90vh"}
         />
       </div>
+      <Row>
+        {/* Content for the fourth row */}
+        <Col className="center-content">
+          <CalendarButton text="Back" />
+          <CalendarButton text="Save" />
+          <CalendarButton text="Next" />
+        </Col>
+      </Row>
     </Container>
   );
 }
