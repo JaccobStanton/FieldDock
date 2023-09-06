@@ -357,7 +357,7 @@ function CommonRow() {
               onMouseEnter={() => setIsHovered7(true)}
               onMouseLeave={() => setIsHovered7(false)}
             >
-              <Link to="/mission_planner">
+              <Link to="/imager_settings">
                 <img
                   className="box-icon"
                   src={

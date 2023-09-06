@@ -114,12 +114,11 @@ function Mission_Planner() {
       <div>
         <CommonRow />
       </div>
-      <div></div>
       <Row>
         <Col xs={12} sm={12} md={12} lg={12} xl={12} xxl={12}>
           <div className="sensor-measurement-settings">
             <div className="sensor-measurement-settings-title">
-              FieldDock Mission Planner
+              Mission Flight Planner
             </div>
           </div>
         </Col>
