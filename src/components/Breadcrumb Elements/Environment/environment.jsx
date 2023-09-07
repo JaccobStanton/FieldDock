@@ -18,7 +18,7 @@ const Environment = () => {
         <Box
           style={{
             position: "absolute",
-            transform: "translate(0%, -140%)", // This will center both horizontally and vertically
+            transform: "translate(-1%, -140%)", // This will center both horizontally and vertically
             backgroundColor: "#181818", // This is the background color of your parent box, adjust if it's different
             padding: "0 7px",
             zIndex: 1,

@@ -3,11 +3,50 @@ import { Container, Row, Col } from "react-bootstrap";
 import React, { useState } from "react";
 import CommonRow from "../../components/NavBar/NavBar";
 import LatLongTable from "../../components/Mission Planner/latLongTable";
-import MapComponent from "../../components/Mission Planner/map";
+// import MapComponent from "../../components/Mission Planner/map";
 import { createMission } from "../../components/Mission Planner/launch.js";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function Mission_Planner() {
+  //-----------------------------------------------------------------------------------------------
+  // logic for the LAUNCH button sending data and navigating the the next page
+  const navigate = useNavigate();
+  const handleButtonClick = async () => {
+    // const missionString = createMission(data);
+
+    // // Logic for uploading the file
+    // const file = new Blob([missionString], {
+    //   type: "text/plain",
+    // });
+
+    // // Create a FormData instance
+    // const formData = new FormData();
+    // formData.append("file", file, "myFile.waypoints");
+
+    // try {
+    //   // Upload the file to the new API endpoint
+    //   const response = await axios.post(
+    //     "http://10.9.0.210:8000/upload", //http://3.145.131.67:8000/api/missiontest/
+    //     formData,
+    //     {
+    //       headers: {
+    //         "Content-Type": "multipart/form-data",
+    //       },
+    //     }
+    //   );
+
+    //   // Handle the response if necessary
+    //   // console.log(response.data);
+    // } catch (error) {
+    //   // Handle the error if necessary
+    //   console.error("Error uploading the file:", error);
+    // }
+
+    // Navigate to Imager_Settings component
+    navigate("/imager_settings"); //! NEEDS TO BE CHANGED
+  };
+
   //-------------------------------------------------------------------------------------------------
   // for button colors
   function handleHover(e) {
@@ -303,99 +342,7 @@ function Mission_Planner() {
                   }}
                   onMouseOver={handleHover}
                   onMouseOut={handleUnhover}
-                  // onClick={() => { //this is just saving file to local computer
-                  //   const missionString = createMission(data);
-                  //   const element = document.createElement("a");
-                  //   const file = new Blob([missionString], {
-                  //     type: "text/plain",
-                  //   });
-                  //   element.href = URL.createObjectURL(file);
-                  //   element.download = "myFile.waypoints";
-                  //   document.body.appendChild(element); // Required for this to work in FireFox
-                  //   element.click();
-                  // }}
-                  //   onClick={async () => {
-                  //     const missionString = createMission(data);
-                  //     const file = new Blob([missionString], {
-                  //       type: "text/plain",
-                  //     });
-
-                  onClick={async () => {
-                    const missionString = createMission(data);
-
-                    // Logic for uploading the file
-                    const file = new Blob([missionString], {
-                      type: "text/plain",
-                    });
-
-                    // Create a FormData instance
-                    const formData = new FormData();
-                    formData.append("file", file, "myFile.waypoints");
-
-                    try {
-                      // Upload the file to the new API endpoint
-                      const response = await axios.post(
-                        "http://10.9.0.210:8000/upload", //http://3.145.131.67:8000/api/missiontest/
-                        formData,
-                        {
-                          headers: {
-                            "Content-Type": "multipart/form-data",
-                          },
-                        }
-                      );
-
-                      // Handle the response if necessary
-                      // console.log(response.data);
-                    } catch (error) {
-                      // Handle the error if necessary
-                      console.error("Error uploading the file:", error);
-                    }
-                  }}
-                  //     // Create a FormData instance
-                  //     const formData = new FormData();
-                  //     formData.append("file", file, "myFile.waypoints");
-
-                  //     try {
-                  //       // Upload the file to your API
-                  //       const response = await axios.post(
-                  //         "http://10.9.0.210:8000/upload",
-                  //         formData,
-                  //         {
-                  //           headers: {
-                  //             "Content-Type": "multipart/form-data",
-                  //           },
-                  //         }
-                  //       );
-
-                  //       // Handle the response as needed
-                  //       console.log(response.data);
-                  //     } catch (error) {
-                  //       // Handle the error as needed
-                  //       console.error("Error uploading the file:", error);
-                  //     }
-                  //   }}
-                  //   onClick={async () => {
-                  //     const missionString = createMission(data);
-
-                  //     try {
-                  //       // Send the mission string to your API
-                  //       const response = await axios.post(
-                  //         "http://10.9.0.210:8000/upload",
-                  //         missionString,
-                  //         {
-                  //           headers: {
-                  //             "Content-Type": "text/plain",
-                  //           },
-                  //         }
-                  //       );
-
-                  //       // Handle the response as needed
-                  //       console.log(response.data);
-                  //     } catch (error) {
-                  //       // Handle the error as needed
-                  //       console.error("Error uploading the mission:", error);
-                  //     }
-                  //   }}
+                  onClick={handleButtonClick}
                 >
                   Launch
                 </button>

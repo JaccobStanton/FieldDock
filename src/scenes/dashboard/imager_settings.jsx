@@ -5,6 +5,8 @@ import CommonRow from "../../components/NavBar/NavBar";
 import MissionBreadcrumbs from "../../components/Tools/Breadcrumbs/missionBreadCrumbs";
 import Metrics from "../../components/Breadcrumb Elements/Metrics/metrics";
 import Environment from "../../components/Breadcrumb Elements/Environment/environment";
+import FlightLogs from "../../components/Breadcrumb Elements/Flight Logs/flightLogs";
+// import MQTTComponent from "../../components/Breadcrumb Elements/Status/status";
 
 // import axios from "axios";
 
@@ -99,6 +101,8 @@ function Imager_Settings() {
               >
                 {selectedBreadcrumb === "Metrics" && <Metrics />}
                 {selectedBreadcrumb === "Environment" && <Environment />}
+                {selectedBreadcrumb === "Flight Logs" && <FlightLogs />}
+                {/* {selectedBreadcrumb === "Status" && <MQTTComponent />} */}
               </div>
             </div>
           </Col>
