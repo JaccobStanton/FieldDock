@@ -6,14 +6,17 @@ import QueryStatsIcon from "@mui/icons-material/QueryStats";
 import CloudIcon from "@mui/icons-material/Cloud";
 import DescriptionIcon from "@mui/icons-material/Description";
 
-export default function MissionBreadcrumbs() {
-  const [selected, setSelected] = React.useState(""); // 1. Use useState
+export default function MissionBreadcrumbs({
+  onBreadcrumbClick = () => {},
+  selected,
+}) {
+  // ... rest of the code
 
   function handleClick(event, breadcrumbName) {
-    // 2. Update handleClick
     event.preventDefault();
     console.info("You clicked a breadcrumb: " + breadcrumbName);
-    setSelected(breadcrumbName);
+    // 2.2 Call the passed callback function
+    onBreadcrumbClick(breadcrumbName);
   }
 
   return (
@@ -27,7 +30,7 @@ export default function MissionBreadcrumbs() {
               sx={{
                 display: "flex",
                 alignItems: "center",
-                color: selected === breadcrumb ? "#00e1b4" : "#797979", // 3. Conditionally apply color
+                color: selected === breadcrumb ? "#00e1b4" : "#797979",
                 fontSize: "20px",
                 "&:hover": {
                   color: "#00e1b4",

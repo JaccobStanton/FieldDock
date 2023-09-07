@@ -1,10 +1,16 @@
 import "../../CSS/imager_settings.css";
 import { Container, Row, Col } from "react-bootstrap";
-import React from "react";
+import React, { useState } from "react";
 import CommonRow from "../../components/NavBar/NavBar";
 import MissionBreadcrumbs from "../../components/Tools/Breadcrumbs/missionBreadCrumbs";
+import Metrics from "../../components/Breadcrumb Elements/Metrics/metrics";
+import Environment from "../../components/Breadcrumb Elements/Environment/environment";
+
+// import axios from "axios";
 
 function Imager_Settings() {
+  const [selectedBreadcrumb, setSelectedBreadcrumb] = useState("");
+
   return (
     <Container fluid>
       <div>
@@ -15,7 +21,7 @@ function Imager_Settings() {
         <Col xs={12} sm={12} md={12} lg={12} xl={12} xxl={12}>
           <div className="sensor-measurement-settings">
             <div className="sensor-measurement-settings-title">
-              FieldDock Mission Planner
+              System Stats
             </div>
           </div>
         </Col>
@@ -65,15 +71,6 @@ function Imager_Settings() {
             >
               <div //?DIV BOX FOR THE BREAD CRUMBS
                 style={{
-                  //bottom border does not go all the way across
-                  //     display: "flex",
-                  //     justifyContent: "center",
-                  //     alignItems: "center",
-                  //     borderBottom: "1px solid #797979",
-                  //     marginTop: "10px",
-                  //   }}
-                  // >
-                  // bottom border goes all the way across
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
@@ -82,9 +79,12 @@ function Imager_Settings() {
                   alignSelf: "stretch", // Make this div stretch to fill its parent's width
                 }}
               >
-                <MissionBreadcrumbs />
+                <MissionBreadcrumbs
+                  onBreadcrumbClick={setSelectedBreadcrumb}
+                  selected={selectedBreadcrumb}
+                />
               </div>
-              <div //?DIV BOX FOR MQTT COMMUNICATION
+              <div //?DIV BOX FOR STATUS, METRICS, ENV, & FLIGHT LOGS TO BE RENDERED
                 style={{
                   height: "86%",
                   border: "1px solid #797979",
@@ -93,9 +93,12 @@ function Imager_Settings() {
                   justifyContent: "center",
                   alignItems: "center",
                   display: "flex",
+                  flexDirection: "column",
+                  overflow: "auto",
                 }}
               >
-                hi
+                {selectedBreadcrumb === "Metrics" && <Metrics />}
+                {selectedBreadcrumb === "Environment" && <Environment />}
               </div>
             </div>
           </Col>
