@@ -65,6 +65,7 @@ const Metrics = () => {
         >
           Battery Information
         </Box>
+        {/*//?Signal Strength ?*/}
         <Box style={{ textAlign: "center", flex: 1, fontSize: "20px" }}>
           <div style={{ color: "#e8e8e8" }}>Battery Life</div>
           <div style={{ color: "#00e1b4" }}>60%</div>

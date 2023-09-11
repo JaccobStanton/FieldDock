@@ -1,14 +1,14 @@
 import "../../CSS/download_data.css";
 import { Container, Row, Col } from "react-bootstrap";
-import React, { useState } from "react";
+import React from "react";
 import CommonRow from "../../components/NavBar/NavBar";
-import EnvData from "../../components/Download_Data/env_data";
-import TraitData from "../../components/Download_Data/trait_data";
-import Fielddock_Data from "../../components/Download_Data/fielddock_data";
-import Mosaicked_Data from "../../components/Download_Data/mosaicked_data";
-import Drone_Data from "../../components/Download_Data/drone_data";
-import Sensor_Data from "../../components/Download_Data/sensor_data";
-import Download_All from "../../components/Download_Data/download_all";
+import EnvData from "../../components/Download Data/env_data";
+import TraitData from "../../components/Download Data/trait_data";
+import Fielddock_Data from "../../components/Download Data/fielddock_data";
+import Mosaicked_Data from "../../components/Download Data/mosaicked_data";
+import Drone_Data from "../../components/Download Data/drone_data";
+import Sensor_Data from "../../components/Download Data/sensor_data";
+import Download_All from "../../components/Download Data/download_all";
 
 function Download_data() {
   return (

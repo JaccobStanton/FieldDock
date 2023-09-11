@@ -1,10 +1,10 @@
-import "../../CSS/mission_planner.css";
+import "./mission_planner.css";
 import { Container, Row, Col } from "react-bootstrap";
 import React, { useState } from "react";
-import CommonRow from "../../components/NavBar/NavBar";
-import LatLongTable from "../../components/Mission Planner/latLongTable";
+import CommonRow from "../../NavBar/NavBar";
+import LatLongTable from "./latLongTable";
 // import MapComponent from "../../components/Mission Planner/map";
-import { createMission } from "../../components/Mission Planner/launch.js";
+import { createMission } from "./launch.js";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -44,7 +44,7 @@ function Mission_Planner() {
     // }
 
     // Navigate to Imager_Settings component
-    navigate("/imager_settings"); //! NEEDS TO BE CHANGED
+    navigate("/live_stats");
   };
 
   //-------------------------------------------------------------------------------------------------

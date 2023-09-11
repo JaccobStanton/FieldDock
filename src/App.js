@@ -12,8 +12,9 @@ import Users from "./scenes/dashboard/users.jsx";
 import Download_data from "./scenes/dashboard/download_data.jsx";
 import { CssBaseline, ThemeProvider } from "@mui/material"; //cssbaseline resets the css to default and theme provider provides the ability to pass into the themes into material ui
 import { ColorModeContext, useMode } from "./theme"; //importing everything just coded from theme .js
-import Mission_Planner from "./scenes/MissionPlanner/mission_planner";
-import Calendar from "./components/Calendar/calendar";
+import Mission_Planner from "./components/Missions/Mission Planner/mission_planner";
+import Calendar from "./components/Missions/Mission Calendar/calendar";
+import LiveStats from "./components/Missions/The Live Stats/liveStats";
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -44,6 +45,7 @@ function App() {
               <Route path="/download_data" element={<Download_data />} />
               <Route path="/date-mission" element={<Calendar />} />
               <Route path="/plan-mission" element={<Mission_Planner />} />
+              <Route path="/live_stats" element={<LiveStats />} />
             </Routes>
           </main>
         </div>

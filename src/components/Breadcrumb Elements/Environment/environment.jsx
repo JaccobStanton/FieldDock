@@ -70,6 +70,7 @@ const Environment = () => {
           <div style={{ color: "#e8e8e8" }}>Visibility</div>
           <div style={{ color: "#00e1b4" }}>Low</div>
         </Box>
+        {/*//?precip. type ?*/}
         <Box style={{ textAlign: "center", flex: 1, fontSize: "20px" }}>
           <div style={{ color: "#e8e8e8" }}>Humidity</div>
           <div style={{ color: "#00e1b4" }}>10%</div>

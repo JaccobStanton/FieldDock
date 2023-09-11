@@ -1,16 +1,16 @@
-import "../../CSS/imager_settings.css";
+import "./liveStats.css";
 import { Container, Row, Col } from "react-bootstrap";
 import React, { useState } from "react";
-import CommonRow from "../../components/NavBar/NavBar";
-import MissionBreadcrumbs from "../../components/Tools/Breadcrumbs/missionBreadCrumbs";
-import Metrics from "../../components/Breadcrumb Elements/Metrics/metrics";
-import Environment from "../../components/Breadcrumb Elements/Environment/environment";
-import FlightLogs from "../../components/Breadcrumb Elements/Flight Logs/flightLogs";
-import Status from "../../components/Breadcrumb Elements/Status/status";
+import CommonRow from "../../NavBar/NavBar";
+import MissionBreadcrumbs from "../../Tools/Breadcrumbs/missionBreadCrumbs";
+import Metrics from "../../Breadcrumb Elements/Metrics/metrics";
+import Environment from "../../Breadcrumb Elements/Environment/environment";
+import FlightLogs from "../../Breadcrumb Elements/Flight Logs/flightLogs";
+import Status from "../../Breadcrumb Elements/Status/status";
 
 // import axios from "axios";
 
-function Imager_Settings() {
+function LiveStats() {
   const [selectedBreadcrumb, setSelectedBreadcrumb] = useState("");
 
   return (
@@ -113,4 +113,4 @@ function Imager_Settings() {
   );
 }
 
-export default Imager_Settings;
+export default LiveStats;
