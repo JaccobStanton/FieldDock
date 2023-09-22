@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import { useTable, useRowSelect } from "react-table";
-import "./latLongTable.css";
+import "./LatLongTable.css";
 
 const LatLongTable = ({ data, setData }) => {
   // ------------------------------Define the structure of Header columns for table----------------------------------- //

@@ -1,13 +1,16 @@
-import "./mission_planner.css";
+import "./Mission_Planner.css";
 import { Container, Row, Col } from "react-bootstrap";
 import React, { useState } from "react";
-import CommonRow from "../../NavBar/NavBar";
-import LatLongTable from "../Mission Planner/latLongTable";
-import MapComponent from "../Mission Planner/map";
-import { createMission } from "../Mission Planner/launch.js";
+import CommonRow from "../../../NavBar/NavBar";
+import LatLongTable from "../Table/LatLongTable";
+import MapComponent from "../Map/Map";
+import { createMission } from "../Waypoint Configuration/Launch";
 import { useNavigate } from "react-router-dom";
 import axios from "axios"; // Make sure to install axios if you haven't
 
+//!YOU HAVE LOGIC THAT YOU STARTED FOR BREAKING THE BELOW INTO COMPONENTS IN THE TOOLS/BUTTONS/MISSION PLANNING
+//! REMEMBER FOR "DATA" IN THE 'handleButtonClick' BELOW, IT MIGHT BE THE FUNCTION FARTHER DOWN BELOW "const [data, setData] = useState([" OR IT MIGHT BE COMING FROM LAUNCH.JS.  AS OF SEPTEMBER 2022 NOT SURE
+//! REFACTOR CODE YOU HAVE TO TRY BOTH
 function Mission_Planner() {
   const navigate = useNavigate(); // Navigation hook from react-router-dom
 

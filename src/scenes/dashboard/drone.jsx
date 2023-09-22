@@ -2,7 +2,7 @@ import React from "react";
 import CommonRow from "../../components/NavBar/NavBar";
 import { Container, Row, Col } from "react-bootstrap";
 import "../../CSS/drone.css";
-import { DroneButton } from "../../components/Tools/Buttons/DronePageButton/droneButton";
+import { DroneButton } from "../../components/Tools/Buttons/Drone/droneButton";
 
 function Drone() {
   return (

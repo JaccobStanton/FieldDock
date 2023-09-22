@@ -1,18 +1,18 @@
 import { Routes, Route } from "react-router-dom";
 import Login from "./scenes/login/login";
-import Dashboard from "./scenes/dashboard";
-import Plug_Play from "./scenes/dashboard/plug_play";
-import Drone from "./scenes/dashboard/drone.jsx";
-import Images from "./scenes/dashboard/images.jsx";
-import Settings from "./scenes/dashboard/settings.jsx";
-import Imager_Settings from "./scenes/dashboard/imager_settings.jsx";
-import RealTime_Settings from "./scenes/dashboard/realtime_settings";
-import Diagnostics from "./scenes/dashboard/diagnostics.jsx";
-import Users from "./scenes/dashboard/users.jsx";
-import Download_data from "./scenes/dashboard/download_data.jsx";
+import Dashboard from "./scenes/dashboard/Index";
+import Plug_Play from "./scenes/dashboard/PlugPlay";
+import Drone from "./scenes/dashboard/Drone.jsx";
+import Images from "./scenes/dashboard/Images.jsx";
+import Settings from "./scenes/dashboard/Settings.jsx";
+import Imager_Settings from "./scenes/dashboard/ImagerSettings.jsx";
+import RealTime_Settings from "./scenes/dashboard/RealtimeSettings";
+import Diagnostics from "./scenes/dashboard/Diagnostics";
+import Users from "./scenes/dashboard/Users.jsx";
+import Download_data from "./scenes/dashboard/DownloadData.jsx";
 import { CssBaseline, ThemeProvider } from "@mui/material"; //cssbaseline resets the css to default and theme provider provides the ability to pass into the themes into material ui
 import { ColorModeContext, useMode } from "./theme"; //importing everything just coded from theme .js
-import Mission_Planner from "./components/Missions/Mission Planner/mission_planner";
+import Mission_Planner from "./components/Missions/Mission Planning/Planner/Mission_Planner";
 import Calendar from "./components/Missions/Mission Calendar/calendar";
 import LiveStats from "./components/Missions/The Live Stats/liveStats";
 

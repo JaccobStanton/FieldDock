@@ -6,7 +6,7 @@ import interactionPlugin from "@fullcalendar/interaction";
 import "./calendar.css";
 import CommonRow from "../../NavBar/NavBar";
 import { Container, Row, Col } from "react-bootstrap";
-import { CalendarButton } from "../../Tools/Buttons/CalendarButtons/calendarButton";
+import { CalendarButton } from "../../Tools/Buttons/Calendar/calendarButton";
 
 function Calendar() {
   return (
