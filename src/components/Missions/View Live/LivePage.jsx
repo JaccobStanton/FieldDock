@@ -1,4 +1,4 @@
-import "./LiveStats.css";
+import "./LivePage.css";
 import { Container, Row, Col } from "react-bootstrap";
 import React, { useState } from "react";
 import CommonRow from "../../NavBar/NavBar";
@@ -7,8 +7,6 @@ import Metrics from "./Breadcrumb Elements/Metrics/metrics";
 import Environment from "./Breadcrumb Elements/Environment/environment";
 import FlightLogs from "./Breadcrumb Elements/Flight Logs/flightLogs";
 import Status from "./Breadcrumb Elements/Status/status";
-
-// import axios from "axios";
 
 function LiveStats() {
   const [selectedBreadcrumb, setSelectedBreadcrumb] = useState("");
