@@ -1,4 +1,4 @@
-import "./liveStats.css";
+import "./LiveStats.css";
 import { Container, Row, Col } from "react-bootstrap";
 import React, { useState } from "react";
 import CommonRow from "../../NavBar/NavBar";
