@@ -3,10 +3,10 @@ import { Container, Row, Col } from "react-bootstrap";
 import React, { useState } from "react";
 import CommonRow from "../../NavBar/NavBar";
 import MissionBreadcrumbs from "../../Tools/Breadcrumbs/missionBreadCrumbs";
-import Metrics from "../../Breadcrumb Elements/Metrics/metrics";
-import Environment from "../../Breadcrumb Elements/Environment/environment";
-import FlightLogs from "../../Breadcrumb Elements/Flight Logs/flightLogs";
-import Status from "../../Breadcrumb Elements/Status/status";
+import Metrics from "./Breadcrumb Elements/Metrics/metrics";
+import Environment from "./Breadcrumb Elements/Environment/environment";
+import FlightLogs from "./Breadcrumb Elements/Flight Logs/flightLogs";
+import Status from "./Breadcrumb Elements/Status/status";
 
 // import axios from "axios";
 

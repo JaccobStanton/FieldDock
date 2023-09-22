@@ -28,7 +28,6 @@
     "date-fns": "^2.30.0",
     "formik": "^2.2.9",
     "full": "^1.0.1",
-    "mqtt": "^5.0.4",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.4",
     "react-chartjs-2": "^4.3.1",
@@ -66,5 +65,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "react-error-overlay": "^6.0.9"
+  },
+  "resolutions": {
+    "//": "See https://github.com/facebook/create-react-app/issues/11773",
+    "react-error-overlay": "6.0.9"
   }
 }

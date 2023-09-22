@@ -2,49 +2,40 @@ import "./mission_planner.css";
 import { Container, Row, Col } from "react-bootstrap";
 import React, { useState } from "react";
 import CommonRow from "../../NavBar/NavBar";
-import LatLongTable from "./latLongTable";
-// import MapComponent from "../../components/Mission Planner/map";
-import { createMission } from "./launch.js";
+import LatLongTable from "../Mission Planner/latLongTable";
+import MapComponent from "../Mission Planner/map";
+import { createMission } from "../Mission Planner/launch.js";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import axios from "axios"; // Make sure to install axios if you haven't
 
 function Mission_Planner() {
-  //-----------------------------------------------------------------------------------------------
-  // logic for the LAUNCH button sending data and navigating the the next page
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Navigation hook from react-router-dom
+
   const handleButtonClick = async () => {
-    // const missionString = createMission(data);
+    const missionString = createMission(data); // Assuming this function creates the mission data
 
-    // // Logic for uploading the file
-    // const file = new Blob([missionString], {
-    //   type: "text/plain",
-    // });
+    try {
+      const response = await axios.post("http://localhost:3001/launch", {
+        missionData: missionString,
+      });
 
-    // // Create a FormData instance
-    // const formData = new FormData();
-    // formData.append("file", file, "myFile.waypoints");
+      // Check the HTTP status code for potential server errors
+      if (response.status !== 200) {
+        console.error("Server returned an error:", response.data.message);
+        return; // Exit the function early since an error occurred
+      }
 
-    // try {
-    //   // Upload the file to the new API endpoint
-    //   const response = await axios.post(
-    //     "http://10.9.0.210:8000/upload", //http://3.145.131.67:8000/api/missiontest/
-    //     formData,
-    //     {
-    //       headers: {
-    //         "Content-Type": "multipart/form-data",
-    //       },
-    //     }
-    //   );
-
-    //   // Handle the response if necessary
-    //   // console.log(response.data);
-    // } catch (error) {
-    //   // Handle the error if necessary
-    //   console.error("Error uploading the file:", error);
-    // }
-
-    // Navigate to Imager_Settings component
-    navigate("/live_stats");
+      // Check the "success" flag within the response data
+      if (response.data.success) {
+        console.log(response.data.message); // Display the server's success message
+        navigate("/live_stats"); // Navigate only if publish was successful
+      } else {
+        console.error("Failed to publish the mission:", response.data.message);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      console.error("Error sending the mission to the server:", error);
+    }
   };
 
   //-------------------------------------------------------------------------------------------------
@@ -188,12 +179,12 @@ function Mission_Planner() {
                 backgroundColor: "transparent",
               }}
             >
-              {/* <MapComponent
+              <MapComponent
                 onMapClick={onMapClick}
                 markerPositions={markerPositions}
                 setHomeLat={setHomeLat}
                 setHomeLng={setHomeLng}
-              /> */}
+              />
             </div>
           </Col>
           <Col xs={12} sm={6} md={6} lg={4} xl={4} xxl={4}>
