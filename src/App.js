@@ -14,7 +14,7 @@ import { CssBaseline, ThemeProvider } from "@mui/material"; //cssbaseline resets
 import { ColorModeContext, useMode } from "./theme"; //importing everything just coded from theme .js
 import Mission_Planner from "./components/Missions/Mission Planning/Planner/Mission_Planner";
 import Calendar from "./components/Missions/Mission Calendar/calendar";
-import LiveStats from "./components/Missions/The Live Stats/LiveStats";
+import LiveStats from "./components/Missions/View Live/LivePage";
 
 function App() {
   const [theme, colorMode] = useMode();

@@ -17,7 +17,9 @@ function Imager_Settings() {
       <Row>
         <Col xs={12} sm={12} md={12} lg={12} xl={12} xxl={12}>
           <div className="sensor-measurement-settings">
-            <div className="sensor-measurement-settings-title">Diagnostics</div>
+            <div className="sensor-measurement-settings-title">
+              FieldDock Diagnostics Log
+            </div>
           </div>
         </Col>
       </Row>
@@ -47,27 +49,53 @@ function Imager_Settings() {
             <div className="account-selection-containment-box">
               <div className="account-box">
                 <div className="title">
-                  <h4>Select Customer Account</h4>
+                  <h4>Select Account</h4>
+                  {/* add the word "customer" above */}
                 </div>
                 <div style={{ margin: "10px 0" }}>
                   <input
                     type="text"
                     placeholder="Search for customer account"
-                    style={{ width: "100%" }}
+                    style={{
+                      width: "100%",
+                      background: "transparent",
+                      borderRadius: "5px",
+                      border: "1px solid #afafaf",
+                      padding: "7px",
+                    }}
                   />
                 </div>
                 <div style={{ margin: "10px 0" }}>
-                  <select style={{ width: "100%" }}>
+                  <select
+                    style={{
+                      width: "100%",
+                      background: "transparent",
+                      color: "#fff",
+                      borderRadius: "5px",
+                      border: "1px solid #afafaf",
+                      padding: "7px",
+                    }}
+                  >
+                    <option value="">Select an account...</option>
+                    <option value="">Select an account...</option>
+                    <option value="">Select an account...</option>
                     <option value="">Select an account...</option>
                     {/* Other <option> elements go here for the other accounts */}
                   </select>
                 </div>
-                <div style={{ margin: "10px 0" }}>
+                <div
+                  style={{
+                    margin: "10px 0",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
                   <input
                     type="checkbox"
                     id="diagnostics"
                     name="diagnostics"
                     value="diagnostics"
+                    style={{ marginRight: "10px" }} // Optional: Adds some space between the checkbox and the label
                   />
                   <label htmlFor="diagnostics">
                     Show all diagnostics for this account
@@ -83,21 +111,46 @@ function Imager_Settings() {
                   <input
                     type="text"
                     placeholder="Search for FieldDock Group"
-                    style={{ width: "100%" }}
+                    style={{
+                      width: "100%",
+                      background: "transparent",
+                      borderRadius: "5px",
+                      border: "1px solid #afafaf",
+                      padding: "7px",
+                    }}
                   />
                 </div>
                 <div style={{ margin: "10px 0" }}>
-                  <select style={{ width: "100%" }}>
+                  <select
+                    style={{
+                      width: "100%",
+                      background: "transparent",
+                      color: "#fff",
+                      borderRadius: "5px",
+                      border: "1px solid #afafaf",
+                      padding: "7px",
+                    }}
+                  >
+                    <option value="">Select a Group</option>
+                    <option value="">Select a Group</option>
+                    <option value="">Select a Group</option>
                     <option value="">Select a Group</option>
                     {/* Other <option> elements go here for the other accounts */}
                   </select>
                 </div>
-                <div style={{ margin: "10px 0" }}>
+                <div
+                  style={{
+                    margin: "10px 0",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
                   <input
                     type="checkbox"
                     id="diagnostics"
                     name="diagnostics"
                     value="diagnostics"
+                    style={{ marginRight: "10px" }} // Optional: Adds some space between the checkbox and the label
                   />
                   <label htmlFor="diagnostics">
                     Show all diagnostics for this account
@@ -106,28 +159,53 @@ function Imager_Settings() {
               </div>
               {/* box 2 end */}
               <div className="account-box">
-                <div style={{ margin: "10px 0" }}>
+                <div style={{ margin: "10px 0", background: "transparent" }}>
                   <h4>Select a Phenode</h4>
                 </div>
                 <div style={{ margin: "10px 0" }}>
                   <input
                     type="text"
                     placeholder="Search for FieldDock System"
-                    style={{ width: "100%" }}
+                    style={{
+                      width: "100%",
+                      background: "transparent",
+                      borderRadius: "5px",
+                      border: "1px solid #afafaf",
+                      padding: "7px",
+                    }}
                   />
                 </div>
                 <div style={{ margin: "10px 0" }}>
-                  <select style={{ width: "100%" }}>
+                  <select
+                    style={{
+                      width: "100%",
+                      background: "transparent",
+                      color: "#fff",
+                      borderRadius: "5px",
+                      border: "1px solid #afafaf",
+                      padding: "7px",
+                    }}
+                  >
+                    <option value="">Select a FieldDock System</option>
+                    <option value="">Select a FieldDock System</option>
+                    <option value="">Select a FieldDock System</option>
                     <option value="">Select a FieldDock System</option>
                     {/* Other <option> elements go here for the other accounts */}
                   </select>
                 </div>
-                <div style={{ margin: "10px 0" }}>
+                <div
+                  style={{
+                    margin: "10px 0",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
                   <input
                     type="checkbox"
                     id="diagnostics"
                     name="diagnostics"
                     value="diagnostics"
+                    style={{ marginRight: "10px" }} // Optional: Adds some space between the checkbox and the label
                   />
                   <label htmlFor="diagnostics">
                     Show all diagnostics for this account
@@ -143,21 +221,42 @@ function Imager_Settings() {
                   <input
                     type="text"
                     placeholder="Search dates (ex. --/--/----)"
-                    style={{ width: "100%" }}
+                    style={{
+                      width: "100%",
+                      background: "transparent",
+                      borderRadius: "5px",
+                      border: "1px solid #afafaf",
+                      padding: "7px",
+                    }}
                   />
                 </div>
                 <div style={{ margin: "10px 0" }}>
-                  <select style={{ width: "100%" }}>
+                  <select
+                    style={{
+                      width: "100%",
+                      background: "transparent",
+                      borderRadius: "5px",
+                      border: "1px solid #afafaf",
+                      padding: "7px",
+                    }}
+                  >
                     <option value="">Search dates (ex. --/--/----)</option>
                     {/* Other <option> elements go here for the other accounts */}
                   </select>
                 </div>
-                <div style={{ margin: "10px 0" }}>
+                <div
+                  style={{
+                    margin: "10px 0",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
                   <input
                     type="checkbox"
                     id="diagnostics"
                     name="diagnostics"
                     value="diagnostics"
+                    style={{ marginRight: "10px" }} // Optional: Adds some space between the checkbox and the label
                   />
                   <label htmlFor="diagnostics">
                     Show all diagnostics for this account

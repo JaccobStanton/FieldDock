@@ -13,12 +13,12 @@ function Diagnostics_Table() {
     >
       <tbody>
         <tr>
-          <td style={{ borderBottom: "1px solid #797979" }}>
+          <td style={{ borderBottom: "1px solid #00e1b4" }}>
             • 02/20/2021 / 13:45 / 0002:customer_1 / 0006: error_808.1
           </td>
         </tr>
         <tr>
-          <td style={{ borderBottom: "1px solid #797979" }}>
+          <td style={{ borderBottom: "1px solid #00e1b4" }}>
             • 02/20/2021 / 14:45 / 0002:customer_1 / 0006: error_808.1
           </td>
         </tr>

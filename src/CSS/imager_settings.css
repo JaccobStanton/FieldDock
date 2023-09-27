@@ -22,6 +22,7 @@
 
 .account-selection-main-container {
   width: 100%;
+  margin-bottom: 40px; /*adds spacing at bottom of page */
   display: flex;
   align-items: center;
   justify-content: center;
