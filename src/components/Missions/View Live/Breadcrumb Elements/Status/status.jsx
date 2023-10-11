@@ -49,7 +49,7 @@ const Status = () => {
         <div
           style={{
             // marginTop: "40px",
-            // color: "white",
+            color: "black",
             marginTop: "50px",
             backgroundColor: "#ccc",
             padding: "10px",
@@ -58,7 +58,7 @@ const Status = () => {
             height: "auto",
           }}
         >
-          {/* <strong>Latest MQTT Message:</strong> {latestMessage} */}
+          <strong>Latest MQTT Message:</strong> {latestMessage}
         </div>
       </Box>
     </>

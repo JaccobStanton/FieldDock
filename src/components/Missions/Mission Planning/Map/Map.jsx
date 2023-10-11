@@ -8,6 +8,7 @@ const containerStyle = {
   position: "relative",
   width: "100%",
   height: "815px",
+  border: "1px solid #797979",
 };
 
 const initialCenter = {
